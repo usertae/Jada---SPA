@@ -1,0 +1,1401 @@
+/* =========================
+   CONFIGURAÇÕES GERAIS
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+
+    background-color: #f8faf6;
+
+    color: #33443a;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+/* LOGO DO CABEÇALHO */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+header {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    background-color: rgba(255, 255, 255, 0.95);
+
+    z-index: 1000;
+
+    box-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.menu {
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+/* LOGO */
+
+.logo {
+    font-size: 24px;
+
+    font-weight: bold;
+
+    color: #6f9275;
+}
+
+
+/* LINKS */
+
+.menu ul {
+    list-style: none;
+
+    display: flex;
+
+    gap: 25px;
+}
+
+.menu a {
+    text-decoration: none;
+
+    color: #33443a;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: #6f9275;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+
+/* =========================
+   TELA INICIAL
+========================= */
+
+.inicio {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    background:
+
+        linear-gradient(
+            rgba(40, 65, 48, 0.45),
+            rgba(40, 65, 48, 0.45)
+        ),
+        url("../imagens/spa-inicio.jpg.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+}
+
+.inicio-conteudo {
+    max-width: 800px;
+    padding: 30px;
+    color: white;
+}
+
+.inicio-conteudo h1 {
+    font-size: 70px;
+    margin-bottom: 15px;
+    letter-spacing: 5px;
+}
+
+.inicio-conteudo p {
+    font-size: 24px;
+    margin-bottom: 35px;
+}
+
+.botoes-inicio {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.botao {
+    display: inline-block;
+    padding: 14px 28px;
+    background-color: #dce8d5;
+    color: #284130;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.botao:hover {
+    transform: translateY(-3px);
+}
+
+.botao-secundario {
+    background-color: transparent;
+    color: #284130;
+    border-radius: 30px;
+}
+
+
+/* TEXTO PEQUENO */
+
+.subtitulo {
+
+    font-size: 13px;
+
+    letter-spacing: 3px;
+
+    color: #ffffff;
+
+    margin-bottom: 15px;
+}
+
+
+/* TÍTULO PRINCIPAL */
+
+h1 {
+
+    font-size: 80px;
+
+    font-weight: 400;
+
+    color: #ffffff;
+
+    margin-bottom: 20px;
+}
+
+
+.inicio p {
+
+    font-size: 20px;
+
+    line-height: 1.6;
+
+    margin-bottom: 30px;
+
+    color: #ffffff;
+}
+
+/* =========================
+   SOBRE NOS
+========================= */
+
+.sobre {
+    padding: 100px 8%;
+    background-color: #F5F1E8;
+}
+
+.sobre-conteudo {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 70px;
+}
+
+.sobre-texto {
+    flex: 1;
+}
+
+.titulo-pequeno {
+    color: #6f8f72;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.sobre-texto h2 {
+    color: #284130;
+    font-size: 42px;
+    margin: 15px 0 25px;
+}
+
+.sobre-texto p {
+    color: #5c665d;
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.sobre-texto .botao {
+    margin-top: 20px;
+}
+
+.sobre-destaque {
+    width: 300px;
+    padding: 45px 35px;
+    text-align: center;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(40, 65, 48, 0.12);
+}
+
+.icone {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.sobre-destaque h3 {
+    color: #284130;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.sobre-destaque p {
+    color: #687269;
+    line-height: 1.6;
+}
+
+/* LOGO NA SEÇÃO SOBRE */
+
+.sobre-destaque .icone img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+}
+
+.frase-plano {
+    margin-top: 25px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #e2e9e3;
+
+    color: #7fa58a;
+
+    font-size: 13px;
+
+    font-style: italic;
+
+    text-align: center;
+
+    line-height: 1.5;
+}
+
+/* =========================
+   SERVIÇOS
+========================= */
+
+.servicos {
+    padding: 100px 8%;
+    background-color: #FFFFFF;
+}
+
+.titulo-secao {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 55px;
+}
+
+.titulo-secao span {
+    color: #6F8F72;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.titulo-secao h2 {
+    color: #355C4A;
+    font-size: 40px;
+    margin: 15px 0;
+}
+
+.titulo-secao p {
+    color: #4F5A52;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.cards-servicos {
+    max-width: 1150px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+.card-servico {
+    padding: 35px 25px;
+    text-align: center;
+    background-color: #F7F4EC;
+    border-radius: 18px;
+    transition: 0.3s;
+}
+
+.card-servico:hover {
+    transform: translateY(-8px);
+}
+
+.icone-servico {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.card-servico h3 {
+    color: #355C4A;
+    font-size: 21px;
+    margin-bottom: 15px;
+}
+
+.card-servico p {
+    color: #4F5A52;
+    line-height: 1.6;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.card-servico a {
+    color: #6F8F72;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.card-servico a:hover {
+    text-decoration: underline;
+}
+
+/* CARDS */
+
+.cards {
+
+    max-width: 1100px;
+
+    margin: 50px auto 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 30px;
+
+    flex-wrap: wrap;
+}
+
+
+.card {
+
+    width: 300px;
+
+    padding: 35px 25px;
+
+    background-color: white;
+
+    border-radius: 15px;
+
+    box-shadow:
+
+        0 10px 30px
+        rgba(0, 0, 0, 0.07);
+
+    transition: 0.3s;
+}
+
+
+.card:hover {
+
+    transform: translateY(-8px);
+}
+
+
+.card h3 {
+
+    font-size: 24px;
+
+    color: #64856b;
+
+    margin-bottom: 15px;
+}
+
+
+.card p {
+
+    line-height: 1.7;
+
+    margin-bottom: 20px;
+}
+
+/* IMAGENS DOS SERVIÇOS */
+
+.icone-servico {
+    width: 100px;
+    height: 100px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+}
+
+.icone-servico img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    background: transparent;
+}
+
+/* =========================
+   PLANOS
+========================= */
+
+.planos {
+    padding: 65px 8%;
+    background-color: #E8EFE5;
+}
+
+.planos .titulo-secao {
+    margin-bottom: 35px;
+}
+
+.cards-planos {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    align-items: stretch;
+}
+
+.card-plano {
+    position: relative;
+    padding: 30px 22px;
+    background-color: #FFFFFF;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(40, 65, 48, 0.10);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-plano h3 {
+    color: #355C4A;
+    font-size: 21px;
+    margin-bottom: 12px;
+}
+
+.descricao-plano {
+    color: #4F5A52;
+    line-height: 1.5;
+    font-size: 14px;
+    min-height: 45px;
+}
+
+.preco {
+    color: #355C4A;
+    font-size: 29px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.preco small {
+    font-size: 15px;
+}
+
+.preco span {
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.card-plano ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 25px;
+    text-align: left;
+}
+
+.card-plano li {
+    color: #4F5A52;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    font-size: 14px;
+}
+
+.card-plano .botao {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 20px;
+    font-size: 14px;
+    margin-top: auto;
+}
+
+/* Destaque apenas no plano do meio */
+
+.card-plano.destaque {
+    border: 2px solid #6F8F72;
+    box-shadow: 0 10px 25px rgba(40, 65, 48, 0.16);
+    transform: translateY(-5px);
+}
+
+.mais-escolhido {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #6F8F72;
+    color: white;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* ALINHAMENTO DOS PLANOS */
+
+.cards-planos {
+    align-items: stretch;
+}
+
+.card-plano {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-plano ul {
+    flex: 1;
+}
+
+.frase-plano {
+    margin-top: 25px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #e2e9e3;
+
+    color: #7fa58a;
+
+    font-size: 13px;
+
+    font-style: italic;
+
+    text-align: center;
+
+    line-height: 1.5;
+
+    min-height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.frase-plano {
+    margin-top: 25px;
+
+    padding-top: 18px;
+
+    border-top: 1px solid #e2e9e3;
+
+    color: #7fa58a;
+
+    font-size: 13px;
+
+    font-style: italic;
+
+    text-align: center;
+
+    line-height: 1.5;
+}
+
+/* =========================
+   AULAS COMPLEMENTARES
+========================= */
+
+.aulas {
+    padding: 75px 8%;
+    background-color: #FFFFFF;
+}
+
+.cards-aulas {
+    max-width: 950px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.card-aula {
+    padding: 30px 25px;
+    background-color: #F7F4EC;
+    border-radius: 18px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card-aula:hover {
+    transform: translateY(-6px);
+}
+
+.icone-aula {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.card-aula h3 {
+    color: #355C4A;
+    font-size: 21px;
+    margin-bottom: 12px;
+}
+
+.card-aula p {
+    color: #4F5A52;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.horario {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #DCE8D5;
+    color: #355C4A;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* IMAGENS DAS AULAS */
+
+.icone-aula {
+    width: 120px;
+    height: 120px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+}
+
+.icone-aula img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    background: transparent;
+}
+
+
+/* ============================= */
+/* APLICATIVO */
+/* ============================= */
+
+.aplicativo {
+    padding: 100px 8%;
+    background: #e8f1e8;
+    overflow: hidden;
+}
+
+
+.aplicativo-conteudo {
+    max-width: 1100px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+
+    align-items: center;
+
+    gap: 80px;
+}
+
+
+/* TEXTO */
+
+.aplicativo-texto span {
+    color: #71967a;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+}
+
+
+.aplicativo-texto h2 {
+    color: #294936;
+
+    font-size: 42px;
+
+    line-height: 1.2;
+
+    margin: 15px 0 20px;
+
+    max-width: 550px;
+}
+
+
+.aplicativo-texto p {
+    color: #66736a;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    max-width: 550px;
+
+    margin-bottom: 15px;
+}
+
+
+/* ============================= */
+/* BOTÕES DO APLICATIVO */
+/* ============================= */
+
+.lojas-app {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+
+.loja-app {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    background: #294936;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 11px 18px;
+
+    min-width: 155px;
+
+    border-radius: 12px;
+
+    transition: 0.3s;
+
+    box-sizing: border-box;
+}
+
+
+.loja-app:hover {
+    transform: translateY(-3px);
+
+    background: #3b6048;
+}
+
+
+/* ÍCONE DA LOJA */
+
+.loja-app img {
+    width: 32px;
+
+    height: 32px;
+
+    object-fit: contain;
+
+    flex-shrink: 0;
+}
+
+
+/* TEXTOS */
+
+.loja-app span {
+    display: block;
+
+    color: #ffffff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 400;
+
+    line-height: 1.2;
+
+    letter-spacing: 0;
+
+    white-space: nowrap;
+}
+
+
+.loja-app b {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    line-height: 1.1;
+}
+
+/* CELULAR */
+
+.aplicativo-destaque {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+.celular-app {
+    width: 220px;
+
+    height: 430px;
+
+    background: #294936;
+
+    border-radius: 35px;
+
+    padding: 10px;
+
+    box-shadow: 0 20px 45px rgba(41, 73, 54, 0.25);
+
+    transform: rotate(3deg);
+}
+
+
+.tela-app {
+    width: 100%;
+
+    height: 100%;
+
+    background: #f7faf6;
+
+    border-radius: 27px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+.tela-app span {
+    font-size: 45px;
+
+    margin-bottom: 15px;
+}
+
+
+.tela-app h3 {
+    color: #294936;
+
+    font-size: 22px;
+
+    letter-spacing: 2px;
+
+    margin: 0 0 8px;
+}
+
+
+.tela-app p {
+    color: #7b877e;
+
+    font-size: 12px;
+
+    margin: 0;
+}
+
+.tela-app img {
+    width: 85px;
+    height: 85px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+
+/* RESPONSIVO */
+
+@media (max-width: 800px) {
+
+    .aplicativo {
+        padding: 70px 6%;
+    }
+
+    .aplicativo-conteudo {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+
+        gap: 50px;
+    }
+
+    .aplicativo-texto h2,
+    .aplicativo-texto p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .lojas-app {
+        justify-content: center;
+
+        flex-wrap: wrap;
+    }
+
+    .aplicativo-destaque {
+        order: -1;
+    }
+
+}
+
+/* ============================= */
+/* RODAPÉ */
+/* ============================= */
+
+.rodape {
+    background: #294936;
+
+    color: white;
+
+    padding: 70px 8% 25px;
+}
+
+
+/* CONTEÚDO */
+
+.rodape-conteudo {
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 1.5fr 1fr 1fr;
+
+    gap: 60px;
+}
+
+
+/* LOGO */
+
+.rodape-logo {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
+}
+
+
+.rodape-logo img {
+    width: 45px;
+
+    height: 45px;
+
+    object-fit: contain;
+}
+
+
+.rodape-logo span {
+    font-size: 21px;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+}
+
+
+.rodape-marca p {
+    color: #d7e3d9;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    max-width: 280px;
+}
+
+
+/* TÍTULOS */
+
+.rodape h3 {
+    font-size: 16px;
+
+    margin: 5px 0 20px;
+
+    color: #ffffff;
+}
+
+
+/* LINKS */
+
+.rodape-links {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+}
+
+
+.rodape-links a {
+    color: #d7e3d9;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+
+.rodape-links a:hover {
+    color: white;
+
+    transform: translateX(4px);
+}
+
+
+
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 768px) {
+
+    .menu {
+
+        flex-direction: column;
+
+        gap: 15px;
+    }
+
+
+    .menu ul {
+
+        gap: 12px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+
+    h1 {
+
+        font-size: 55px;
+    }
+
+
+    .secao {
+
+        padding: 100px 5%;
+    }
+
+
+    .destaque {
+
+        transform: none;
+    }
+
+}
+/* ============================= */
+/* PÁGINAS DE TERMOS E PRIVACIDADE */
+/* ============================= */
+
+.pagina-politica {
+    background: #f4f8f2;
+
+    padding: 80px 8%;
+}
+
+
+.conteudo-politica {
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    background: #ffffff;
+
+    padding: 60px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+
+.conteudo-politica > span {
+    color: #7fa58a;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+}
+
+
+.conteudo-politica h1 {
+    color: #294936;
+
+    font-size: 40px;
+
+    margin: 12px 0 20px;
+}
+
+
+.conteudo-politica h2 {
+    color: #294936;
+
+    font-size: 22px;
+
+    margin-top: 35px;
+
+    margin-bottom: 12px;
+}
+
+
+.conteudo-politica p {
+    color: #66736a;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    margin: 0 0 15px;
+}
+
+
+.conteudo-politica .introducao {
+    font-size: 16px;
+
+    margin-bottom: 35px;
+}
+
+
+.ultima-atualizacao {
+    margin-top: 45px !important;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #e1e9e2;
+
+    font-size: 13px !important;
+
+    color: #89968d !important;
+}
+
+
+/* RESPONSIVO */
+
+@media (max-width: 700px) {
+
+    .pagina-politica {
+        padding: 50px 5%;
+    }
+
+    .conteudo-politica {
+        padding: 35px 25px;
+    }
+
+    .conteudo-politica h1 {
+        font-size: 30px;
+    }
+
+    .conteudo-politica h2 {
+        font-size: 19px;
+    }
+
+}
+
+.botao-voltar {
+    display: block;
+
+    width: fit-content;
+
+    margin: 30px auto 0;
+
+    padding: 12px 25px;
+
+    background: #294936;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 25px;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+.botao-voltar:hover {
+    background: #3b6048;
+
+    transform: translateY(-2px);
+}
+
+/* ============================= */
+/* PARTE INFERIOR DO RODAPÉ */
+/* ============================= */
+
+.rodape-linha {
+    max-width: 1100px;
+
+    height: 1px;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    margin: 50px auto 25px;
+}
+
+
+/* ÁREA INFERIOR */
+
+.rodape-inferior {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    gap: 12px;
+}
+
+
+/* TERMOS E PRIVACIDADE */
+
+.rodape-politicas {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+}
+
+
+.rodape-politicas a {
+    color: #d7e3d9;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    transition: 0.3s;
+}
+
+
+.rodape-politicas a:hover {
+    color: #ffffff;
+}
+
+
+.rodape-politicas span {
+    color: #718a77;
+
+    font-size: 12px;
+}
+
+
+/* COPYRIGHT */
+
+.rodape-inferior p {
+    margin: 0;
+
+    color: #9fb2a4;
+
+    font-size: 12px;
+}
+
+
+/* RESPONSIVO */
+
+@media (max-width: 800px) {
+
+    .rodape-inferior {
+        gap: 15px;
+    }
+
+    .rodape-politicas {
+        flex-wrap: wrap;
+    }
+
+}
+
+
