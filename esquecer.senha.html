@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Recuperar Senha | Jade Spa</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         MENU
+    ========================== -->
+
+    <header>
+
+        <nav class="menu">
+
+            <div class="logo">
+
+                <img
+                    src="imagens/logo-jadespa.png"
+                    alt="Logo Jade Spa"
+                >
+
+                <span>JADE SPA</span>
+
+            </div>
+
+
+            <ul>
+
+                <li>
+                    <a href="index.html#inicio">
+                        Início
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.html#sobre">
+                        Quem Somos
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.html#servicos">
+                        Serviços
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.html#planos">
+                        Planos
+                    </a>
+                </li>
+
+                <li>
+                    <a href="index.html#aulas">
+                        Aulas
+                    </a>
+                </li>                
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         RECUPERAÇÃO DE SENHA
+    ========================== -->
+
+    <main class="secao-acesso">
+
+        <div class="cartao-acesso">
+
+
+            <!-- CABEÇALHO -->
+
+            <div
+                class="cabecalho-recuperacao"
+                id="cabecalho-recuperacao"
+            >
+
+                <h2>
+                    Recuperar Senha
+                </h2>
+
+                <p>
+                    Insira o e-mail associado à sua conta.
+                    Enviaremos um link para redefinir sua senha.
+                </p>
+
+            </div>
+
+
+            <!-- FORMULÁRIO -->
+
+            <form
+                id="form-recuperar"
+                class="formulario-acesso active"
+                onsubmit="enviarInstrucoes(event)"
+            >
+
+                <div class="campo-grupo">
+
+                    <label for="recuperar-email">
+                        E-mail Cadastrado
+                    </label>
+
+                    <input
+                        type="email"
+                        id="recuperar-email"
+                        placeholder="seu@email.com"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="botao botao-acesso"
+                >
+                    Enviar Instruções
+                </button>
+
+
+                <div class="voltar-login">
+
+                    <a href="login.cadastro.html">
+                        ← Voltar para o Login
+                    </a>
+
+                </div>
+
+            </form>
+
+
+            <!-- MENSAGEM DE SUCESSO -->
+
+            <div
+                id="mensagem-sucesso"
+                class="mensagem-sucesso"
+                style="display: none;"
+            >
+
+                <div class="icone-sucesso">
+                    ✓
+                </div>
+
+                <h3>
+                    E-mail enviado!
+                </h3>
+
+                <p>
+                    Se o e-mail informado estiver cadastrado
+                    na nossa plataforma, você receberá as
+                    instruções em instantes.
+                </p>
+
+                <a
+                    href="login.cadastro.html"
+                    class="botao botao-secundario-acesso"
+                >
+                    Voltar ao Login
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         RODAPÉ
+    ========================== -->
+
+    <footer class="rodape">
+
+        <div class="rodape-conteudo">
+
+
+            <div class="rodape-marca">
+
+                <div class="rodape-logo">
+
+                    <img
+                        src="imagens/logo-jadespa.png"
+                        alt="Logo Jade Spa"
+                    >
+
+                    <span>JADE SPA</span>
+
+                </div>
+
+                <p>
+                    Seu momento de equilíbrio começa aqui.
+                </p>
+
+            </div>
+
+
+            <div class="rodape-links">
+
+                <h3>Links rápidos</h3>
+
+                <a href="index.html#inicio">
+                    Início
+                </a>
+
+                <a href="index.html#sobre">
+                    Quem Somos
+                </a>
+
+                <a href="index.html#servicos">
+                    Serviços
+                </a>
+
+                <a href="index.html#planos">
+                    Planos
+                </a>
+
+                <a href="index.html#aulas">
+                    Aulas
+                </a>                
+
+            </div>
+
+
+            <div class="rodape-contato">
+
+                <h3>
+                    Fale conosco
+                </h3>
+
+                <p>
+                    📍 Brasília - DF
+                </p>
+
+                <p>
+                    📞 (61) 0000-0000
+                </p>
+
+                <p>
+                    📧 contato@jadespa.com
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="rodape-linha"></div>
+
+
+        <div class="rodape-inferior">
+
+            <div class="rodape-politicas">
+
+                <a href="termos.html">
+                    Termos de Uso
+                </a>
+
+                <span>•</span>
+
+                <a href="privacidade.html">
+                    Política de Privacidade
+                </a>
+
+            </div>
+
+
+            <p>
+                © 2026 Jade Spa. Todos os direitos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        function enviarInstrucoes(event) {
+
+            event.preventDefault();
+
+
+            document
+                .getElementById('form-recuperar')
+                .style.display = 'none';
+
+
+            document
+                .getElementById('cabecalho-recuperacao')
+                .style.display = 'none';
+
+
+            const mensagem =
+                document.getElementById(
+                    'mensagem-sucesso'
+                );
+
+
+            mensagem.style.display = 'block';
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

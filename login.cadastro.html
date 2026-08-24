@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Acesso - Jade Spa</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         MENU
+    ========================== -->
+
+    <header>
+
+        <nav class="menu">
+
+            <div class="logo">
+
+                <img src="imagens/logo-jadespa.png" alt="Logo Jade Spa">
+
+                <span>JADE SPA</span>
+
+            </div>
+
+            <ul>
+
+                <li>
+                    <a href="index.html#inicio">Início</a>
+                </li>
+
+                <li>
+                    <a href="index.html#sobre">Quem Somos</a>
+                </li>
+
+                <li>
+                    <a href="index.html#servicos">Serviços</a>
+                </li>
+
+                <li>
+                    <a href="index.html#planos">Planos</a>
+                </li>
+
+                <li>
+                    <a href="index.html#aulas">Aulas</a>
+                </li>                
+
+                <li>
+                    <a href="login.cadastro.html" class="botao-menu-login">
+                        Entrar
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         LOGIN / CADASTRO
+    ========================== -->
+
+    <main class="secao-acesso">
+
+        <div class="cartao-acesso">
+
+            <!-- ABAS -->
+
+            <div class="abas-acesso">
+
+                <button
+                    type="button"
+                    class="aba-btn active"
+                    data-aba="login">
+                    Entrar
+                </button>
+
+                <button
+                    type="button"
+                    class="aba-btn"
+                    data-aba="cadastro">
+                    Cadastrar
+                </button>
+
+            </div>
+
+
+            <!-- =========================
+                 LOGIN
+            ========================== -->
+
+            <form
+                id="form-login"
+                class="formulario-acesso active">
+
+                <div class="campo-grupo">
+
+                    <label for="login-email">
+                        E-mail
+                    </label>
+
+                    <input
+                        type="email"
+                        id="login-email"
+                        placeholder="seu@email.com"
+                        autocomplete="email"
+                        required>
+
+                </div>
+
+
+                <div class="campo-grupo">
+
+                    <label for="login-senha">
+                        Senha
+                    </label>
+
+                    <input
+                        type="password"
+                        id="login-senha"
+                        placeholder="Digite sua senha"
+                        autocomplete="current-password"
+                        required>
+
+                </div>
+
+
+                <div class="acoes-login">
+
+                    <a
+                        href="esquecer-senha.html"
+                        class="esqueci-senha">
+
+                        Esqueceu a senha?
+
+                    </a>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="botao botao-acesso">
+
+                    Acessar Conta
+
+                </button>
+
+
+                <p
+                    id="mensagem-login"
+                    class="mensagem-acesso"
+                    aria-live="polite">
+                </p>
+
+            </form>
+
+
+            <!-- =========================
+                 CADASTRO
+            ========================== -->
+
+            <form
+                id="form-cadastro"
+                class="formulario-acesso">
+
+                <div class="campo-grupo">
+
+                    <label for="cadastro-nome">
+                        Nome Completo
+                    </label>
+
+                    <input
+                        type="text"
+                        id="cadastro-nome"
+                        placeholder="Seu nome completo"
+                        autocomplete="name"
+                        required>
+
+                </div>
+
+
+                <div class="campo-grupo">
+
+                    <label for="cadastro-email">
+                        E-mail
+                    </label>
+
+                    <input
+                        type="email"
+                        id="cadastro-email"
+                        placeholder="seu@email.com"
+                        autocomplete="email"
+                        required>
+
+                </div>
+
+
+                <div class="campo-grupo">
+
+                    <label for="cadastro-telefone">
+                        Telefone / WhatsApp
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="cadastro-telefone"
+                        placeholder="(61) 90000-0000"
+                        autocomplete="tel">
+
+                </div>
+
+
+                <div class="campo-grupo">
+
+                    <label for="cadastro-senha">
+                        Senha
+                    </label>
+
+                    <input
+                        type="password"
+                        id="cadastro-senha"
+                        placeholder="Digite sua senha"
+                        autocomplete="new-password"
+                        required>
+
+                </div>
+
+
+                <div class="campo-grupo">
+
+                    <label for="cadastro-confirmar-senha">
+                        Confirmar senha
+                    </label>
+
+                    <input
+                        type="password"
+                        id="cadastro-confirmar-senha"
+                        placeholder="Confirme sua senha"
+                        autocomplete="new-password"
+                        required>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="botao botao-acesso">
+
+                    Criar Minha Conta
+
+                </button>
+
+
+                <p
+                    id="mensagem-cadastro"
+                    class="mensagem-acesso"
+                    aria-live="polite">
+                </p>
+
+            </form>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         RODAPÉ
+    ========================== -->
+
+    <footer class="rodape">
+
+        <div class="rodape-conteudo">
+
+            <div class="rodape-marca">
+
+                <div class="rodape-logo">
+
+                    <img
+                        src="imagens/logo-jadespa.png"
+                        alt="Logo Jade Spa">
+
+                    <span>JADE SPA</span>
+
+                </div>
+
+                <p>
+                    Seu momento de equilíbrio começa aqui.
+                </p>
+
+            </div>
+
+
+            <div class="rodape-links">
+
+                <h3>Links rápidos</h3>
+
+                <a href="index.html#inicio">Início</a>
+
+                <a href="index.html#sobre">Quem Somos</a>
+
+                <a href="index.html#servicos">Serviços</a>
+
+                <a href="index.html#planos">Planos</a>
+
+                <a href="index.html#aulas">Aulas</a>
+                
+            </div>
+
+
+            <div class="rodape-contato">
+
+                <h3>Fale conosco</h3>
+
+                <p>📍 Brasília - DF</p>
+
+                <p>📞 (61) 0000-0000</p>
+
+                <p>📧 contato@jadespa.com</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="rodape-linha"></div>
+
+
+        <div class="rodape-inferior">
+
+            <div class="rodape-politicas">
+
+                <a href="termos.html">
+                    Termos de Uso
+                </a>
+
+                <span>•</span>
+
+                <a href="privacidade.html">
+                    Política de Privacidade
+                </a>
+
+            </div>
+
+            <p>
+                © 2026 Jade Spa. Todos os direitos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        /* TROCAR ENTRE LOGIN E CADASTRO */
+
+        const botoesAbas =
+            document.querySelectorAll('.aba-btn');
+
+        const formularios =
+            document.querySelectorAll('.formulario-acesso');
+
+
+        botoesAbas.forEach(botao => {
+
+            botao.addEventListener('click', () => {
+
+                const aba = botao.dataset.aba;
+
+
+                formularios.forEach(formulario => {
+
+                    formulario.classList.remove('active');
+
+                });
+
+
+                botoesAbas.forEach(btn => {
+
+                    btn.classList.remove('active');
+
+                });
+
+
+                document
+                    .getElementById(`form-${aba}`)
+                    .classList.add('active');
+
+
+                botao.classList.add('active');
+
+            });
+
+        });
+
+
+        /* LOGIN */
+
+        document
+            .getElementById('form-login')
+            .addEventListener('submit', function(event) {
+
+                event.preventDefault();
+
+
+                const email =
+                    document
+                        .getElementById('login-email')
+                        .value
+                        .trim();
+
+
+                const senha =
+                    document
+                        .getElementById('login-senha')
+                        .value;
+
+
+                const mensagem =
+                    document
+                        .getElementById('mensagem-login');
+
+
+                if (email && senha) {
+
+                    mensagem.textContent =
+                        'Login realizado com sucesso!';
+
+                    mensagem.classList.add('sucesso');
+
+                }
+
+            });
+
+
+        /* CADASTRO */
+
+        document
+            .getElementById('form-cadastro')
+            .addEventListener('submit', function(event) {
+
+                event.preventDefault();
+
+
+                const nome =
+                    document
+                        .getElementById('cadastro-nome')
+                        .value
+                        .trim();
+
+
+                const email =
+                    document
+                        .getElementById('cadastro-email')
+                        .value
+                        .trim();
+
+
+                const senha =
+                    document
+                        .getElementById('cadastro-senha')
+                        .value;
+
+
+                const confirmarSenha =
+                    document
+                        .getElementById('cadastro-confirmar-senha')
+                        .value;
+
+
+                const mensagem =
+                    document
+                        .getElementById('mensagem-cadastro');
+
+
+                if (senha !== confirmarSenha) {
+
+                    mensagem.textContent =
+                        'As senhas não são iguais.';
+
+                    mensagem.classList.remove('sucesso');
+
+                    return;
+
+                }
+
+
+                if (nome && email && senha) {
+
+                    mensagem.textContent =
+                        'Conta criada com sucesso!';
+
+                    mensagem.classList.add('sucesso');
+
+                }
+
+            });
+
+    </script>
+
+</body>
+
+</html>
