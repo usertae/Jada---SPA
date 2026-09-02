@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jade Spa | Administração</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <!-- MENU LATERAL -->
+
+        <aside class="sidebar">
+
+            <div class="logo-area">
+
+                <div class="logo">
+                    J
+                </div>
+
+                <div>
+                    <strong>Jade Spa</strong>
+                    <span>Administração</span>
+                </div>
+
+            </div>
+
+            <nav>
+
+                <button class="menu-btn active" data-section="dashboard">
+                    Dashboard
+                </button>
+
+                <button class="menu-btn" data-section="clientes">
+                    Clientes
+                </button>
+
+                <button class="menu-btn" data-section="servicos">
+                    Serviços
+                </button>
+
+                <button class="menu-btn" data-section="agendamentos">
+                    Agendamentos
+                </button>
+
+            </nav>
+
+            <div class="sidebar-footer">
+                Sistema de gerenciamento
+            </div>
+
+        </aside>
+
+
+        <!-- CONTEÚDO -->
+
+        <main class="main">
+
+            <header class="topbar">
+
+                <div>
+
+                    <small>JADE SPA</small>
+
+                    <h1 id="tituloPagina">
+                        Dashboard
+                    </h1>
+
+                </div>
+
+                <div class="admin">
+                    Administrador
+                </div>
+
+            </header>
+
+
+            <!-- DASHBOARD -->
+
+            <section id="dashboard" class="section active">
+
+                <div class="welcome">
+
+                    <h2>
+                        Olá! 👋
+                    </h2>
+
+                    <p>
+                        Bem-vindo ao painel administrativo do Jade Spa.
+                    </p>
+
+                </div>
+
+
+                <div class="cards">
+
+                    <div class="card">
+
+                        <span>Clientes cadastrados</span>
+
+                        <strong id="totalClientes">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <span>Serviços cadastrados</span>
+
+                        <strong id="totalServicos">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <span>Agendamentos</span>
+
+                        <strong id="totalAgendamentos">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- CLIENTES -->
+
+            <section id="clientes" class="section">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>
+                            Clientes
+                        </h2>
+
+                        <p>
+                            Cadastre e gerencie os clientes do Jade Spa.
+                        </p>
+
+                    </div>
+
+                    <button class="primary" onclick="abrirCliente()">
+                        + Novo cliente
+                    </button>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Nome</th>
+                                <th>E-mail</th>
+                                <th>Telefone</th>
+                                <th>Ações</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="clientesTabela">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- SERVIÇOS -->
+
+            <section id="servicos" class="section">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>
+                            Serviços
+                        </h2>
+
+                        <p>
+                            Gerencie os serviços oferecidos pelo Jade Spa.
+                        </p>
+
+                    </div>
+
+                    <button class="primary" onclick="abrirServico()">
+                        + Novo serviço
+                    </button>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Serviço</th>
+                                <th>Descrição</th>
+                                <th>Preço</th>
+                                <th>Ações</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="servicosTabela">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- AGENDAMENTOS -->
+
+            <section id="agendamentos" class="section">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>
+                            Agendamentos
+                        </h2>
+
+                        <p>
+                            Controle os horários dos clientes.
+                        </p>
+
+                    </div>
+
+                    <button class="primary" onclick="abrirAgendamento()">
+                        + Novo agendamento
+                    </button>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Cliente</th>
+                                <th>Serviço</th>
+                                <th>Data</th>
+                                <th>Horário</th>
+                                <th>Status</th>
+                                <th>Ações</th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="agendamentosTabela">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- MODAL -->
+
+    <div id="modal" class="modal">
+
+        <div class="modal-content">
+
+            <button class="close" onclick="fecharModal()">
+                ×
+            </button>
+
+            <h2 id="modalTitulo"></h2>
+
+            <form id="modalForm"></form>
+
+        </div>
+
+    </div>
+
+
+    <div id="mensagem"></div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
