@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Painel - Jade Spa</title>
+    <link rel="stylesheet" href="css/home_style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="menu">
+            <a href="#" class="logo">
+                <img src="imagens/logo-jadespa.png" alt="Jade Spa">
+                <span>JADE SPA</span>
+            </a>
+
+            <ul>
+                <li><a href="#" style="color: #294936; font-weight: bold;">Painel</a></li>
+                <li><a href="#">Minha Agenda</a></li>
+                <li><a href="#">Serviços</a></li>
+            </ul>
+
+            <div class="menu-logado">
+                <div class="notificacao" title="Notificações">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                    <div class="notificacao-ponto"></div>
+                </div>
+                
+                <a href="#" class="avatar-mini" title="Meu Perfil">
+                    M
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="painel-container">
+
+        <!-- BANNER SUPERIOR -->
+        <div class="banner-boas-vindas">
+            <div class="perfil-destaque">
+                <div class="avatar-grande">M</div>
+                <div class="perfil-textos">
+                    <h1>Olá, Maria Costa!</h1>
+                    <p>Membro desde Outubro de 2025</p>
+                </div>
+            </div>
+
+            <div class="dica-dia">
+                <span>Dica de Bem-estar</span>
+                <p>"Reserve 10 minutos hoje para fechar os olhos, focar na sua respiração e desconectar do mundo lá fora."</p>
+            </div>
+        </div>
+
+        <!-- GRID PRINCIPAL -->
+        <div class="painel-grid">
+
+            <!-- COLUNA ESQUERDA -->
+            <div class="coluna-principal">
+                
+                <!-- PRÓXIMOS AGENDAMENTOS -->
+                <div class="card-painel">
+                    <div class="card-header">
+                        <h3>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#294936" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            Próximos Agendamentos
+                        </h3>
+                        <a href="#" class="link-ver-todos">Ver Agenda Completa</a>
+                    </div>
+
+                    <!-- Item 1 -->
+                    <div class="agendamento-item">
+                        <div class="data-bloco">
+                            <strong>15</strong>
+                            <span>OUT</span>
+                        </div>
+                        <div class="detalhes-bloco">
+                            <h4>Massagem Relaxante com Pedras Quentes</h4>
+                            <p>Profissional: Ana Silva • Duração: 60 min</p>
+                            <p>Horário: <strong>14:00</strong></p>
+                        </div>
+                        <div class="status-bloco">
+                            <span class="tag-status">Confirmado</span>
+                        </div>
+                        <div class="acoes-agendamento">
+                            <a href="#" title="Reagendar">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                            </a>
+                            <a href="#" title="Cancelar" class="btn-cancelar-agenda">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="agendamento-item">
+                        <div class="data-bloco">
+                            <strong>18</strong>
+                            <span>OUT</span>
+                        </div>
+                        <div class="detalhes-bloco">
+                            <h4>Aula de Yoga Matinal</h4>
+                            <p>Sala de Práticas • Duração: 45 min</p>
+                            <p>Horário: <strong>08:30</strong></p>
+                        </div>
+                        <div class="status-bloco">
+                            <span class="tag-status">Confirmado</span>
+                        </div>
+                        <div class="acoes-agendamento">
+                            <a href="#" title="Reagendar">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                            </a>
+                            <a href="#" title="Cancelar" class="btn-cancelar-agenda">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HISTÓRICO RECENTE -->
+                <div class="card-painel">
+                    <div class="card-header">
+                        <h3>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#294936" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            Últimas Visitas
+                        </h3>
+                        <a href="#" class="link-ver-todos">Ver Histórico</a>
+                    </div>
+
+                    <div class="agendamento-item" style="background: transparent; border-color: transparent; border-bottom: 1px solid #f0f4f1; border-radius: 0;">
+                        <div class="detalhes-bloco">
+                            <h4 style="font-size: 15px;">Limpeza de Pele Profunda</h4>
+                            <p>28 de Setembro de 2026</p>
+                        </div>
+                        <div>
+                            <span style="color: #6F8F72; font-size: 13px; font-weight: bold;">Concluído</span>
+                        </div>
+                    </div>
+
+                    <div class="agendamento-item" style="background: transparent; border-color: transparent; margin-bottom: 0;">
+                        <div class="detalhes-bloco">
+                            <h4 style="font-size: 15px;">Massagem Ayurvédica</h4>
+                            <p>10 de Setembro de 2026</p>
+                        </div>
+                        <div>
+                            <span style="color: #6F8F72; font-size: 13px; font-weight: bold;">Concluído</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- COLUNA LATERAL -->
+            <div class="coluna-lateral">
+                
+                <!-- WIDGET DE PLANO -->
+<div class="widget-plano card-painel">
+    <div class="badge-plano">PLANO ATIVO</div>
+    <h3>Plano Equilíbrio</h3>
+    <p>Renova automaticamente em 01/Nov</p>
+
+    <div class="progresso-container">
+        <div class="progresso-texto">
+            <span>Sessões Utilizadas</span>
+            <span>2 / 3</span>
+        </div>
+        <div class="progresso-barra">
+            <div class="progresso-preenchido"></div>
+        </div>
+    </div>
+
+    <p style="font-size: 12px; margin-bottom: 20px;">Você ainda tem <strong>1 sessão livre</strong> este mês.</p>
+
+    <div class="widget-botoes">
+        <a href="#" class="botao-primario">
+            Agendar Sessão do Plano
+        </a>
+        <a href="#" class="botao-secundario">
+            Ver Outros Planos
+        </a>
+    </div>
+</div>
+
+                <!-- AÇÕES RÁPIDAS -->
+                <div class="card-painel">
+                    <div class="card-header">
+                        <h3>
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#294936" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            Ações Rápidas
+                        </h3>
+                    </div>
+                    
+                    <div class="acoes-rapidas">
+                        <a href="#" class="btn-acao">
+                            <div class="acao-icone-svg">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            </div>
+                            <strong>Novo<br>Agendamento</strong>
+                        </a>
+                        <a href="#" class="btn-acao">
+                            <div class="acao-icone-svg">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1z"/></svg>
+                            </div>
+                            <strong>Grade de<br>Aulas</strong>
+                        </a>
+                        <a href="#" class="btn-acao">
+                            <div class="acao-icone-svg">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                            </div>
+                            <strong>Formas de<br>Pagamento</strong>
+                        </a>
+                        <a href="#" class="btn-acao">
+                            <div class="acao-icone-svg">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                            </div>
+                            <strong>Indicar um<br>Amigo</strong>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="rodape">
+        <div class="rodape-conteudo">
+            <div class="rodape-marca">
+                <div class="rodape-logo">
+                    <img src="imagens/logo-jadespa.png" alt="Jade Spa">
+                    <span>JADE SPA</span>
+                </div>
+                <p>Seu momento de equilíbrio começa aqui.</p>
+            </div>
+
+            <div class="rodape-links">
+                <h3>Links rápidos</h3>
+                <a href="#">Início</a>
+                <a href="#">Quem Somos</a>
+                <a href="#">Serviços</a>
+                <a href="#">Termos de Uso</a>
+            </div>
+
+            <div class="rodape-contato">
+                <h3>Fale conosco</h3>
+                <p>📍 Brasília - DF</p>
+                <p>📞 (61) 0000-0000</p>
+                <p>📧 contato@jadespa.com</p>
+            </div>
+        </div>
+
+        <div class="rodape-linha"></div>
+
+        <div class="rodape-inferior">
+            <p>© 2026 Jade Spa. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
