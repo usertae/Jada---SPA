@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Agenda - Jade Spa</title>
+    <!-- Estilo Base do Painel -->
+    <link rel="stylesheet" href="css/home_style.css">
+    <!-- Estilo Específico da Agenda -->
+    <link rel="stylesheet" href="css/agenda_style.css">
+</head>
+
+<body>
+
+    <!-- HEADER / MENU SUPERIOR -->
+    <header>
+        <nav class="menu">
+            <a href="Home.html" class="logo">
+                <img src="imagens/logo-jadespa.png" alt="Jade Spa">
+                <span>JADE SPA</span>
+            </a>
+
+            <ul>
+                <li><a href="Home.html">Painel</a></li>
+                <li><a href="minha-agenda.html" style="color: #294936; font-weight: bold;">Minha Agenda</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+            </ul>
+
+            <div class="menu-logado">
+                <div class="notificacao" title="Notificações">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                    <div class="notificacao-ponto"></div>
+                </div>
+                
+                <a href="#" class="avatar-mini" title="Meu Perfil">
+                    M
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="painel-container">
+
+        <!-- BANNER SUPERIOR -->
+        <div class="banner-boas-vindas">
+            <div class="perfil-destaque">
+                <div class="avatar-grande">M</div>
+                <div class="perfil-textos">
+                    <h2 class="titulo-banner-agenda">Seu Momento de Pausa</h2>
+                    <p>Agende novas experiências e gerencie seus momentos de pausa.</p>
+                </div>
+            </div>
+
+            <div class="dica-dia">
+                <span>Dica de Bem-estar</span>
+                <p>"Reserve 10 minutos hoje para fechar os olhos, focar na sua respiração e desconectar do mundo lá fora."</p>
+            </div>
+        </div>
+
+        <!-- GRID PRINCIPAL -->
+        <div class="agenda-grid-container">
+
+            <!-- COLUNA DA ESQUERDA: MEUS AGENDAMENTOS -->
+            <div class="card-painel">
+                <div class="secao-header-interna">
+                    <h3>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#294936" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        Meus Agendamentos
+                    </h3>
+                </div>
+
+                <!-- ABAS DE NAVEGAÇÃO DE STATUS -->
+                <div class="nav-abas-status">
+                    <button class="btn-aba-status ativa" onclick="mudarAbaStatus('proximos', this)">Próximos</button>
+                    <button class="btn-aba-status" onclick="mudarAbaStatus('concluidos', this)">Concluídos</button>
+                    <button class="btn-aba-status" onclick="mudarAbaStatus('cancelados', this)">Cancelados</button>
+                </div>
+
+                <!-- 1. PRÓXIMOS AGENDAMENTOS -->
+                <div id="aba-proximos">
+                    <div class="agendamento-item" data-data="2026-10-28" data-horario="10:00" data-nome="Tratamento Facial" data-prof="Dra. Camila (Estética)">
+                        <div class="data-bloco">
+                            <strong>28</strong>
+                            <span>OUT</span>
+                        </div>
+                        <div class="detalhes-bloco">
+                            <h4>Tratamento Facial</h4>
+                            <p>Profissional: Dra. Camila • Duração: 45 min</p>
+                            <p>Horário: <strong>10:00</strong></p>
+                        </div>
+                        <div class="status-bloco">
+                            <span class="tag-status">Confirmado</span>
+                        </div>
+                        <div class="acoes-agendamento">
+                            <a href="javascript:void(0)" onclick="cancelarAgendamento(this)" title="Cancelar agendamento" class="btn-cancelar-agenda">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. AGENDAMENTOS CONCLUÍDOS -->
+                <div id="aba-concluidos" style="display: none;">
+                    <div class="agendamento-item" style="background: transparent; border-color: #eae5d8;">
+                        <div class="detalhes-bloco">
+                            <h4 style="font-size: 15px;">Massagem Relaxante</h4>
+                            <p>12 de Outubro de 2026 às 14:00 • Ana Silva</p>
+                        </div>
+                        <div>
+                            <span class="tag-status-concluido">Concluído</span>
+                        </div>
+                    </div>
+
+                    <div class="agendamento-item" style="background: transparent; border-color: #eae5d8;">
+                        <div class="detalhes-bloco">
+                            <h4 style="font-size: 15px;">Massagem Relaxante</h4>
+                            <p>05 de Outubro de 2026 às 16:00 • Ana Silva</p>
+                        </div>
+                        <div>
+                            <span class="tag-status-concluido">Concluído</span>
+                        </div>
+                    </div>
+
+                    <div class="agendamento-item" style="background: transparent; border-color: #eae5d8;">
+                        <div class="detalhes-bloco">
+                            <h4 style="font-size: 15px;">Sessão de Meditação Guiada</h4>
+                            <p>02 de Outubro de 2026 às 09:00 • Lucas Mendes</p>
+                        </div>
+                        <div>
+                            <span class="tag-status-concluido">Concluído</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. AGENDAMENTOS CANCELADOS -->
+                <div id="aba-cancelados" style="display: none;">
+                    <p id="msg-sem-cancelados" style="color: #66736a; font-size: 13px; font-style: italic;">Nenhum agendamento cancelado no momento.</p>
+                </div>
+            </div>
+
+            <!-- COLUNA DA DIREITA: AGENDAR NOVO MOMENTO -->
+            <div class="card-painel">
+                <div class="secao-header-interna">
+                    <h3>
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#294936" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        Agendar Novo Momento
+                    </h3>
+                </div>
+
+                <!-- CATÁLOGOS DE CATEGORIA -->
+                <div class="abas-categorias-servico">
+                    <button class="btn-cat ativo" onclick="filtrarCategoria('todos', this)">Todos</button>
+                    <button class="btn-cat" onclick="filtrarCategoria('spa', this)">Experiências Spa</button>
+                    <button class="btn-cat" onclick="filtrarCategoria('aulas', this)">Aulas & Workshops</button>
+                </div>
+
+                <div class="lista-servicos-selecao" id="lista-servicos">
+                    <!-- Massagem (Cota Atingida) -->
+                    <div class="card-item-opcao" data-cat="spa" data-tipo="massagem" onclick="selecionarOpcao(this, 'Massagem Relaxante', '60 min', 'excedido')">
+                        <div>
+                            <h5>Massagem Relaxante</h5>
+                            <p>Massagem com óleos essenciais</p>
+                            <span class="tag-status-plano tag-excedido">Cota do mês atingida (2/2) • Cobrança adicional</span>
+                        </div>
+                        <span class="info-duracao-tag">60 min</span>
+                    </div>
+
+                    <!-- Tratamento Facial (Disponível) -->
+                    <div class="card-item-opcao selecionado" data-cat="spa" data-tipo="facial" onclick="selecionarOpcao(this, 'Tratamento Facial', '45 min', 'incluso')">
+                        <div>
+                            <h5>Tratamento Facial</h5>
+                            <p>Revitalização e nutrição da pele</p>
+                            <span class="tag-status-plano tag-incluso">Incluso no Plano Equilíbrio (0/1 utilizado)</span>
+                        </div>
+                        <span class="info-duracao-tag">45 min</span>
+                    </div>
+
+                    <!-- Meditação (Disponível) -->
+                    <div class="card-item-opcao" data-cat="spa" data-tipo="meditacao" onclick="selecionarOpcao(this, 'Sessão de Meditação', '30 min', 'incluso')">
+                        <div>
+                            <h5>Sessão de Meditação</h5>
+                            <p>Exercícios de respiração e presença</p>
+                            <span class="tag-status-plano tag-incluso">Incluso no Plano Equilíbrio (1/2 utilizado)</span>
+                        </div>
+                        <span class="info-duracao-tag">30 min</span>
+                    </div>
+
+                    <!-- Yoga -->
+                    <div class="card-item-opcao" data-cat="aulas" data-tipo="aula" onclick="selecionarOpcao(this, 'Aula de Yoga Matinal', '45 min', 'aula')">
+                        <div>
+                            <h5>Yoga Matinal</h5>
+                            <p>Alongamento, postura e equilíbrio</p>
+                            <span class="tag-status-plano tag-aula">Aula Complementar</span>
+                        </div>
+                        <span class="info-duracao-tag">45 min</span>
+                    </div>
+
+                    <!-- Pilates -->
+                    <div class="card-item-opcao" data-cat="aulas" data-tipo="aula" onclick="selecionarOpcao(this, 'Aula de Pilates', '50 min', 'aula')">
+                        <div>
+                            <h5>Pilates</h5>
+                            <p>Força, flexibilidade e consciência corporal</p>
+                            <span class="tag-status-plano tag-aula">Aula Complementar</span>
+                        </div>
+                        <span class="info-duracao-tag">50 min</span>
+                    </div>
+
+                    <!-- Cerâmica Fria -->
+                    <div class="card-item-opcao" data-cat="aulas" data-tipo="aula" onclick="selecionarOpcao(this, 'Oficina de Cerâmica Fria', '90 min', 'aula')">
+                        <div>
+                            <h5>Cerâmica Fria</h5>
+                            <p>Modelagem manual e arte relaxante</p>
+                            <span class="tag-status-plano tag-aula">Aula Complementar</span>
+                        </div>
+                        <span class="info-duracao-tag">90 min</span>
+                    </div>
+
+                    <!-- Ofurô -->
+                    <div class="card-item-opcao" data-cat="spa" data-tipo="ofuro" onclick="selecionarOpcao(this, 'Banho de Ofurô', '50 min', 'excedido')">
+                        <div>
+                            <h5>Banho de Ofurô</h5>
+                            <p>Imersão relaxante em ervas medicinais</p>
+                            <span class="tag-status-plano tag-excedido">Serviço Avulso • 25% desc. no Plano</span>
+                        </div>
+                        <span class="info-duracao-tag">50 min</span>
+                    </div>
+                </div>
+
+                <form onsubmit="confirmarAgendamento(event)">
+                    <!-- ESCOLHA DO PROFISSIONAL -->
+                    <div class="campo-grupo-agenda">
+                        <label for="select-profissional">Escolher Profissional</label>
+                        <select id="select-profissional" class="select-custom">
+                            <option value="Sem preferência">Sem preferência (Qualquer disponível)</option>
+                            <option value="Ana Silva (Terapeuta)">Ana Silva (Terapeuta Corporal - Feminino)</option>
+                            <option value="Dra. Camila (Estética)">Dra. Camila (Esteticista - Feminino)</option>
+                            <option value="Lucas Mendes (Instrutor)">Lucas Mendes (Instrutor - Masculino)</option>
+                        </select>
+                    </div>
+
+                    <!-- ESCOLHER DATA -->
+                    <div class="campo-grupo-agenda">
+                        <label for="input-data">Escolher Data</label>
+                        <input type="date" id="input-data" class="select-custom" required onchange="checarConflito()">
+                    </div>
+
+                    <!-- ESCOLHER HORÁRIO -->
+                    <div class="campo-grupo-agenda">
+                        <label>Horários Disponíveis</label>
+                        <div class="grid-horarios-slots">
+                            <button type="button" class="btn-horario-slot" onclick="selecionarSlotHorario(this, '08:30')">08:30</button>
+                            <button type="button" class="btn-horario-slot" onclick="selecionarSlotHorario(this, '10:00')">10:00</button>
+                            <button type="button" class="btn-horario-slot" onclick="selecionarSlotHorario(this, '14:00')">14:00</button>
+                            <button type="button" class="btn-horario-slot" onclick="selecionarSlotHorario(this, '15:30')">15:30</button>
+                            <button type="button" class="btn-horario-slot" onclick="selecionarSlotHorario(this, '17:00')">17:00</button>
+                            <button type="button" class="btn-horario-slot" onclick="selecionarSlotHorario(this, '18:30')">18:30</button>
+                        </div>
+                    </div>
+
+                    <!-- CAIXA DE AVISO DE COBRANÇA ADICIONAL -->
+                    <div class="alerta-caixa-info" id="alerta-adicional">
+                        💡 <strong>Aviso do Plano:</strong> A cota mensal deste serviço foi atingida. A sessão será agendada normalmente e cobrada com seu desconto de <strong>25% do Plano Equilíbrio</strong>.
+                    </div>
+
+                    <!-- ALERTA DE CONFLITO DE HORÁRIO -->
+                    <div class="alerta-conflito-box" id="alerta-conflito">
+                        ⚠ Você já possui um agendamento marcado neste mesmo dia e horário.
+                    </div>
+
+                    <button type="submit" class="botao-primario" id="btn-submit-agendar">
+                        Confirmar Agendamento
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="rodape">
+        <div class="rodape-conteudo">
+            <div class="rodape-marca">
+                <div class="rodape-logo">
+                    <img src="imagens/logo-jadespa.png" alt="Jade Spa">
+                    <span>JADE SPA</span>
+                </div>
+                <p>Seu momento de equilíbrio começa aqui.</p>
+            </div>
+
+            <div class="rodape-links">
+                <h3>Links rápidos</h3>
+                <a href="Home.html">Painel</a>
+                <a href="minha-agenda.html">Minha Agenda</a>
+                <a href="servicos.html">Serviços</a>
+            </div>
+
+            <div class="rodape-contato">
+                <h3>Fale conosco</h3>
+                <p>📍 Brasília - DF</p>
+                <p>📞 (61) 0000-0000</p>
+                <p>📧 contato@jadespa.com</p>
+            </div>
+        </div>
+
+        <div class="rodape-linha"></div>
+
+        <div class="rodape-inferior">
+            <p>© 2026 Jade Spa. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- INTERATIVIDADE JS -->
+    <script>
+        const hoje = new Date();
+        const amanha = new Date(hoje);
+        amanha.setDate(amanha.getDate() + 1);
+        document.getElementById('input-data').value = amanha.toISOString().split('T')[0];
+
+        let servicoAtivo = { nome: 'Tratamento Facial', duracao: '45 min', statusPlano: 'incluso' };
+        let horarioAtivo = '';
+
+        function mudarAbaStatus(aba, btn) {
+            document.querySelectorAll('.btn-aba-status').forEach(b => b.classList.remove('ativa'));
+            btn.classList.add('ativa');
+
+            document.getElementById('aba-proximos').style.display = (aba === 'proximos') ? 'block' : 'none';
+            document.getElementById('aba-concluidos').style.display = (aba === 'concluidos') ? 'block' : 'none';
+            document.getElementById('aba-cancelados').style.display = (aba === 'cancelados') ? 'block' : 'none';
+        }
+
+        function filtrarCategoria(cat, btn) {
+            document.querySelectorAll('.btn-cat').forEach(b => b.classList.remove('ativo'));
+            btn.classList.add('ativo');
+
+            document.querySelectorAll('.card-item-opcao').forEach(card => {
+                if (cat === 'todos' || card.dataset.cat === cat) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        function selecionarOpcao(card, nome, duracao, statusPlano) {
+            document.querySelectorAll('.card-item-opcao').forEach(c => c.classList.remove('selecionado'));
+            card.classList.add('selecionado');
+            servicoAtivo = { nome, duracao, statusPlano };
+
+            const alertaAdicional = document.getElementById('alerta-adicional');
+            if (statusPlano === 'excedido') {
+                alertaAdicional.style.display = 'block';
+            } else {
+                alertaAdicional.style.display = 'none';
+            }
+        }
+
+        function selecionarSlotHorario(btn, horario) {
+            document.querySelectorAll('.btn-horario-slot').forEach(b => b.classList.remove('selecionado'));
+            btn.classList.add('selecionado');
+            horarioAtivo = horario;
+            checarConflito();
+        }
+
+        function checarConflito() {
+            const dataVal = document.getElementById('input-data').value;
+            const alerta = document.getElementById('alerta-conflito');
+            const submitBtn = document.getElementById('btn-submit-agendar');
+
+            if (!dataVal || !horarioAtivo) {
+                alerta.style.display = 'none';
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+                return;
+            }
+
+            let existeConflito = false;
+            document.querySelectorAll('#aba-proximos .agendamento-item').forEach(item => {
+                if (item.dataset.data === dataVal && item.dataset.horario === horarioAtivo) {
+                    existeConflito = true;
+                }
+            });
+
+            if (existeConflito) {
+                alerta.style.display = 'block';
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '0.5';
+            } else {
+                alerta.style.display = 'none';
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+            }
+        }
+
+        function confirmarAgendamento(e) {
+            e.preventDefault();
+            if (!horarioAtivo) {
+                alert('Por favor, selecione um horário para a sessão.');
+                return;
+            }
+
+            const dataVal = document.getElementById('input-data').value;
+            const profVal = document.getElementById('select-profissional').value;
+            const partes = dataVal.split('-');
+            const mesSigla = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'][parseInt(partes[1]) - 1];
+
+            const itemHtml = `
+                <div class="agendamento-item" data-data="${dataVal}" data-horario="${horarioAtivo}" data-nome="${servicoAtivo.nome}" data-prof="${profVal}">
+                    <div class="data-bloco">
+                        <strong>${partes[2]}</strong>
+                        <span>${mesSigla}</span>
+                    </div>
+                    <div class="detalhes-bloco">
+                        <h4>${servicoAtivo.nome}</h4>
+                        <p>Profissional: ${profVal} • Duração: ${servicoAtivo.duracao}</p>
+                        <p>Horário: <strong>${horarioAtivo}</strong></p>
+                    </div>
+                    <div class="status-bloco">
+                        <span class="tag-status">Confirmado</span>
+                    </div>
+                    <div class="acoes-agendamento">
+                        <a href="javascript:void(0)" onclick="cancelarAgendamento(this)" title="Cancelar agendamento" class="btn-cancelar-agenda">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('aba-proximos').insertAdjacentHTML('afterbegin', itemHtml);
+            alert('Agendamento realizado com sucesso!');
+
+            document.querySelectorAll('.btn-horario-slot').forEach(b => b.classList.remove('selecionado'));
+            horarioAtivo = '';
+        }
+
+        function cancelarAgendamento(btn) {
+            if (confirm('Tem certeza que deseja cancelar este agendamento? Ele será movido para a aba Cancelados.')) {
+                const item = btn.closest('.agendamento-item');
+                const nome = item.dataset.nome || item.querySelector('h4').innerText;
+                const prof = item.dataset.prof || 'Profissional';
+                const horario = item.dataset.horario || '';
+
+                const itemCancelado = `
+                    <div class="agendamento-item" style="background: transparent; border-color: #eae5d8;">
+                        <div class="detalhes-bloco">
+                            <h4 style="font-size: 15px; text-decoration: line-through; color: #888;">${nome}</h4>
+                            <p>Profissional: ${prof} às ${horario}</p>
+                        </div>
+                        <div>
+                            <span class="tag-status-cancelado">Cancelado</span>
+                        </div>
+                    </div>
+                `;
+
+                const msgVazia = document.getElementById('msg-sem-cancelados');
+                if (msgVazia) msgVazia.style.display = 'none';
+
+                document.getElementById('aba-cancelados').insertAdjacentHTML('afterbegin', itemCancelado);
+                item.remove();
+                checarConflito();
+            }
+        }
+    </script>
+</body>
+</html>
