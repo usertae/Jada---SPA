@@ -12,15 +12,15 @@
 
     <header>
         <nav class="menu">
-            <a href="#" class="logo">
+            <a href="Home.html" class="logo">
                 <img src="imagens/logo-jadespa.png" alt="Jade Spa">
                 <span>JADE SPA</span>
             </a>
 
             <ul>
-                <li><a href="#" style="color: #294936; font-weight: bold;">Painel</a></li>
-                <li><a href="#">Minha Agenda</a></li>
-                <li><a href="#">Serviços</a></li>
+                <li><a href="Home.html" style="color: #294936; font-weight: bold;">Painel</a></li>
+                <li><a href="minha-agenda.html">Minha Agenda</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
             </ul>
 
             <div class="menu-logado">
@@ -67,52 +67,30 @@
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#294936" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                             Próximos Agendamentos
                         </h3>
-                        <a href="#" class="link-ver-todos">Ver Agenda Completa</a>
+                        <a href="minha-agenda.html" class="link-ver-todos">Ver Agenda Completa</a>
                     </div>
 
                     <!-- Item 1 -->
-                    <div class="agendamento-item">
+                    <div class="agendamento-item" id="agendamento-1">
                         <div class="data-bloco">
-                            <strong>15</strong>
+                            <strong>28</strong>
                             <span>OUT</span>
                         </div>
                         <div class="detalhes-bloco">
-                            <h4>Massagem Relaxante com Pedras Quentes</h4>
-                            <p>Profissional: Ana Silva • Duração: 60 min</p>
-                            <p>Horário: <strong>14:00</strong></p>
+                            <h4>Tratamento Facial</h4>
+                            <p>Profissional: Dra. Camila • Duração: 45 min</p>
+                            <p>Horário: <strong>10:00</strong></p>
                         </div>
                         <div class="status-bloco">
                             <span class="tag-status">Confirmado</span>
                         </div>
                         <div class="acoes-agendamento">
-                            <a href="#" title="Reagendar">
+                            <!-- Reagendar leva para a Minha Agenda -->
+                            <a href="minha-agenda.html" title="Reagendar">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
                             </a>
-                            <a href="#" title="Cancelar" class="btn-cancelar-agenda">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Item 2 -->
-                    <div class="agendamento-item">
-                        <div class="data-bloco">
-                            <strong>18</strong>
-                            <span>OUT</span>
-                        </div>
-                        <div class="detalhes-bloco">
-                            <h4>Aula de Yoga Matinal</h4>
-                            <p>Sala de Práticas • Duração: 45 min</p>
-                            <p>Horário: <strong>08:30</strong></p>
-                        </div>
-                        <div class="status-bloco">
-                            <span class="tag-status">Confirmado</span>
-                        </div>
-                        <div class="acoes-agendamento">
-                            <a href="#" title="Reagendar">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-                            </a>
-                            <a href="#" title="Cancelar" class="btn-cancelar-agenda">
+                            <!-- Cancelar remove o item diretamente daqui -->
+                            <a href="javascript:void(0)" onclick="cancelarItemHome('agendamento-1')" title="Cancelar" class="btn-cancelar-agenda">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                             </a>
                         </div>
@@ -126,13 +104,23 @@
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#294936" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                             Últimas Visitas
                         </h3>
-                        <a href="#" class="link-ver-todos">Ver Histórico</a>
+                        <a href="minha-agenda.html" class="link-ver-todos">Ver Histórico</a>
                     </div>
 
                     <div class="agendamento-item" style="background: transparent; border-color: transparent; border-bottom: 1px solid #f0f4f1; border-radius: 0;">
                         <div class="detalhes-bloco">
-                            <h4 style="font-size: 15px;">Limpeza de Pele Profunda</h4>
-                            <p>28 de Setembro de 2026</p>
+                            <h4 style="font-size: 15px;">Massagem Relaxante</h4>
+                            <p>12 de Outubro de 2026</p>
+                        </div>
+                        <div>
+                            <span style="color: #6F8F72; font-size: 13px; font-weight: bold;">Concluído</span>
+                        </div>
+                    </div>
+
+                    <div class="agendamento-item" style="background: transparent; border-color: transparent; border-bottom: 1px solid #f0f4f1; border-radius: 0;">
+                        <div class="detalhes-bloco">
+                            <h4 style="font-size: 15px;">Massagem Relaxante</h4>
+                            <p>05 de Outubro de 2026</p>
                         </div>
                         <div>
                             <span style="color: #6F8F72; font-size: 13px; font-weight: bold;">Concluído</span>
@@ -141,8 +129,8 @@
 
                     <div class="agendamento-item" style="background: transparent; border-color: transparent; margin-bottom: 0;">
                         <div class="detalhes-bloco">
-                            <h4 style="font-size: 15px;">Massagem Ayurvédica</h4>
-                            <p>10 de Setembro de 2026</p>
+                            <h4 style="font-size: 15px;">Sessão de Meditação Guiada</h4>
+                            <p>02 de Outubro de 2026</p>
                         </div>
                         <div>
                             <span style="color: #6F8F72; font-size: 13px; font-weight: bold;">Concluído</span>
@@ -156,32 +144,46 @@
             <div class="coluna-lateral">
                 
                 <!-- WIDGET DE PLANO -->
-<div class="widget-plano card-painel">
-    <div class="badge-plano">PLANO ATIVO</div>
-    <h3>Plano Equilíbrio</h3>
-    <p>Renova automaticamente em 01/Nov</p>
+                <div class="widget-plano card-painel">
+                    <div class="badge-plano">PLANO ATIVO</div>
+                    <h3>Jade Equilíbrio</h3>
+                    <p class="plano-renovacao">Renova automaticamente em 01/Nov</p>
 
-    <div class="progresso-container">
-        <div class="progresso-texto">
-            <span>Sessões Utilizadas</span>
-            <span>2 / 3</span>
-        </div>
-        <div class="progresso-barra">
-            <div class="progresso-preenchido"></div>
-        </div>
-    </div>
+                    <div class="progresso-container">
+                        <div class="progresso-texto">
+                            <span>Uso Geral do Mês</span>
+                            <span>3 / 5 Cota Total</span>
+                        </div>
+                        <div class="progresso-barra">
+                            <div class="progresso-preenchido" style="width: 60%;"></div>
+                        </div>
+                    </div>
 
-    <p style="font-size: 12px; margin-bottom: 20px;">Você ainda tem <strong>1 sessão livre</strong> este mês.</p>
+                    <div class="detalhe-cotas-container">
+                        <div class="item-cota">
+                            <span>Massagens Relaxantes</span>
+                            <strong class="cota-usada">2 / 2</strong>
+                        </div>
+                        <div class="item-cota">
+                            <span>Tratamento Facial</span>
+                            <strong class="cota-disponivel">0 / 1</strong>
+                        </div>
+                        <div class="item-cota">
+                            <span>Sessões de Meditação</span>
+                            <strong class="cota-disponivel">1 / 2</strong>
+                        </div>
+                    </div>
 
-    <div class="widget-botoes">
-        <a href="#" class="botao-primario">
-            Agendar Sessão do Plano
-        </a>
-        <a href="#" class="botao-secundario">
-            Ver Outros Planos
-        </a>
-    </div>
-</div>
+                    <div class="widget-botoes">
+                        <!-- Botão do plano leva direto para a agenda -->
+                        <a href="minha-agenda.html" class="botao-primario">
+                            Agendar Sessão
+                        </a>
+                        <a href="index.html#planos" class="botao-secundario">
+                            Ver Outros Planos
+                        </a>
+                    </div>
+                </div>
 
                 <!-- AÇÕES RÁPIDAS -->
                 <div class="card-painel">
@@ -193,13 +195,14 @@
                     </div>
                     
                     <div class="acoes-rapidas">
-                        <a href="#" class="btn-acao">
+                        <!-- Novo Agendamento agora aponta para minha-agenda.html -->
+                        <a href="minha-agenda.html" class="btn-acao">
                             <div class="acao-icone-svg">
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                             </div>
                             <strong>Novo<br>Agendamento</strong>
                         </a>
-                        <a href="#" class="btn-acao">
+                        <a href="index.html#aulas" class="btn-acao">
                             <div class="acao-icone-svg">
                                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1z"/></svg>
                             </div>
@@ -237,10 +240,10 @@
 
             <div class="rodape-links">
                 <h3>Links rápidos</h3>
-                <a href="#">Início</a>
-                <a href="#">Quem Somos</a>
-                <a href="#">Serviços</a>
-                <a href="#">Termos de Uso</a>
+                <a href="Home.html">Início</a>
+                <a href="sobre.html">Quem Somos</a>
+                <a href="servicos.html">Serviços</a>
+                <a href="termos.html">Termos de Uso</a>
             </div>
 
             <div class="rodape-contato">
@@ -257,6 +260,21 @@
             <p>© 2026 Jade Spa. Todos os direitos reservados.</p>
         </div>
     </footer>
+
+    <!-- SCRIPT SIMPLES PARA CANCELAR DIRETO NO HOME -->
+    <script>
+        function cancelarItemHome(idItem) {
+            if (confirm('Tem certeza que deseja cancelar este agendamento?')) {
+                const elemento = document.getElementById(idItem);
+                if (elemento) {
+                    elemento.style.transition = 'all 0.4s ease';
+                    elemento.style.opacity = '0';
+                    elemento.style.transform = 'scale(0.95)';
+                    setTimeout(() => elemento.remove(), 400);
+                }
+            }
+        }
+    </script>
 
 </body>
 </html>
