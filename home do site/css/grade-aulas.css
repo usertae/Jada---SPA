@@ -1,0 +1,956 @@
+
+/* PÁGINA DE AULAS */
+
+.aulas-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 20px 90px;
+}
+
+.aulas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+}
+
+.aula-card {
+    background: #f6f3eb;
+    border-radius: 24px;
+    min-height: 450px;
+    padding: 40px 30px 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.aula-imagem {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.aula-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.aula-card h2 {
+    color: #294936;
+    font-size: 24px;
+    margin-bottom: 18px;
+}
+
+.aula-card p {
+    color: #34483d;
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.dias-aula {
+    display: inline-block;
+    background: #dce8d4;
+    color: #294936;
+    padding: 9px 16px;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+
+.btn-inscrever,
+.btn-confirmar {
+    width: 100%;
+    padding: 13px 16px;
+    border: none;
+    border-radius: 10px;
+    background: #294936;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .2s ease;
+}
+
+.btn-inscrever:hover,
+.btn-confirmar:hover:not(:disabled) {
+    background: #3d664e;
+}
+
+button:disabled {
+    opacity: .55;
+    cursor: not-allowed;
+}
+
+/* MODAL */
+
+.modal-overlay[hidden] {
+    display: none !important;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    background: rgba(25, 39, 29, .55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-aula {
+    background: #fff;
+    width: 100%;
+    max-width: 510px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 18px;
+    padding: 30px;
+    position: relative;
+}
+
+.fechar-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    border: none;
+    background: transparent;
+    color: #294936;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.modal-subtitulo {
+    color: #6f9275;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.modal-aula h2 {
+    color: #294936;
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.modal-descricao {
+    color: #748076;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* HORÁRIOS */
+
+.horarios-lista {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.opcao-horario {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    text-align: left;
+    padding: 14px;
+    background: #f7faf6;
+    border: 1px solid #e0e8de;
+    border-radius: 10px;
+    color: #294936;
+    cursor: pointer;
+}
+
+.opcao-horario.selecionado {
+    border: 2px solid #6f9275;
+    background: #edf4e9;
+}
+
+.opcao-horario:disabled {
+    background: #f6eeee;
+    color: #9c6464;
+    border-color: #ecdada;
+    opacity: 1;
+    cursor: not-allowed;
+}
+
+.horario-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.horario-info strong {
+    font-size: 14px;
+}
+
+.horario-info small {
+    font-size: 12px;
+    color: #748076;
+}
+
+.status-vaga {
+    font-size: 11px;
+    font-weight: 700;
+    text-align: right;
+}
+
+.status-vaga.lotada {
+    color: #a73f3f;
+}
+
+/* FORMULÁRIO */
+
+.campo-inscricao {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.campo-inscricao label {
+    color: #294936;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.campo-inscricao input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e0e8de;
+    border-radius: 8px;
+    font: inherit;
+    font-size: 14px;
+}
+
+.campo-inscricao input:focus {
+    outline: 2px solid #b7cfb7;
+}
+
+.mensagem-vagas {
+    font-size: 13px;
+    color: #526c55;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.mensagem-vagas.erro {
+    color: #a73f3f;
+}
+
+.minhas-inscricoes {
+    border-top: 1px solid #e5ebe2;
+    margin-top: 25px;
+    padding-top: 20px;
+}
+
+.minhas-inscricoes h3 {
+    color: #294936;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+.inscricao-item {
+    background: #f7faf6;
+    border-radius: 9px;
+    padding: 12px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #526052;
+    line-height: 1.6;
+}
+
+.inscricao-item strong {
+    display: block;
+    color: #294936;
+    font-size: 13px;
+}
+
+.btn-cancelar-inscricao {
+    border: none;
+    background: transparent;
+    color: #a73f3f;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 7px;
+}
+
+.sem-inscricoes {
+    font-size: 12px;
+    color: #849084;
+}
+
+@media (max-width: 800px) {
+    .aulas-container {
+        padding-top: 50px;
+    }
+
+    .aulas-grid {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+    }
+
+    .aula-card {
+        min-height: 420px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-aula {
+        padding: 24px 18px;
+    }
+}
+
+
+/* PALETA OFICIAL JADE SPA */
+
+.aulas-container {
+    background: transparent;
+}
+
+/* Cartões das aulas */
+.aula-card {
+    background: #eef4eb;
+    border: 1px solid #e0e8de;
+    border-radius: 24px;
+    box-shadow: 0 4px 15px rgba(41, 73, 54, 0.04);
+}
+
+/* Títulos */
+.aula-card h2 {
+    color: #294936;
+}
+
+/* Descrições */
+.aula-card p {
+    color: #4f5a52;
+}
+
+/* Etiquetas com os dias */
+.dias-aula {
+    background: #dce8d4;
+    color: #294936;
+}
+
+/* Botão de inscrição */
+.btn-inscrever,
+.btn-confirmar {
+    background: #294936;
+    color: #ffffff;
+    border: 1px solid #294936;
+}
+
+.btn-inscrever:hover,
+.btn-confirmar:hover:not(:disabled) {
+    background: #3d664e;
+    border-color: #3d664e;
+}
+
+/* Fundo da página */
+body {
+    background-color: #f4f8f2;
+}
+
+/* Modal de inscrição */
+.modal-aula {
+    background: #ffffff;
+    border: 1px solid #e0e8de;
+}
+
+/* Opções de horários */
+.opcao-horario {
+    background: #f4f8f2;
+    border-color: #e0e8de;
+    color: #294936;
+}
+
+.opcao-horario.selecionado {
+    background: #e5efe1;
+    border-color: #6f9275;
+}
+
+.opcao-horario:disabled {
+    background: #f8eeee;
+    border-color: #ecdada;
+}
+
+/* Campos do formulário */
+.campo-inscricao input {
+    border-color: #e0e8de;
+}
+
+.campo-inscricao input:focus {
+    outline: 2px solid #b7cfb7;
+    border-color: #6f9275;
+}
+
+/* Lista de inscrições */
+.inscricao-item {
+    background: #f4f8f2;
+}
+
+/* =========================================
+   CABEÇALHO — IGUAL AO HOME
+========================================= */
+
+header {
+    background: #ffffff;
+    border-bottom: 1px solid #eae5d8;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.menu {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #6f9275;
+    font-size: 24px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.logo img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    display: block;
+}
+
+.menu .logo span {
+    color: #294936;
+}
+
+.menu ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: #4F5A52;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s;
+    white-space: nowrap;
+}
+
+.menu ul li a:hover,
+.menu ul li a.ativo {
+    color: #294936;
+}
+
+.menu-logado {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+/* Botão de notificações */
+
+.notificacao-container {
+    position: relative;
+}
+
+button.notificacao {
+    position: relative;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background: #f7f4ec;
+    border: 1px solid #eae5d8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #294936;
+    transition: all 0.3s ease;
+}
+
+button.notificacao:hover {
+    background: #294936;
+    color: #ffffff;
+    border-color: #294936;
+}
+
+.notificacao-ponto {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    background-color: #e74c3c;
+    border-radius: 50%;
+    border: 1px solid #ffffff;
+}
+
+.notificacao-ponto[hidden],
+.notificacao-contador[hidden] {
+    display: none;
+}
+
+.notificacao-contador {
+    position: absolute;
+    top: -5px;
+    right: -6px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #d9534f;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+/* Painel de notificações */
+
+.painel-notificacoes {
+    position: absolute;
+    top: 52px;
+    right: 0;
+    width: 340px;
+    max-width: calc(100vw - 30px);
+    max-height: 420px;
+    overflow-y: auto;
+    background: #ffffff;
+    border: 1px solid #e0e8de;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    z-index: 200;
+}
+
+.painel-notificacoes[hidden] {
+    display: none !important;
+}
+
+.notificacoes-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 16px;
+    border-bottom: 1px solid #e8eee6;
+}
+
+.notificacoes-cabecalho h3 {
+    margin: 0;
+    color: #294936;
+    font-size: 16px;
+}
+
+.notificacoes-cabecalho button {
+    border: none;
+    background: transparent;
+    color: #3d664e;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.notificacoes-cabecalho button:hover {
+    text-decoration: underline;
+}
+
+.notificacao-item {
+    padding: 14px 16px;
+    border-bottom: 1px solid #edf1eb;
+    cursor: pointer;
+}
+
+.notificacao-item:hover,
+.notificacao-item:focus-visible {
+    background: #f6f9f4;
+    outline: none;
+}
+
+.notificacao-item.nao-lida {
+    background: #f0f6ed;
+    border-left: 3px solid #6f8f72;
+}
+
+.notificacao-item h4 {
+    margin: 0 0 5px;
+    color: #294936;
+    font-size: 13px;
+}
+
+.notificacao-item p {
+    margin: 0 0 6px;
+    color: #667267;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.notificacao-item small {
+    color: #849084;
+    font-size: 11px;
+}
+
+.notificacoes-vazio {
+    padding: 18px;
+    color: #667267;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* Avatar do perfil */
+
+.avatar-mini {
+    width: 40px;
+    height: 40px;
+    background-color: #294936;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(41, 73, 54, 0.2);
+    transition: transform 0.3s ease;
+    border: 2px solid transparent;
+    flex-shrink: 0;
+}
+
+.avatar-mini:hover {
+    background-color: #3d664e;
+    transform: scale(1.05);
+}
+
+.avatar-mini:focus-visible {
+    outline: 3px solid #6f8f72;
+    outline-offset: 3px;
+}
+
+/* Responsividade do painel */
+
+@media (max-width: 600px) {
+    .painel-notificacoes {
+        position: fixed;
+        top: 75px;
+        right: 10px;
+        width: 340px;
+        max-width: calc(100vw - 20px);
+    }
+}
+
+/* Medidas finais efetivas do cabeçalho do Home */
+
+.logo img {
+    width: 40px;
+    height: 40px;
+}
+
+button.notificacao {
+    width: 42px;
+    height: 42px;
+    background: #f0f5ef;
+    border: none;
+}
+
+button.notificacao:hover {
+    background: #e2ecdf;
+    color: #294936;
+    border-color: transparent;
+}
+
+/* =====================================
+   CABEÇALHO FIXO — JADE SPA
+   ===================================== */
+
+:root {
+    --altura-cabecalho-jade: 75px;
+}
+
+html {
+    scroll-padding-top: calc(var(--altura-cabecalho-jade) + 15px);
+}
+
+body {
+    padding-top: var(--altura-cabecalho-jade) !important;
+}
+
+body > header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: var(--altura-cabecalho-jade);
+    z-index: 9999;
+    background: #ffffff;
+    box-sizing: border-box;
+}
+
+/* Mantém o menu dentro do cabeçalho */
+body > header .menu {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* O bambu fica atrás de todo o conteúdo */
+.bambu-decoracao {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Garante que o conteúdo fique acima do bambu */
+body > main,
+body > .painel-container,
+body > footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+    :root {
+        --altura-cabecalho-jade: 70px;
+    }
+}
+
+
+/* ==========================================
+   CORREÇÃO DEFINITIVA DO CABEÇALHO JADE SPA
+   ========================================== */
+
+:root {
+    --jade-header-height: 80px;
+}
+
+html {
+    scroll-padding-top: calc(var(--jade-header-height) + 16px);
+}
+
+body {
+    padding-top: var(--jade-header-height) !important;
+}
+
+/* Cabeçalho sempre acima do conteúdo */
+body > header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: var(--jade-header-height) !important;
+    z-index: 99999 !important;
+    background: #ffffff !important;
+    isolation: isolate;
+    box-sizing: border-box;
+}
+
+/* Menu ocupa a altura do cabeçalho */
+body > header .menu {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Impede que o bambu cubra o cabeçalho */
+.bambu-decoracao {
+    position: fixed;
+    inset: 0;
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+
+/* Conteúdo não deve subir por baixo do cabeçalho */
+body > main,
+body > .painel-container {
+    margin-top: 0 !important;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+    :root {
+        --jade-header-height: 72px;
+    }
+}
+
+/* =========================================
+   BANNER DE AULAS COMPLEMENTARES
+========================================= */
+
+.banner-aulas {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    padding: 28px 34px;
+    margin: 0 0 30px;
+
+    background: linear-gradient(115deg, #294936, #416d50);
+    color: #ffffff;
+    border-radius: 22px;
+    box-shadow: 0 8px 22px rgba(41, 73, 54, 0.13);
+
+    position: relative;
+    z-index: 1;
+}
+
+.banner-icone {
+    flex: 0 0 68px;
+    width: 68px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #dce8d4;
+    color: #294936;
+    font-size: 40px;
+}
+
+.banner-texto {
+    flex: 1;
+}
+
+.banner-texto h1 {
+    margin: 0 0 10px;
+    color: #ffffff;
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.banner-texto p {
+    max-width: 530px;
+    margin: 0;
+    color: #f0f5ed;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.banner-mensagem {
+    flex: 0 1 340px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px 22px;
+
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.23);
+    border-radius: 20px;
+
+    position: relative;
+}
+
+.banner-mensagem::after {
+    content: "";
+    position: absolute;
+    left: 28px;
+    bottom: -9px;
+    width: 16px;
+    height: 16px;
+    background: #365e43;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transform: rotate(45deg);
+}
+
+.banner-mensagem p {
+    margin: 0;
+    color: #ffffff;
+    font-size: 14px;
+    line-height: 1.7;
+    font-style: italic;
+}
+
+.banner-mensagem span {
+    flex-shrink: 0;
+    color: #e1edbd;
+    font-size: 27px;
+}
+
+/* TABLETS */
+@media (max-width: 900px) {
+    .banner-aulas {
+        flex-wrap: wrap;
+        gap: 18px;
+        padding: 25px;
+    }
+
+    .banner-texto {
+        flex: 1;
+        min-width: 220px;
+    }
+
+    .banner-mensagem {
+        flex-basis: 100%;
+    }
+}
+
+/* CELULARES */
+@media (max-width: 600px) {
+    .banner-aulas {
+        padding: 21px 18px;
+        gap: 16px;
+        border-radius: 18px;
+    }
+
+    .banner-icone {
+        flex-basis: 52px;
+        width: 52px;
+        height: 52px;
+        font-size: 31px;
+    }
+
+    .banner-texto h1 {
+        font-size: 21px;
+    }
+
+    .banner-texto p {
+        font-size: 14px;
+    }
+
+    .banner-mensagem {
+        padding: 16px;
+    }
+
+    .banner-mensagem p {
+        font-size: 13px;
+    }
+}
+/* Aproxima o banner do cabeçalho fixo */
+.aulas-container {
+    padding-top: 20px !important;
+}
+
+@media (max-width: 800px) {
+    .aulas-container {
+        padding-top: 15px !important;
+    }
+}

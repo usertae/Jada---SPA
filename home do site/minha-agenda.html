@@ -1,0 +1,1210 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Agenda - Jade Spa</title>
+    <link rel="stylesheet" href="css/homestyle.css">
+    <link rel="stylesheet" href="css/agenda_style.css">
+    <link rel="stylesheet" href="css/bambu.css">
+
+    <style>
+        /* Mantém o formulário e o botão acessíveis */
+        .agenda-grid-container > .card-painel {
+            min-width: 0;
+        }
+
+        .agenda-grid-container form {
+            position: relative;
+            z-index: 2;
+            isolation: isolate;
+        }
+
+        #btn-submit-agendar {
+            position: relative;
+            z-index: 10;
+            display: block;
+            width: 100%;
+            min-height: 44px;
+            pointer-events: auto !important;
+            cursor: pointer !important;
+            opacity: 1 !important;
+        }
+
+        #btn-submit-agendar:disabled {
+            cursor: not-allowed !important;
+        }
+
+        /* X delicado para cancelar */
+        
+.btn-cancelar-agenda {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+
+    padding: 0;
+    border: 1px solid #eee8dc;
+    border-radius: 12px;
+
+    background-color: #f7f4ec;
+    color: #294936;
+
+    font-size: 27px;
+    font-weight: 400;
+    line-height: 1;
+
+    cursor: pointer;
+    transition: background-color 0.2s ease,
+                transform 0.2s ease,
+                border-color 0.2s ease;
+}
+
+.btn-cancelar-agenda:hover {
+    background-color: #e9eee5;
+    border-color: #d8e2d4;
+    transform: translateY(-1px);
+}
+
+.btn-cancelar-agenda:active {
+    transform: scale(0.96);
+}
+
+.btn-cancelar-agenda:focus-visible {
+    outline: 2px solid #294936;
+    outline-offset: 3px;
+}
+
+        /* Aparência dos itens cancelados */
+        #aba-cancelados .agendamento-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px;
+            margin-bottom: 12px;
+            background: #fffdfb;
+            border: 1px solid #eadfd8;
+            border-radius: 14px;
+        }
+
+        #aba-cancelados .detalhes-bloco {
+            flex: 1;
+            min-width: 0;
+        }
+
+        #aba-cancelados .detalhes-bloco h4 {
+            margin: 0 0 6px;
+            color: #777;
+            font-size: 15px;
+            text-decoration: line-through;
+        }
+
+        #aba-cancelados .detalhes-bloco p {
+            margin: 3px 0;
+            color: #777;
+            font-size: 13px;
+        }
+
+        .tag-status-cancelado {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 10px;
+            border-radius: 20px;
+            background: #f9e9e6;
+            color: #984b42;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 600px) {
+            #aba-cancelados .agendamento-item {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav class="menu">
+        <a href="home.html" class="logo">
+            <img src="imagens/logo-jadespa.png" alt="Jade Spa">
+            <span>JADE SPA</span>
+        </a>
+
+        <ul>
+            <li><a href="home.html">Início</a></li>
+            <li><a href="minha-agenda.html">Minha Agenda</a></li>
+            <li><a href="servicos.html">Serviços</a></li>
+            <li><a href="grade-aulas.html">Aulas</a></li>
+        </ul>
+
+        <div class="menu-logado">
+            <div class="notificacao-container">
+                <button class="notificacao" id="btnNotificacoes"
+                    type="button" title="Notificações"
+                    aria-label="Abrir notificações" aria-expanded="false">
+
+                    <svg width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                    </svg>
+
+                    <span class="notificacao-ponto" id="notificacaoPonto"></span>
+                    <span class="notificacao-contador" id="notificacaoContador" hidden>0</span>
+
+                </button>
+
+                <div class="painel-notificacoes" id="painelNotificacoes" hidden>
+                    <div class="notificacoes-cabecalho">
+                        <h3>Notificações</h3>
+                        <button type="button" id="marcarTodasLidas">
+                            Marcar todas como lidas
+                        </button>
+                    </div>
+
+                    <div id="listaNotificacoes"></div>
+
+                    <p class="notificacoes-vazio" id="notificacoesVazio" hidden>
+                        Você não tem notificações.
+                    </p>
+                </div>
+            </div>
+
+            <a href="perfil.html" class="avatar-mini"
+                title="Meu Perfil" aria-label="Acessar meu perfil">MC</a>
+        </div>
+    </nav>
+</header>
+
+<main class="painel-container">
+
+    <div class="banner-boas-vindas">
+        <div class="perfil-destaque">
+            <div class="avatar-grande">MC</div>
+
+            <div class="perfil-textos">
+                <h2 class="titulo-banner-agenda">Seu Momento de Pausa</h2>
+                <p>Agende novas experiências e gerencie seus momentos de pausa.</p>
+            </div>
+        </div>
+
+        <div class="dica-dia">
+            <span>Dica de Bem-estar</span>
+            <p>"Reserve 10 minutos hoje para fechar os olhos, focar na sua respiração e desconectar do mundo lá fora."</p>
+        </div>
+    </div>
+
+    <div class="agenda-grid-container">
+
+        <!-- MEUS AGENDAMENTOS -->
+        <div class="card-painel">
+
+            <div class="secao-header-interna">
+                <h3>
+                    <svg width="22" height="22" viewBox="0 0 24 24"
+                        fill="none" stroke="#294936" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    Meus Agendamentos
+                </h3>
+            </div>
+
+            <div class="nav-abas-status">
+                <button type="button" class="btn-aba-status ativa"
+                    onclick="mudarAbaStatus('proximos', this)">Próximos</button>
+
+                <button type="button" class="btn-aba-status"
+                    onclick="mudarAbaStatus('concluidos', this)">Concluídos</button>
+
+                <button type="button" class="btn-aba-status"
+                    onclick="mudarAbaStatus('cancelados', this)">Cancelados</button>
+            </div>
+
+            <!-- PRÓXIMOS -->
+            <div id="aba-proximos">                
+                <!-- Agendamentos reais carregados pelo banco -->                     
+
+            </div>
+
+            <!-- CONCLUÍDOS -->
+            <div id="aba-concluidos" style="display:none;">
+                <!-- Agendamentos concluídos carregados pelo banco -->               
+
+            </div>
+
+            <!-- CANCELADOS -->
+            <div id="aba-cancelados" style="display:none;">
+                
+            </div>
+
+        </div>
+
+        <!-- AGENDAR NOVO MOMENTO -->
+        <div class="card-painel">
+
+            <div class="secao-header-interna">
+                <h3>
+                    <svg width="22" height="22" viewBox="0 0 24 24"
+                        fill="none" stroke="#294936" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    Agendar Novo Momento
+                </h3>
+            </div>
+
+            <div class="abas-categorias-servico">
+                <button type="button" class="btn-cat ativo"
+                    onclick="filtrarCategoria('todos', this)">Todos</button>
+            </div>
+
+            
+<div class="lista-servicos-selecao" id="lista-servicos">
+
+    <!-- MASSAGEM RELAXANTE -->
+    <div class="card-item-opcao"
+        data-cat="spa"
+        data-tipo="massagem"
+        onclick="selecionarOpcao(this, 'Massagem Relaxante', '60 min', 'incluso')">
+
+        <div>
+            <h5>Massagem Relaxante</h5>
+            <p>Massagem com óleos essenciais para aliviar as tensões.</p>            
+        </div>
+
+        <span class="info-duracao-tag">60 min</span>
+    </div>
+
+    <!-- TRATAMENTO FACIAL -->
+    <div class="card-item-opcao selecionado"
+        data-cat="spa"
+        data-tipo="facial"
+        onclick="selecionarOpcao(this, 'Tratamento Facial', '45 min', 'incluso')">
+
+        <div>
+            <h5>Tratamento Facial</h5>
+            <p>Revitalização e cuidado personalizado para a pele.</p>
+            
+        </div>
+
+        <span class="info-duracao-tag">45 min</span>
+    </div>
+
+    <!-- MEDITAÇÃO GUIADA -->
+    <div class="card-item-opcao"
+        data-cat="spa"
+        data-tipo="meditacao"
+        onclick="selecionarOpcao(this, 'Sessão de Meditação Guiada', '30 min', 'incluso')">
+
+        <div>
+            <h5>Sessão de Meditação Guiada</h5>
+            <p>Exercícios de respiração, relaxamento e atenção plena.</p>
+
+        </div>
+
+        <span class="info-duracao-tag">30 min</span>
+    </div>
+
+</div>
+
+
+            <form id="form-agendamento">
+                <div class="campo-grupo-agenda">
+                    <label for="select-profissional">Escolher Profissional</label>
+                    <select id="select-profissional" class="select-custom">
+                        <option value="Sem preferência">Sem preferência (Qualquer disponível)</option>
+                        <option value="Ana Silva (Terapeuta)">Ana Silva (Terapeuta Corporal - Feminino)</option>
+                        <option value="Dra. Camila (Estética)">Dra. Camila (Esteticista - Feminino)</option>
+                        <option value="Lucas Mendes (Instrutor)">Lucas Mendes (Instrutor - Masculino)</option>
+                    </select>
+                </div>
+
+                <div class="campo-grupo-agenda">
+                    <label for="input-data">Escolher Data</label>
+                    <input type="date" id="input-data" class="select-custom" required>
+                </div>
+
+                <div class="campo-grupo-agenda">
+                    <label>Horários Disponíveis</label>
+                    <div class="grid-horarios-slots">
+                        <button type="button" class="btn-horario-slot" data-horario="08:30">08:30</button>
+                        <button type="button" class="btn-horario-slot" data-horario="10:00">10:00</button>
+                        <button type="button" class="btn-horario-slot" data-horario="14:00">14:00</button>
+                        <button type="button" class="btn-horario-slot" data-horario="15:30">15:30</button>
+                        <button type="button" class="btn-horario-slot" data-horario="17:00">17:00</button>
+                        <button type="button" class="btn-horario-slot" data-horario="18:30">18:30</button>
+                    </div>
+                </div>
+                
+                <div class="alerta-conflito-box" id="alerta-conflito">
+                    ⚠ Você já possui um agendamento marcado neste mesmo dia e horário.
+                </div>
+
+                <button type="submit" class="botao-primario" id="btn-submit-agendar">
+                    Confirmar Agendamento
+                </button>
+            </form>
+
+        </div>
+    </div>
+</main>
+
+<div class="bambu-decoracao" aria-hidden="true">
+
+    <!-- BAMBU DA ESQUERDA -->
+    <svg class="bambu-lateral bambu-lateral-esquerda"
+         viewBox="0 0 150 900"
+         preserveAspectRatio="xMinYMin slice"
+         xmlns="http://www.w3.org/2000/svg">
+
+        <defs>
+            <linearGradient id="cauleEsquerdo" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#435d3b"/>
+                <stop offset=".45" stop-color="#94a875"/>
+                <stop offset="1" stop-color="#536b43"/>
+            </linearGradient>
+        </defs>
+
+        <g fill="none" stroke="url(#cauleEsquerdo)" stroke-width="9"
+           stroke-linecap="round">
+            <path d="M12 920 Q28 650 15 420 T24 -30"/>
+            <path d="M53 920 Q65 650 50 380 T65 -30"/>
+            <path d="M91 920 Q102 680 88 440 T104 -30"/>
+        </g>
+
+        <g fill="none" stroke="#d1d9b5" stroke-width="2" opacity=".8">
+            <path d="M15 790 Q20 770 19 744"/>
+            <path d="M19 610 Q23 590 22 565"/>
+            <path d="M22 390 Q25 370 24 345"/>
+            <path d="M50 730 Q56 710 55 685"/>
+            <path d="M56 520 Q61 500 59 475"/>
+            <path d="M59 300 Q64 280 62 255"/>
+            <path d="M90 800 Q96 780 94 755"/>
+            <path d="M94 570 Q100 550 98 525"/>
+        </g>
+
+        <g class="bambu-folhas"
+           fill="#71885a" stroke="#506d45" stroke-width="1">
+            <path d="M20 190 Q-20 120 -65 118 Q-30 164 20 190Z"/>
+            <path d="M20 190 Q-5 115 5 65 Q27 122 20 190Z"/>
+            <path d="M20 190 Q52 115 103 105 Q70 153 20 190Z"/>
+            <path d="M17 350 Q-24 305 -60 320 Q-26 347 17 350Z"/>
+            <path d="M17 350 Q-3 275 10 232 Q27 290 17 350Z"/>
+            <path d="M17 350 Q57 277 105 280 Q70 321 17 350Z"/>
+            <path d="M53 505 Q15 454 -25 465 Q7 500 53 505Z"/>
+            <path d="M53 505 Q38 436 53 393 Q66 451 53 505Z"/>
+            <path d="M53 505 Q89 440 135 446 Q101 483 53 505Z"/>
+            <path d="M92 680 Q50 635 10 646 Q43 678 92 680Z"/>
+            <path d="M92 680 Q78 610 92 570 Q106 628 92 680Z"/>
+            <path d="M92 680 Q124 620 168 625 Q137 660 92 680Z"/>
+        </g>
+
+        <g class="bambu-folhas bambu-folhas-atraso"
+           fill="#9aaa7b" stroke="#71885a" stroke-width="1">
+            <path d="M52 115 Q28 60 37 20 Q59 65 52 115Z"/>
+            <path d="M52 115 Q87 55 130 54 Q98 89 52 115Z"/>
+            <path d="M88 430 Q70 375 82 335 Q100 380 88 430Z"/>
+            <path d="M88 430 Q120 375 157 375 Q128 410 88 430Z"/>
+            <path d="M25 820 Q-12 765 -49 776 Q-18 812 25 820Z"/>
+            <path d="M25 820 Q12 755 25 715 Q39 770 25 820Z"/>
+        </g>
+    </svg>
+
+    <!-- BAMBU DA DIREITA -->
+    <svg class="bambu-lateral bambu-lateral-direita"
+         viewBox="0 0 150 900"
+         preserveAspectRatio="xMinYMin slice"
+         xmlns="http://www.w3.org/2000/svg">
+
+        <g fill="none" stroke="#71865b" stroke-width="9"
+           stroke-linecap="round">
+            <path d="M12 920 Q28 650 15 420 T24 -30"/>
+            <path d="M53 920 Q65 650 50 380 T65 -30"/>
+            <path d="M91 920 Q102 680 88 440 T104 -30"/>
+        </g>
+
+        <g fill="none" stroke="#d1d9b5" stroke-width="2" opacity=".8">
+            <path d="M15 790 Q20 770 19 744"/>
+            <path d="M19 610 Q23 590 22 565"/>
+            <path d="M50 730 Q56 710 55 685"/>
+            <path d="M56 520 Q61 500 59 475"/>
+            <path d="M90 800 Q96 780 94 755"/>
+            <path d="M94 570 Q100 550 98 525"/>
+        </g>
+
+        <g class="bambu-folhas"
+           fill="#71885a" stroke="#506d45" stroke-width="1">
+            <path d="M20 190 Q-20 120 -65 118 Q-30 164 20 190Z"/>
+            <path d="M20 190 Q-5 115 5 65 Q27 122 20 190Z"/>
+            <path d="M20 190 Q52 115 103 105 Q70 153 20 190Z"/>
+            <path d="M17 350 Q-24 305 -60 320 Q-26 347 17 350Z"/>
+            <path d="M17 350 Q-3 275 10 232 Q27 290 17 350Z"/>
+            <path d="M17 350 Q57 277 105 280 Q70 321 17 350Z"/>
+            <path d="M53 505 Q15 454 -25 465 Q7 500 53 505Z"/>
+            <path d="M53 505 Q38 436 53 393 Q66 451 53 505Z"/>
+            <path d="M53 505 Q89 440 135 446 Q101 483 53 505Z"/>
+            <path d="M92 680 Q50 635 10 646 Q43 678 92 680Z"/>
+            <path d="M92 680 Q78 610 92 570 Q106 628 92 680Z"/>
+            <path d="M92 680 Q124 620 168 625 Q137 660 92 680Z"/>
+        </g>
+
+        <g class="bambu-folhas bambu-folhas-atraso"
+           fill="#9aaa7b" stroke="#71885a" stroke-width="1">
+            <path d="M52 115 Q28 60 37 20 Q59 65 52 115Z"/>
+            <path d="M52 115 Q87 55 130 54 Q98 89 52 115Z"/>
+            <path d="M88 430 Q70 375 82 335 Q100 380 88 430Z"/>
+            <path d="M88 430 Q120 375 157 375 Q128 410 88 430Z"/>
+            <path d="M25 820 Q-12 765 -49 776 Q-18 812 25 820Z"/>
+            <path d="M25 820 Q12 755 25 715 Q39 770 25 820Z"/>
+        </g>
+    </svg>
+
+</div>
+
+<script>
+    const campoData = document.getElementById("input-data");
+    const hoje = new Date();
+    const amanha = new Date(hoje);
+    amanha.setDate(amanha.getDate() + 1);
+
+    campoData.value =
+        amanha.getFullYear() + "-" +
+        String(amanha.getMonth() + 1).padStart(2, "0") + "-" +
+        String(amanha.getDate()).padStart(2, "0");
+
+    campoData.min = campoData.value;
+
+    let servicoAtivo = {
+        nome: "Tratamento Facial",
+        duracao: "45 min",
+        statusPlano: "incluso"
+    };
+
+    let horarioAtivo = "";
+
+    const formAgendamento = document.getElementById("form-agendamento");
+    const botaoConfirmar = document.getElementById("btn-submit-agendar");
+    const alertaConflito = document.getElementById("alerta-conflito");
+    const alertaAdicional = document.getElementById("alerta-adicional");
+
+    botaoConfirmar.disabled = false;
+
+    /* TROCAR AS ABAS */
+    function mudarAbaStatus(aba, btn) {
+        document.querySelectorAll(".btn-aba-status")
+            .forEach(b => b.classList.remove("ativa"));
+
+        btn.classList.add("ativa");
+
+        document.getElementById("aba-proximos").style.display =
+            aba === "proximos" ? "block" : "none";
+
+        document.getElementById("aba-concluidos").style.display =
+            aba === "concluidos" ? "block" : "none";
+
+        document.getElementById("aba-cancelados").style.display =
+            aba === "cancelados" ? "block" : "none";
+
+        if (aba === "cancelados") {
+            renderizarCancelados();
+        }
+    }
+
+    /* FILTRAR CATEGORIAS */
+    function filtrarCategoria(cat, btn) {
+        document.querySelectorAll(".btn-cat")
+            .forEach(b => b.classList.remove("ativo"));
+
+        btn.classList.add("ativo");
+
+        document.querySelectorAll(".card-item-opcao").forEach(card => {
+            card.style.display =
+                cat === "todos" || card.dataset.cat === cat
+                    ? "flex"
+                    : "none";
+        });
+    }
+
+    /* SELECIONAR SERVIÇO */
+    function selecionarOpcao(card, nome, duracao, statusPlano) {
+        document.querySelectorAll(".card-item-opcao")
+            .forEach(c => c.classList.remove("selecionado"));
+
+        card.classList.add("selecionado");
+
+        servicoAtivo = { nome, duracao, statusPlano };
+
+        alertaAdicional.style.display =
+            statusPlano === "excedido" ? "block" : "none";
+    }
+
+    /* SELECIONAR HORÁRIO */
+    document.querySelectorAll(".btn-horario-slot").forEach(btn => {
+        btn.addEventListener("click", () => {
+            document.querySelectorAll(".btn-horario-slot")
+                .forEach(b => b.classList.remove("selecionado"));
+
+            btn.classList.add("selecionado");
+            horarioAtivo = btn.dataset.horario;
+
+            checarConflito();
+        });
+    });
+
+    campoData.addEventListener("change", checarConflito);
+
+    /* VERIFICAR CONFLITOS */
+    function checarConflito() {
+        const dataVal = campoData.value;
+
+        botaoConfirmar.disabled = false;
+        botaoConfirmar.style.pointerEvents = "auto";
+        botaoConfirmar.style.opacity = "1";
+
+        if (!dataVal || !horarioAtivo) {
+            alertaConflito.style.display = "none";
+            return false;
+        }
+
+        const existeConflito = [
+            ...document.querySelectorAll("#aba-proximos .agendamento-item")
+        ].some(item =>
+            item.dataset.data === dataVal &&
+            item.dataset.horario === horarioAtivo
+        );
+
+        alertaConflito.style.display =
+            existeConflito ? "block" : "none";
+
+        return existeConflito;
+    }
+
+    /* CONFIRMAR AGENDAMENTO */
+    formAgendamento.addEventListener("submit", function (e) {
+        e.preventDefault();
+        confirmarAgendamento();
+    });
+
+    async function confirmarAgendamento() {
+        const dataVal = campoData.value;
+        const profVal = document.getElementById("select-profissional").value;
+
+        let perfil;
+
+        try {
+            perfil = JSON.parse(
+                localStorage.getItem("jadeSpaPerfil") || "null"
+            );
+        } catch (erro) {
+            alert("Não foi possível carregar seu perfil.");
+            return;
+        }
+
+        if (!perfil || !perfil.nome || !perfil.email ||
+            perfil.email === "maria@email.com") {
+            alert("Entre na sua conta para realizar um agendamento.");
+            return;
+        }
+
+        if (!servicoAtivo || !servicoAtivo.nome) {
+            alert("Selecione um serviço antes de continuar.");
+            return;
+        }
+
+        if (!dataVal) {
+            alert("Por favor, selecione uma data.");
+            campoData.focus();
+            return;
+        }
+
+        if (!horarioAtivo) {
+            alert("Por favor, selecione um horário.");
+            return;
+        }
+
+        if (dataVal < campoData.min) {
+            alert("Escolha uma data válida.");
+            return;
+        }
+
+        if (checarConflito()) {
+            alert("Você já possui um agendamento neste dia e horário.");
+            return;
+        }
+
+        const dados = {
+            tipo: "TRATAMENTO",
+            clienteNome: perfil.nome,
+            clienteEmail: perfil.email,
+            nomeItem: servicoAtivo.nome,
+            profissional: profVal,
+            data: dataVal,
+            horario: horarioAtivo
+        };
+
+        botaoConfirmar.disabled = true;
+        botaoConfirmar.textContent = "Salvando...";
+
+        try {
+            const resposta = await fetch(
+                "http://localhost:8080/api/agendamentos",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(dados)
+                }
+            );
+
+            const resultado = await resposta.json();
+
+            if (!resposta.ok) {
+                throw new Error(
+                    resultado.message ||
+                    "Não foi possível realizar o agendamento."
+                );
+            }
+
+            horarioAtivo = "";
+
+            document.querySelectorAll(".btn-horario-slot")
+                .forEach(b => b.classList.remove("selecionado"));
+
+            await carregarAgendamentosDoBanco();
+
+            alert("Agendamento realizado e salvo com sucesso!");
+
+        } catch (erro) {
+            console.error("Erro ao salvar agendamento:", erro);
+            alert(erro.message || "Erro ao conectar com o servidor.");
+        } finally {
+            botaoConfirmar.disabled = false;
+            botaoConfirmar.textContent = "Confirmar Agendamento";
+            checarConflito();
+        }
+    }
+
+    /* =========================================
+       CARREGAR AGENDAMENTOS DO MYSQL
+    ========================================= */
+
+    async function carregarAgendamentosDoBanco() {
+        let perfil;
+
+        try {
+            perfil = JSON.parse(
+                localStorage.getItem("jadeSpaPerfil") || "null"
+            );
+        } catch (erro) {
+            console.error("Erro ao carregar perfil:", erro);
+            return;
+        }
+
+        if (!perfil || !perfil.email) return;
+
+        try {
+            const resposta = await fetch(
+                "http://localhost:8080/api/agendamentos/cliente?email=" +
+                encodeURIComponent(perfil.email)
+            );
+
+            if (!resposta.ok) {
+                throw new Error("Erro ao buscar agendamentos.");
+            }
+
+            const agendamentos = await resposta.json();
+
+            const abaProximos = document.getElementById("aba-proximos");
+            const abaConcluidos = document.getElementById("aba-concluidos");
+            const abaCancelados = document.getElementById("aba-cancelados");
+
+            document.querySelectorAll(".agendamento-banco")
+                .forEach(item => item.remove());
+
+            agendamentos.forEach(a => {
+                const tipo = String(a.tipo || "").toUpperCase();
+                const status = String(a.status || "Pendente");
+                const ehAula = tipo === "AULA";
+
+                const item = document.createElement("div");
+                item.className = "agendamento-item agendamento-banco";
+
+                item.dataset.id = a.id;
+                item.dataset.tipo = tipo;
+                item.dataset.data = a.data || "";
+                item.dataset.horario = a.horario || "";
+                item.dataset.nome = a.nomeItem || "";
+                item.dataset.prof = a.profissional || "";
+
+                const dataReferencia = ehAula
+                    ? calcularProximaDataAula(a.diaSemana || "")
+                    : (a.data
+                        ? new Date(a.data + "T12:00:00")
+                        : null);
+
+                const meses = [
+                    "JAN", "FEV", "MAR", "ABR", "MAI", "JUN",
+                    "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"
+                ];
+
+                const dataBloco = document.createElement("div");
+                dataBloco.className = "data-bloco";
+
+                const numero = document.createElement("strong");
+                numero.textContent = dataReferencia
+                    ? String(dataReferencia.getDate()).padStart(2, "0")
+                    : "--";
+
+                const mes = document.createElement("span");
+                mes.textContent = dataReferencia
+                    ? meses[dataReferencia.getMonth()]
+                    : (ehAula ? "AULA" : "");
+
+                dataBloco.append(numero, mes);
+
+                const detalhes = document.createElement("div");
+                detalhes.className = "detalhes-bloco";
+
+                const titulo = document.createElement("h4");
+                titulo.textContent =
+                    a.nomeItem || (ehAula ? "Aula" : "Agendamento");
+
+                const descricao = document.createElement("p");
+
+                descricao.textContent = ehAula
+                    ? `Aula • ${a.diaSemana || ""}`
+                    : `Profissional: ${a.profissional || "Não informado"}`;
+
+                const horario = document.createElement("p");
+                horario.textContent =
+                    "Horário: " + (a.horario || "Não informado");
+
+                detalhes.append(titulo, descricao, horario);
+
+                const statusBloco = document.createElement("div");
+                statusBloco.className = "status-bloco";
+
+                const tag = document.createElement("span");
+                tag.className = "tag-status";
+                tag.textContent = status;
+
+                statusBloco.appendChild(tag);
+
+                item.append(dataBloco, detalhes, statusBloco);
+
+                const statusNormalizado = status
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "")
+                    .toLowerCase();
+
+                if (statusNormalizado === "concluido") {
+                    abaConcluidos.appendChild(item);
+
+                } else if (statusNormalizado === "cancelado") {
+                    item.classList.add("cartao-cancelado-banco");
+
+                    const tagCancelado = document.createElement("span");
+                    tagCancelado.className = "tag-status-cancelado";
+                    tagCancelado.textContent = "Cancelado";
+
+                    statusBloco.replaceChildren(tagCancelado);
+                    abaCancelados.appendChild(item);
+
+                } else {
+                    const acoes = document.createElement("div");
+                    acoes.className = "acoes-agendamento";
+
+                    const cancelar = document.createElement("button");
+                    cancelar.type = "button";
+                    cancelar.className = "btn-cancelar-agenda";
+                    cancelar.textContent = "×";
+
+                    cancelar.title = ehAula
+                        ? "Cancelar inscrição na aula"
+                        : "Cancelar agendamento";
+
+                    cancelar.addEventListener("click", () => {
+                        cancelarAgendamentoBanco(a.id, cancelar);
+                    });
+
+                    acoes.appendChild(cancelar);
+                    item.appendChild(acoes);
+
+                    abaProximos.appendChild(item);
+                }
+            });
+
+            const mensagem = document.getElementById("msg-sem-cancelados");
+
+            if (mensagem) {
+                mensagem.style.display =
+                    agendamentos.some(a =>
+                        String(a.status || "")
+                            .normalize("NFD")
+                            .replace(/[\u0300-\u036f]/g, "")
+                            .toLowerCase() === "cancelado"
+                    ) ? "none" : "block";
+            }
+
+            checarConflito();
+
+        } catch (erro) {
+            console.error("Erro ao carregar agendamentos:", erro);
+            alert("Não foi possível carregar seus agendamentos.");
+        }
+    }
+
+    /* =========================================
+       CANCELAR PELO MYSQL
+    ========================================= */
+
+    async function cancelarAgendamentoBanco(id, botao) {
+        if (!confirm("Deseja realmente cancelar este agendamento?")) {
+            return;
+        }
+
+        botao.disabled = true;
+
+        try {
+            const resposta = await fetch(
+                `http://localhost:8080/api/agendamentos/${id}/status`,
+                {
+                    method: "PATCH",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        status: "Cancelado"
+                    })
+                }
+            );
+
+            const resultado = await resposta.json().catch(() => ({}));
+
+            if (!resposta.ok) {
+                throw new Error(
+                    resultado.message ||
+                    resultado.mensagem ||
+                    "Não foi possível cancelar o agendamento."
+                );
+            }
+
+            await carregarAgendamentosDoBanco();
+
+        } catch (erro) {
+            console.error("Erro ao cancelar:", erro);
+            alert(erro.message || "Erro ao cancelar agendamento.");
+            botao.disabled = false;
+        }
+    }
+
+   
+/* =========================================
+   HISTÓRICO DE CANCELAMENTOS POR CLIENTE
+========================================= */
+
+const CHAVE_INSCRICOES_AULAS = "jadeSpaInscricoesAulas";
+
+function obterChaveCancelamentosUsuario() {
+    try {
+        const perfil = JSON.parse(
+            localStorage.getItem("jadeSpaPerfil") || "null"
+        );
+
+        if (!perfil || !perfil.email) return null;
+
+        return "jadeSpaAgendamentosCancelados_" +
+            perfil.email.trim().toLowerCase();
+
+    } catch (erro) {
+        console.error("Erro ao identificar cliente:", erro);
+        return null;
+    }
+}
+
+function carregarCancelados() {
+    try {
+        const chave = obterChaveCancelamentosUsuario();
+
+        if (!chave) return [];
+
+        const dados = JSON.parse(
+            localStorage.getItem(chave) || "[]"
+        );
+
+        return Array.isArray(dados) ? dados : [];
+
+    } catch (erro) {
+        console.error("Erro ao carregar cancelamentos:", erro);
+        return [];
+    }
+}
+
+function salvarCancelado(dados) {
+    try {
+        const chave = obterChaveCancelamentosUsuario();
+
+        if (!chave) {
+            alert("Não foi possível identificar sua conta.");
+            return false;
+        }
+
+        const cancelados = carregarCancelados();
+
+        cancelados.unshift({
+            ...dados,
+            canceladoEm: new Date().toISOString(),
+            idCancelamento:
+                `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
+        });
+
+        localStorage.setItem(chave, JSON.stringify(cancelados));
+
+        renderizarCancelados();
+        return true;
+
+    } catch (erro) {
+        console.error("Erro ao salvar cancelamento:", erro);
+        alert("Não foi possível salvar o cancelamento.");
+        return false;
+    }
+}
+
+function renderizarCancelados() {
+    const aba = document.getElementById("aba-cancelados");
+    if (!aba) return;
+
+    aba.querySelectorAll(".cartao-cancelado-local")
+        .forEach(item => item.remove());
+
+    const cancelados = carregarCancelados();
+
+    const mensagem = document.getElementById("msg-sem-cancelados");
+
+    if (mensagem) {
+        mensagem.style.display =
+            cancelados.length ? "none" : "block";
+    }
+
+    cancelados.forEach(dado => {
+        const cartao = document.createElement("div");
+        cartao.className =
+            "agendamento-item cartao-cancelado-local";
+
+        const dataBloco = document.createElement("div");
+        dataBloco.className = "data-bloco";
+
+        const numero = document.createElement("strong");
+        numero.textContent = dado.dia || "--";
+
+        const mes = document.createElement("span");
+        mes.textContent = dado.mes || "";
+
+        dataBloco.append(numero, mes);
+
+        const detalhes = document.createElement("div");
+        detalhes.className = "detalhes-bloco";
+
+        const titulo = document.createElement("h4");
+        titulo.textContent = dado.nome || dado.aula || "Agendamento";
+
+        const descricao = document.createElement("p");
+
+        if (dado.tipo === "aula") {
+            descricao.textContent =
+                `Aula • ${dado.diaSemana || ""} • ${dado.horario || ""}`;
+        } else {
+            descricao.textContent =
+                `Profissional: ${dado.profissional || "Não informado"} • ` +
+                `${dado.dataFormatada || ""} • ${dado.horario || ""}`;
+        }
+
+        const status = document.createElement("span");
+        status.className = "tag-status-cancelado";
+        status.textContent = "Cancelado";
+
+        detalhes.append(titulo, descricao);
+        cartao.append(dataBloco, detalhes, status);
+
+        aba.appendChild(cartao);
+    });
+}
+
+/* FUNÇÃO ANTIGA DE CANCELAMENTO LOCAL */
+function cancelarAgendamento(btn) {
+    const confirmar = confirm(
+        "Deseja realmente cancelar este agendamento?\n\n" +
+        "Confirme para mover o serviço para a aba Cancelados."
+    );
+
+    if (!confirmar) return;
+
+    const item = btn.closest(".agendamento-item");
+    if (!item) return;
+
+    const data = item.dataset.data || "";
+    const partes = data ? data.split("-") : [];
+
+    const meses = [
+        "JAN", "FEV", "MAR", "ABR", "MAI", "JUN",
+        "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"
+    ];
+
+    const mesSigla = partes.length === 3
+        ? meses[Number(partes[1]) - 1]
+        : "";
+
+    const nome = item.dataset.nome ||
+        item.querySelector("h4")?.textContent ||
+        "Agendamento";
+
+    const salvo = salvarCancelado({
+        tipo: "servico",
+        nome,
+        profissional: item.dataset.prof || "Profissional",
+        horario: item.dataset.horario || "",
+        data,
+        dia: partes[2] || "--",
+        mes: mesSigla,
+        dataFormatada: partes.length === 3
+            ? `${partes[2]}/${partes[1]}/${partes[0]}`
+            : ""
+    });
+
+    if (!salvo) return;
+
+    item.remove();
+    checarConflito();
+}
+
+
+    /* =========================================
+       DATA DAS AULAS
+    ========================================= */
+
+    function calcularProximaDataAula(diaSemana) {
+        const dias = {
+            "Domingo": 0,
+            "Segunda-feira": 1,
+            "Terça-feira": 2,
+            "Quarta-feira": 3,
+            "Quinta-feira": 4,
+            "Sexta-feira": 5,
+            "Sábado": 6
+        };
+
+        if (!(diaSemana in dias)) return null;
+
+        const data = new Date();
+        data.setHours(12, 0, 0, 0);
+
+        const diferenca =
+            (dias[diaSemana] - data.getDay() + 7) % 7;
+
+        data.setDate(data.getDate() + diferenca);
+
+        return data;
+    }
+
+    /* As aulas agora são carregadas diretamente do MySQL. */
+    function carregarInscricoesAulasNaAgenda() {
+        return;
+    }
+
+    /* =========================================
+       INICIALIZAÇÃO E SINCRONIZAÇÃO
+    ========================================= */
+
+    carregarInscricoesAulasNaAgenda();
+    renderizarCancelados();
+    carregarAgendamentosDoBanco();
+
+    window.addEventListener("pageshow", () => {
+        renderizarCancelados();
+        carregarAgendamentosDoBanco();
+    });
+
+    document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) {
+            carregarAgendamentosDoBanco();
+        }
+    });
+
+    window.addEventListener("focus", () => {
+        carregarAgendamentosDoBanco();
+    });
+
+    window.addEventListener("storage", evento => {
+        if (
+            evento.key === CHAVE_INSCRICOES_AULAS ||
+            evento.key === CHAVE_AGENDAMENTOS_CANCELADOS ||
+            evento.key === null
+        ) {
+            renderizarCancelados();
+            carregarAgendamentosDoBanco();
+        }
+    });
+
+    /* MANTIDA A FUNÇÃO DE CONCLUSÃO LOCAL */
+    function confirmarStatusAgendamento(botao) {
+        const item = botao.closest(".agendamento-item");
+
+        if (!item) return;
+
+        const confirmar = window.confirm(
+            "Deseja marcar este agendamento como concluído?"
+        );
+
+        if (!confirmar) return;
+
+        const abaConcluidos = document.getElementById("aba-concluidos");
+
+        const acoes = item.querySelector(".acoes-agendamento");
+        if (acoes) acoes.remove();
+
+        botao.textContent = "✓ Concluído";
+        botao.classList.remove("btn-confirmar-status");
+        botao.className = "tag-status-concluido";
+
+        delete item.dataset.data;
+        delete item.dataset.horario;
+
+        abaConcluidos.prepend(item);
+
+        const botoesAbas = document.querySelectorAll(".btn-aba-status");
+
+        botoesAbas.forEach(btn => btn.classList.remove("ativa"));
+
+        const botaoConcluidos = [...botoesAbas].find(
+            btn => btn.textContent.trim() === "Concluídos"
+        );
+
+        if (botaoConcluidos) {
+            mudarAbaStatus("concluidos", botaoConcluidos);
+        }
+
+        checarConflito();
+    }
+</script>
+
+<script src="js/home.js"></script>
+
+</body>
+</html>

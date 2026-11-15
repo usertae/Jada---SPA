@@ -1,0 +1,516 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Painel - Jade Spa</title>
+    <link rel="stylesheet" href="css/homestyle.css">
+    <link rel="stylesheet" href="css/homestyle2.css">
+    <link rel="stylesheet" href="css/bambu.css">
+    
+</head>
+
+<body>
+
+    <header>
+        <nav class="menu">
+
+            <a href="home.html" class="logo">
+                <img src="imagens/logo-jadespa.png" alt="Jade Spa">
+                <span>JADE SPA</span>
+            </a>
+
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="minha-agenda.html">Minha Agenda</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="grade-aulas.html" class="ativo">Aulas</a></li>
+            </ul>
+
+            <div class="menu-logado">
+
+                <div class="notificacao-container">
+
+                    <button class="notificacao" id="btnNotificacoes"
+                        type="button" title="Notificações"
+                        aria-label="Abrir notificações"
+                        aria-expanded="false">
+
+                        <svg width="20" height="20" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor"
+                            stroke-width="2.2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                        </svg>
+
+                        <span class="notificacao-ponto"
+                            id="notificacaoPonto"></span>
+
+                        <span class="notificacao-contador"
+                            id="notificacaoContador" hidden>0</span>
+
+                    </button>
+
+                    <div class="painel-notificacoes"
+                        id="painelNotificacoes" hidden>
+
+                        <div class="notificacoes-cabecalho">
+                            <h3>Notificações</h3>
+
+                            <button type="button" id="marcarTodasLidas">
+                                Marcar todas como lidas
+                            </button>
+                        </div>
+
+                        <div id="listaNotificacoes"></div>
+
+                        <p class="notificacoes-vazio"
+                            id="notificacoesVazio" hidden>
+                            Você não tem notificações.
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <a href="perfil.html" class="avatar-mini"
+                    title="Meu Perfil" aria-label="Acessar meu perfil">
+                    MC
+                </a>
+
+            </div>
+
+        </nav>
+    </header>
+
+    <main class="painel-container">
+
+        <!-- BANNER DE BOAS-VINDAS -->
+        <div class="banner-boas-vindas">
+
+            <div class="perfil-destaque">
+
+                <div class="avatar-grande">MC</div>
+
+                <div class="perfil-textos">
+                    <h1>Olá, Maria Costa!</h1>
+                    <p>Bem-vindo ao Jade Spa! </p>
+                </div>
+
+            </div>
+
+            <div class="dica-dia">
+                <span>Dica de Bem-estar</span>
+                <p>
+                    "Reserve 10 minutos hoje para fechar os olhos,
+                    focar na sua respiração e desconectar do mundo lá fora."
+                </p>
+            </div>
+
+        </div>
+
+        <!-- GRID PRINCIPAL -->
+        <div class="painel-grid">
+
+            <!-- COLUNA PRINCIPAL -->
+            <div class="coluna-principal">
+
+                <!-- PRÓXIMOS AGENDAMENTOS -->
+                <div class="card-painel">
+
+                    <div class="card-header">
+
+                        <h3>
+                            <svg width="22" height="22"
+                                viewBox="0 0 24 24"
+                                fill="none" stroke="#294936"
+                                stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18"
+                                    rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+
+                            Próximos Agendamentos
+                        </h3>
+
+                        <a href="minha-agenda.html"
+                            class="link-ver-todos">
+                            Ver Agenda Completa
+                        </a>
+
+                    </div>
+
+                    <!-- LISTA DINÂMICA DE PRÓXIMOS AGENDAMENTOS -->
+                    <div id="listaProximosAgendamentos">
+                        <p class="mensagem-sem-agendamentos">
+                         Carregando seus próximos agendamentos... </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- COLUNA LATERAL -->
+            <div class="coluna-lateral">               
+
+        
+<!-- CARTÃO DO PLANO DO CLIENTE -->
+<div class="widget-plano card-painel widget-plano-simples" id="cartaoPlanoHome">
+
+    <div class="badge-plano" id="statusPlanoHome">
+        CARREGANDO PLANO...
+    </div>
+
+    <div class="conteudo-plano-simples">
+        <h3 id="nomePlanoAtual">Carregando...</h3>
+
+        <p id="descricaoPlanoHome">
+            Consultando seu plano no Jade Spa.
+        </p>
+
+        <p id="valorPlanoHome"
+           class="valor-plano-home"
+           hidden>
+        </p>
+    </div>
+
+    <button
+        type="button"
+        class="botao-trocar-plano"
+        id="botaoPlanoHome"
+        style="display: none;">
+
+        Carregando...
+
+    </button>
+
+</div>
+
+
+            </div>
+
+        </div>
+        <!-- FIM DO GRID PRINCIPAL -->
+
+        <!-- AÇÕES RÁPIDAS: AGORA ABAIXO DAS DUAS COLUNAS -->
+        <section class="acoes-rapidas-banner">
+
+            <div class="acoes-rapidas-titulo">
+                <h2>Ações Rápidas</h2>
+                <p>O que você gostaria de fazer hoje?</p>
+            </div>
+
+            <div class="acoes-rapidas-opcoes">
+
+                <!-- NOVO AGENDAMENTO -->
+                <a href="minha-agenda.html" class="btn-acao-banner">
+
+                    <div class="acao-icone-banner">
+                        <svg width="25" height="25"
+                            viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18"
+                                rx="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6"/>
+                            <line x1="8" y1="2" x2="8" y2="6"/>
+                            <line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                    </div>
+
+                    <div class="acao-texto-banner">
+                        <strong>Novo Agendamento</strong>
+                        <span>Reserve seu próximo momento de cuidado.</span>
+                    </div>
+
+                    <span class="acao-seta" aria-hidden="true">
+                        &#8594;
+                    </span>
+
+                </a>
+
+                <!-- GRADE DE AULAS -->
+                <a href="grade-aulas.html" class="btn-acao-banner">
+
+                    <div class="acao-icone-banner">
+                        <svg width="25" height="25"
+                            viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1z"/>
+                        </svg>
+                    </div>
+
+                    <div class="acao-texto-banner">
+                        <strong>Grade de Aulas</strong>
+                        <span>Confira os horários das suas aulas.</span>
+                    </div>
+
+                    <span class="acao-seta" aria-hidden="true">
+                        &#8594;
+                    </span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+<!-- MODAL DE TROCA DE PLANO -->
+<div class="modal-troca-plano" id="modalTrocaPlano" hidden>
+
+    <div class="conteudo-modal-troca">
+
+        <button
+            type="button"
+            class="fechar-modal-troca"
+            onclick="fecharAvisoTrocaPlano()"
+            aria-label="Fechar">
+
+            &times;
+
+        </button>
+
+        <div class="icone-modal-troca">
+            <span>i</span>
+        </div>
+
+        <h2>Alteração de plano</h2>
+
+        <p>
+            Para trocar seu plano, acesse a página
+            <strong>Perfil</strong>.
+            Lá você poderá consultar as opções disponíveis
+            e realizar a alteração.
+        </p>
+
+        <a href="perfil.html" class="botao-ir-perfil">
+            Ir para Perfil
+        </a>
+
+        <button
+            type="button"
+            class="botao-voltar-modal"
+            onclick="fecharAvisoTrocaPlano()">
+
+            Voltar
+
+        </button>
+
+    </div>
+
+</div>
+
+
+    
+<!-- MODAL POP-UP DE OUTROS PLANOS -->
+<div class="modal-planos-overlay" id="modalPlanos">
+    <div class="modal-planos-container">
+
+        <button type="button"
+                class="btn-fechar-modal"
+                id="btnFecharPlanos"
+                aria-label="Fechar modal">
+            &times;
+        </button>
+
+        <div class="modal-header-planos">
+            <span>PLANOS</span>
+            <h2>Escolha o seu momento</h2>
+            <p>Encontre o plano que combina com a sua rotina e transforme o cuidado em um hábito.</p>
+        </div>
+
+        <div class="grid-planos-modal">
+
+            <!-- JADE ESSENCIAL -->
+            <div class="card-modal-plano">
+                <h3>Jade Essencial</h3>
+                <p class="descricao-plano-modal">Para quem quer começar a cuidar de si.</p>
+                <div class="preco-modal">
+                    <small>R$</small> 299,90 <span>/mês</span>
+                </div>
+                <ul>
+                    <li>✓ 1 Massagem Relaxante por mês</li>
+                    <li>✓ 1 Sessão de Meditação por mês</li>
+                    <li>✓ Acesso às Aulas Complementares</li>
+                </ul>
+                <p class="frase-plano-modal">Comece sua jornada de bem-estar.</p>
+                <a href="javascript:void(0);" class="botao-whatsapp-modal">
+                    Solicitar no WhatsApp
+                </a>
+            </div>
+
+            <!-- JADE EQUILÍBRIO -->
+            <div class="card-modal-plano destaque-modal">
+                <div class="mais-escolhido-modal">MAIS ESCOLHIDO</div>
+                <h3>Jade Equilíbrio</h3>
+                <p class="descricao-plano-modal">Para quem busca uma rotina mais completa de bem-estar.</p>
+                <div class="preco-modal">
+                    <small>R$</small> 549,90 <span>/mês</span>
+                </div>
+                <ul>
+                    <li>✓ 2 Massagens Relaxantes por mês</li>
+                    <li>✓ 1 Tratamento Facial por mês</li>
+                    <li>✓ 2 Sessões de Meditação por mês</li>
+                    <li>✓ Acesso às Aulas Complementares</li>
+                    <li>✓ Avaliação de bem-estar</li>
+                </ul>
+                <p class="frase-plano-modal">Encontre seu equilíbrio todos os dias.</p>
+                <a href="javascript:void(0);" class="botao-whatsapp-modal">
+                    Solicitar no WhatsApp
+                </a>
+            </div>
+
+            <!-- JADE PREMIUM -->
+            <div class="card-modal-plano">
+                <h3>Jade Premium</h3>
+                <p class="descricao-plano-modal">Para uma experiência completa de cuidado e relaxamento.</p>
+                <div class="preco-modal">
+                    <small>R$</small> 769,90 <span>/mês</span>
+                </div>
+                <ul>
+                    <li>✓ 4 Massagens Relaxantes por mês</li>
+                    <li>✓ 2 Tratamentos Faciais por mês</li>
+                    <li>✓ 1 Banho de Ofurô por mês</li>
+                    <li>✓ 2 Sessões de Meditação por mês</li>
+                    <li>✓ Acesso às Aulas Complementares</li>
+                    <li>✓ Avaliação personalizada de bem-estar</li>
+                </ul>
+                <p class="frase-plano-modal">Uma experiência completa para você.</p>
+                <a href="javascript:void(0);" class="botao-whatsapp-modal">
+                    Solicitar no WhatsApp
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="bambu-decoracao" aria-hidden="true">
+
+    <!-- BAMBU DA ESQUERDA -->
+    <svg class="bambu-lateral bambu-lateral-esquerda"
+         viewBox="0 0 150 900"
+         preserveAspectRatio="xMinYMin slice"
+         xmlns="http://www.w3.org/2000/svg">
+
+        <defs>
+            <linearGradient id="cauleEsquerdo" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#435d3b"/>
+                <stop offset=".45" stop-color="#94a875"/>
+                <stop offset="1" stop-color="#536b43"/>
+            </linearGradient>
+        </defs>
+
+        <g fill="none" stroke="url(#cauleEsquerdo)" stroke-width="9"
+           stroke-linecap="round">
+            <path d="M12 920 Q28 650 15 420 T24 -30"/>
+            <path d="M53 920 Q65 650 50 380 T65 -30"/>
+            <path d="M91 920 Q102 680 88 440 T104 -30"/>
+        </g>
+
+        <g fill="none" stroke="#d1d9b5" stroke-width="2" opacity=".8">
+            <path d="M15 790 Q20 770 19 744"/>
+            <path d="M19 610 Q23 590 22 565"/>
+            <path d="M22 390 Q25 370 24 345"/>
+            <path d="M50 730 Q56 710 55 685"/>
+            <path d="M56 520 Q61 500 59 475"/>
+            <path d="M59 300 Q64 280 62 255"/>
+            <path d="M90 800 Q96 780 94 755"/>
+            <path d="M94 570 Q100 550 98 525"/>
+        </g>
+
+        <g class="bambu-folhas"
+           fill="#71885a" stroke="#506d45" stroke-width="1">
+            <path d="M20 190 Q-20 120 -65 118 Q-30 164 20 190Z"/>
+            <path d="M20 190 Q-5 115 5 65 Q27 122 20 190Z"/>
+            <path d="M20 190 Q52 115 103 105 Q70 153 20 190Z"/>
+            <path d="M17 350 Q-24 305 -60 320 Q-26 347 17 350Z"/>
+            <path d="M17 350 Q-3 275 10 232 Q27 290 17 350Z"/>
+            <path d="M17 350 Q57 277 105 280 Q70 321 17 350Z"/>
+            <path d="M53 505 Q15 454 -25 465 Q7 500 53 505Z"/>
+            <path d="M53 505 Q38 436 53 393 Q66 451 53 505Z"/>
+            <path d="M53 505 Q89 440 135 446 Q101 483 53 505Z"/>
+            <path d="M92 680 Q50 635 10 646 Q43 678 92 680Z"/>
+            <path d="M92 680 Q78 610 92 570 Q106 628 92 680Z"/>
+            <path d="M92 680 Q124 620 168 625 Q137 660 92 680Z"/>
+        </g>
+
+        <g class="bambu-folhas bambu-folhas-atraso"
+           fill="#9aaa7b" stroke="#71885a" stroke-width="1">
+            <path d="M52 115 Q28 60 37 20 Q59 65 52 115Z"/>
+            <path d="M52 115 Q87 55 130 54 Q98 89 52 115Z"/>
+            <path d="M88 430 Q70 375 82 335 Q100 380 88 430Z"/>
+            <path d="M88 430 Q120 375 157 375 Q128 410 88 430Z"/>
+            <path d="M25 820 Q-12 765 -49 776 Q-18 812 25 820Z"/>
+            <path d="M25 820 Q12 755 25 715 Q39 770 25 820Z"/>
+        </g>
+    </svg>
+
+    <!-- BAMBU DA DIREITA -->
+    <svg class="bambu-lateral bambu-lateral-direita"
+         viewBox="0 0 150 900"
+         preserveAspectRatio="xMinYMin slice"
+         xmlns="http://www.w3.org/2000/svg">
+
+        <g fill="none" stroke="#71865b" stroke-width="9"
+           stroke-linecap="round">
+            <path d="M12 920 Q28 650 15 420 T24 -30"/>
+            <path d="M53 920 Q65 650 50 380 T65 -30"/>
+            <path d="M91 920 Q102 680 88 440 T104 -30"/>
+        </g>
+
+        <g fill="none" stroke="#d1d9b5" stroke-width="2" opacity=".8">
+            <path d="M15 790 Q20 770 19 744"/>
+            <path d="M19 610 Q23 590 22 565"/>
+            <path d="M50 730 Q56 710 55 685"/>
+            <path d="M56 520 Q61 500 59 475"/>
+            <path d="M90 800 Q96 780 94 755"/>
+            <path d="M94 570 Q100 550 98 525"/>
+        </g>
+
+        <g class="bambu-folhas"
+           fill="#71885a" stroke="#506d45" stroke-width="1">
+            <path d="M20 190 Q-20 120 -65 118 Q-30 164 20 190Z"/>
+            <path d="M20 190 Q-5 115 5 65 Q27 122 20 190Z"/>
+            <path d="M20 190 Q52 115 103 105 Q70 153 20 190Z"/>
+            <path d="M17 350 Q-24 305 -60 320 Q-26 347 17 350Z"/>
+            <path d="M17 350 Q-3 275 10 232 Q27 290 17 350Z"/>
+            <path d="M17 350 Q57 277 105 280 Q70 321 17 350Z"/>
+            <path d="M53 505 Q15 454 -25 465 Q7 500 53 505Z"/>
+            <path d="M53 505 Q38 436 53 393 Q66 451 53 505Z"/>
+            <path d="M53 505 Q89 440 135 446 Q101 483 53 505Z"/>
+            <path d="M92 680 Q50 635 10 646 Q43 678 92 680Z"/>
+            <path d="M92 680 Q78 610 92 570 Q106 628 92 680Z"/>
+            <path d="M92 680 Q124 620 168 625 Q137 660 92 680Z"/>
+        </g>
+
+        <g class="bambu-folhas bambu-folhas-atraso"
+           fill="#9aaa7b" stroke="#71885a" stroke-width="1">
+            <path d="M52 115 Q28 60 37 20 Q59 65 52 115Z"/>
+            <path d="M52 115 Q87 55 130 54 Q98 89 52 115Z"/>
+            <path d="M88 430 Q70 375 82 335 Q100 380 88 430Z"/>
+            <path d="M88 430 Q120 375 157 375 Q128 410 88 430Z"/>
+            <path d="M25 820 Q-12 765 -49 776 Q-18 812 25 820Z"/>
+            <path d="M25 820 Q12 755 25 715 Q39 770 25 820Z"/>
+        </g>
+    </svg>
+
+</div> 
+
+    <script src="js/home.js"></script>
+    <script src="js/plano-home.js"></script>
+
+</body>
+</html>

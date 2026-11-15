@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Perfil - Jade Spa</title>
+
+    <link rel="stylesheet" href="css/perfil.css">
+    <link rel="stylesheet" href="css/bambu.css">
+</head>
+<body>
+
+<header>
+    <nav class="menu">
+        <a href="home.html" class="logo">
+            <img src="imagens/logo-jadespa.png" alt="Jade Spa">
+            <span>JADE SPA</span>
+        </a>
+
+        <a href="perfil.html" class="avatar-mini" title="Meu Perfil">M</a>
+    </nav>
+</header>
+
+<main class="perfil-container">
+
+    <a href="home.html" class="voltar">← Voltar ao painel</a>
+
+    <section class="perfil-cabecalho">
+        <div class="avatar-grande">M</div>
+        <div>
+            <h1>Meu perfil</h1>
+            <p>Gerencie suas informações pessoais.</p>
+        </div>
+    </section>
+
+    <!-- DADOS PESSOAIS -->
+    <section class="perfil-card">
+        <div class="card-topo">
+            <div>
+                <h2>Dados pessoais</h2>
+                <p>Mantenha seus dados atualizados.</p>
+            </div>
+
+            <button type="button" id="btnEditar" class="btn-secundario">
+                Editar perfil
+            </button>
+        </div>
+
+        <form id="formPerfil">
+            <div class="campos">
+                <div class="campo">
+                    <label for="nome">Nome completo</label>
+                    <input type="text" id="nome" value="Maria Costa" disabled required>
+                </div>
+
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" value="maria@email.com" disabled required>
+                </div>
+
+                <div class="campo">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" value="" placeholder="(00) 00000-0000" disabled>
+                </div>
+
+                <div class="campo">
+                    <label for="nascimento">Data de nascimento</label>
+                    <input type="date" id="nascimento" disabled>
+                </div>
+            </div>
+
+            <div class="acoes" id="acoes" hidden>
+                <button type="button" id="btnCancelar" class="btn-secundario">
+                    Cancelar
+                </button>
+
+                <button type="submit" class="btn-principal">
+                    Salvar alterações
+                </button>
+            </div>
+
+            <p id="mensagem" role="status"></p>
+        </form>
+    </section>
+
+    <!-- MEU PLANO -->
+    <details class="perfil-card secao-recolhivel secao-planos" open>
+        <summary>
+            <span class="secao-icone">▤</span>
+
+            <span class="secao-texto">
+                <strong>Meu plano</strong>
+                <small>Consulte seu plano e conheça outras opções</small>
+            </span>
+
+            <span class="seta">⌄</span>
+        </summary>
+
+        <div class="conteudo-recolhivel">
+
+            <div class="item-conta">
+                <div>
+                    <h3 id="nomePlanoAtual">Carregando plano...</h3>
+
+                    <p id="descricaoPlanoAtual">
+                        Consultando suas informações.
+                    </p>
+
+                    <p>
+                        <strong>Valor:</strong>
+                        <span id="valorPlanoAtual">--</span>
+                        <span>/ mês</span>
+                    </p>
+
+                    <p>
+                        <strong>Status:</strong>
+                        <span id="statusPlanoAtual">Consultando...</span>
+                    </p>
+                </div>
+            </div>
+
+            <p id="mensagemPlano" role="status"></p>
+
+            <div class="area-planos">
+                <h3>Conheça nossos planos</h3>
+
+                <p>
+                    Escolha o plano que melhor combina com sua rotina
+                    de cuidado e bem-estar.
+                </p>
+
+                <div id="listaPlanos" class="lista-planos">
+                    <p>Carregando planos disponíveis...</p>
+                </div>
+            </div>
+
+        </div>
+    </details>
+
+    <!-- HISTÓRICO DE PARCELAS -->
+    <details class="perfil-card secao-recolhivel">
+        <summary>
+            <span class="secao-icone">▦</span>
+            <span class="secao-texto">
+                <strong>Histórico de parcelas</strong>
+                <small>Consulte vencimentos e pagamentos</small>
+            </span>
+            <span class="seta">⌄</span>
+        </summary>
+
+        <div class="conteudo-recolhivel">
+            <div class="tabela-parcelas">
+                <div class="parcela parcela-cabecalho">
+                    <span>Parcela</span>
+                    <span>Vencimento</span>
+                    <span>Valor</span>
+                    <span>Status</span>
+                </div>
+
+                <div class="parcela">
+                    <span>01/03</span>
+                    <span>01/09/2025</span>
+                    <span>R$ 120,00</span>
+                    <span class="status-pago">Pago</span>
+                </div>
+
+                <div class="parcela">
+                    <span>02/03</span>
+                    <span>01/10/2025</span>
+                    <span>R$ 120,00</span>
+                    <span class="status-pago">Pago</span>
+                </div>
+
+                <div class="parcela">
+                    <span>03/03</span>
+                    <span>01/11/2025</span>
+                    <span>R$ 120,00</span>
+                    <span class="status-pendente">Pendente</span>
+                </div>
+            </div>
+
+            <p class="aviso-demo">
+                Valores demonstrativos, não correspondem a pagamentos reais.
+            </p>
+        </div>
+    </details>
+
+    <!-- SOBRE O APLICATIVO -->
+    <details class="perfil-card secao-recolhivel">
+        <summary>
+            <span class="secao-icone">ⓘ</span>
+            <span class="secao-texto">
+                <strong>Sobre o aplicativo</strong>
+                <small>Conheça o Jade Spa</small>
+            </span>
+            <span class="seta">⌄</span>
+        </summary>
+
+        <div class="conteudo-recolhivel">
+            <p class="descricao">
+                O Jade Spa facilita o acesso aos serviços,
+                agendamentos e informações do seu plano.
+            </p>
+
+            <div class="sobre-info">
+                <span>Aplicativo</span>
+                <strong>Jade Spa</strong>
+            </div>
+
+            <div class="sobre-info">
+                <span>Versão</span>
+                <strong>1.0.0</strong>
+            </div>
+
+            <div class="sobre-info">
+                <span>Área</span>
+                <strong>Portal do cliente</strong>
+            </div>
+        </div>
+    </details>
+
+    <!-- ENCERRAR SESSÃO -->
+    <section class="perfil-card sessao-card">
+        <div>
+            <h2>Encerrar sessão</h2>
+            <p class="descricao">
+                Saia da sua conta neste dispositivo.
+            </p>
+        </div>
+
+        <button type="button" id="btnSair" class="btn-sair">
+            Encerrar sessão
+        </button>
+    </section>
+
+</main>
+
+<script src="js/perfil.js"></script>
+
+<div class="bambu-decoracao" aria-hidden="true">
+
+    <!-- BAMBU DA ESQUERDA -->
+    <svg class="bambu-lateral bambu-lateral-esquerda"
+         viewBox="0 0 150 900"
+         preserveAspectRatio="xMinYMin slice"
+         xmlns="http://www.w3.org/2000/svg">
+
+        <defs>
+            <linearGradient id="cauleEsquerdo" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#435d3b"/>
+                <stop offset=".45" stop-color="#94a875"/>
+                <stop offset="1" stop-color="#536b43"/>
+            </linearGradient>
+        </defs>
+
+        <g fill="none" stroke="url(#cauleEsquerdo)" stroke-width="9"
+           stroke-linecap="round">
+            <path d="M12 920 Q28 650 15 420 T24 -30"/>
+            <path d="M53 920 Q65 650 50 380 T65 -30"/>
+            <path d="M91 920 Q102 680 88 440 T104 -30"/>
+        </g>
+
+        <g fill="none" stroke="#d1d9b5" stroke-width="2" opacity=".8">
+            <path d="M15 790 Q20 770 19 744"/>
+            <path d="M19 610 Q23 590 22 565"/>
+            <path d="M22 390 Q25 370 24 345"/>
+            <path d="M50 730 Q56 710 55 685"/>
+            <path d="M56 520 Q61 500 59 475"/>
+            <path d="M59 300 Q64 280 62 255"/>
+            <path d="M90 800 Q96 780 94 755"/>
+            <path d="M94 570 Q100 550 98 525"/>
+        </g>
+
+        <g class="bambu-folhas" fill="#71885a"
+           stroke="#506d45" stroke-width="1">
+            <path d="M20 190 Q-20 120 -65 118 Q-30 164 20 190Z"/>
+            <path d="M20 190 Q-5 115 5 65 Q27 122 20 190Z"/>
+            <path d="M20 190 Q52 115 103 105 Q70 153 20 190Z"/>
+            <path d="M17 350 Q-24 305 -60 320 Q-26 347 17 350Z"/>
+            <path d="M17 350 Q-3 275 10 232 Q27 290 17 350Z"/>
+            <path d="M17 350 Q57 277 105 280 Q70 321 17 350Z"/>
+            <path d="M53 505 Q15 454 -25 465 Q7 500 53 505Z"/>
+            <path d="M53 505 Q38 436 53 393 Q66 451 53 505Z"/>
+            <path d="M53 505 Q89 440 135 446 Q101 483 53 505Z"/>
+            <path d="M92 680 Q50 635 10 646 Q43 678 92 680Z"/>
+            <path d="M92 680 Q78 610 92 570 Q106 628 92 680Z"/>
+            <path d="M92 680 Q124 620 168 625 Q137 660 92 680Z"/>
+        </g>
+
+        <g class="bambu-folhas bambu-folhas-atraso"
+           fill="#9aaa7b" stroke="#71885a" stroke-width="1">
+            <path d="M52 115 Q28 60 37 20 Q59 65 52 115Z"/>
+            <path d="M52 115 Q87 55 130 54 Q98 89 52 115Z"/>
+            <path d="M88 430 Q70 375 82 335 Q100 380 88 430Z"/>
+            <path d="M88 430 Q120 375 157 375 Q128 410 88 430Z"/>
+            <path d="M25 820 Q-12 765 -49 776 Q-18 812 25 820Z"/>
+            <path d="M25 820 Q12 755 25 715 Q39 770 25 820Z"/>
+        </g>
+    </svg>
+
+    <!-- BAMBU DA DIREITA -->
+    <svg class="bambu-lateral bambu-lateral-direita"
+         viewBox="0 0 150 900"
+         preserveAspectRatio="xMinYMin slice"
+         xmlns="http://www.w3.org/2000/svg">
+
+        <g fill="none" stroke="#71865b" stroke-width="9"
+           stroke-linecap="round">
+            <path d="M12 920 Q28 650 15 420 T24 -30"/>
+            <path d="M53 920 Q65 650 50 380 T65 -30"/>
+            <path d="M91 920 Q102 680 88 440 T104 -30"/>
+        </g>
+
+        <g fill="none" stroke="#d1d9b5" stroke-width="2" opacity=".8">
+            <path d="M15 790 Q20 770 19 744"/>
+            <path d="M19 610 Q23 590 22 565"/>
+            <path d="M50 730 Q56 710 55 685"/>
+            <path d="M56 520 Q61 500 59 475"/>
+            <path d="M90 800 Q96 780 94 755"/>
+            <path d="M94 570 Q100 550 98 525"/>
+        </g>
+
+        <g class="bambu-folhas" fill="#71885a"
+           stroke="#506d45" stroke-width="1">
+            <path d="M20 190 Q-20 120 -65 118 Q-30 164 20 190Z"/>
+            <path d="M20 190 Q-5 115 5 65 Q27 122 20 190Z"/>
+            <path d="M20 190 Q52 115 103 105 Q70 153 20 190Z"/>
+            <path d="M17 350 Q-24 305 -60 320 Q-26 347 17 350Z"/>
+            <path d="M17 350 Q-3 275 10 232 Q27 290 17 350Z"/>
+            <path d="M17 350 Q57 277 105 280 Q70 321 17 350Z"/>
+            <path d="M53 505 Q15 454 -25 465 Q7 500 53 505Z"/>
+            <path d="M53 505 Q38 436 53 393 Q66 451 53 505Z"/>
+            <path d="M53 505 Q89 440 135 446 Q101 483 53 505Z"/>
+            <path d="M92 680 Q50 635 10 646 Q43 678 92 680Z"/>
+            <path d="M92 680 Q78 610 92 570 Q106 628 92 680Z"/>
+            <path d="M92 680 Q124 620 168 625 Q137 660 92 680Z"/>
+        </g>
+
+        <g class="bambu-folhas bambu-folhas-atraso"
+           fill="#9aaa7b" stroke="#71885a" stroke-width="1">
+            <path d="M52 115 Q28 60 37 20 Q59 65 52 115Z"/>
+            <path d="M52 115 Q87 55 130 54 Q98 89 52 115Z"/>
+            <path d="M88 430 Q70 375 82 335 Q100 380 88 430Z"/>
+            <path d="M88 430 Q120 375 157 375 Q128 410 88 430Z"/>
+            <path d="M25 820 Q-12 765 -49 776 Q-18 812 25 820Z"/>
+            <path d="M25 820 Q12 755 25 715 Q39 770 25 820Z"/>
+        </g>
+    </svg>
+
+</div>
+
+</body>
+</html>

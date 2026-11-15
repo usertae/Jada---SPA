@@ -1,0 +1,778 @@
+/* ============================================================
+   MINHA AGENDA - JADE SPA
+   ============================================================ */
+
+.agenda-grid-container {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 25px;
+    align-items: start;
+}
+
+.secao-header-interna {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #f0f4f1;
+    padding-bottom: 12px;
+}
+
+.secao-header-interna h3 {
+    color: #294936;
+    font-size: 19px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+}
+
+/* BANNER DE BOAS-VINDAS */
+
+.perfil-textos .titulo-banner-agenda {
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+}
+
+/* ABAS DE NAVEGAÇÃO DE STATUS */
+
+.nav-abas-status {
+    display: flex;
+    gap: 10px;
+    border-bottom: 2px solid #E8EFE5;
+    margin-bottom: 20px;
+}
+
+.btn-aba-status {
+    background: none;
+    border: none;
+    padding: 10px 14px;
+    font-size: 13.5px;
+    font-weight: bold;
+    color: #66736a;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.3s;
+}
+
+.btn-aba-status.ativa {
+    color: #294936;
+    border-bottom-color: #294936;
+}
+
+/* CATEGORIAS DE SERVIÇO */
+
+.abas-categorias-servico {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.btn-cat {
+    background: #f7f4ec;
+    border: 1px solid #eae5d8;
+    padding: 7px 14px;
+    border-radius: 20px;
+    color: #4F5A52;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-cat.ativo,
+.btn-cat:hover {
+    background: #294936;
+    color: #ffffff;
+    border-color: #294936;
+}
+
+/* LISTA E CARDS DE SELEÇÃO DE SERVIÇO */
+
+.lista-servicos-selecao {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    max-height: 290px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.card-item-opcao {
+    background: #fcfbf9;
+    border: 2px solid #eae5d8;
+    border-radius: 12px;
+    padding: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-item-opcao:hover {
+    border-color: #6F8F72;
+    background: #ffffff;
+}
+
+.card-item-opcao.selecionado {
+    border-color: #294936;
+    background: #E8EFE5;
+}
+
+.card-item-opcao h5 {
+    color: #294936;
+    font-size: 14.5px;
+    margin-bottom: 3px;
+}
+
+.card-item-opcao p {
+    color: #66736a;
+    font-size: 12px;
+    margin: 0;
+}
+
+.info-duracao-tag {
+    font-size: 11px;
+    font-weight: bold;
+    color: #294936;
+    background: #ffffff;
+    padding: 4px 8px;
+    border-radius: 8px;
+    border: 1px solid #eae5d8;
+    white-space: nowrap;
+}
+
+/* BADGES DE STATUS DOS PLANOS NOS CARDS */
+
+.tag-status-plano {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 6px;
+    margin-top: 5px;
+}
+
+.tag-incluso {
+    background: #E8EFE5;
+    color: #294936;
+}
+
+.tag-excedido {
+    background: #f7f0f0;
+    color: #842029;
+    border: 1px solid #f0d8d8;
+}
+
+.tag-aula {
+    background: #f7f4ec;
+    color: #66736a;
+    border: 1px solid #eae5d8;
+}
+
+/* FORMULÁRIO E SELECTS */
+
+.campo-grupo-agenda {
+    margin-bottom: 16px;
+}
+
+.campo-grupo-agenda label {
+    display: block;
+    font-size: 11px;
+    font-weight: bold;
+    color: #294936;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.select-custom {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid #eae5d8;
+    border-radius: 10px;
+    background: #fcfbf9;
+    font-size: 13.5px;
+    color: #333333;
+    outline: none;
+}
+
+/* GRID DE HORÁRIOS */
+
+.grid-horarios-slots {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.btn-horario-slot {
+    padding: 9px;
+    border: 1px solid #eae5d8;
+    background: #fcfbf9;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #294936;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.btn-horario-slot:hover {
+    border-color: #6F8F72;
+    background: #E8EFE5;
+}
+
+.btn-horario-slot.selecionado {
+    background: #294936;
+    color: #ffffff;
+    border-color: #294936;
+}
+
+/* BOTÃO PRINCIPAL */
+
+.botao-primario {
+    width: 100%;
+    margin-top: 22px;
+    padding: 16px;
+    background-color: #294936;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(41, 73, 54, 0.2);
+    display: block;
+    text-align: center;
+}
+
+.botao-primario:hover {
+    background-color: #3b6048;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(41, 73, 54, 0.3);
+}
+
+.botao-primario:disabled {
+    background-color: #cbdccf;
+    color: #888888;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* STATUS TAGS */
+
+.tag-status-cancelado {
+    background: #f8d7da;
+    color: #842029;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.tag-status-concluido {
+    background: #e4eee5;
+    color: #294936;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.alerta-caixa-info {
+    background: #fff3cd;
+    border: 1px solid #ffe69c;
+    color: #664d03;
+    padding: 11px 13px;
+    border-radius: 10px;
+    font-size: 12px;
+    margin-top: 12px;
+    display: none;
+}
+
+.alerta-conflito-box {
+    background: #f8d7da;
+    border: 1px solid #f5c2c7;
+    color: #842029;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 12.5px;
+    margin-top: 12px;
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .agenda-grid-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================
+   CABEÇALHO — IGUAL AO HOME
+========================================= */
+
+header {
+    background: #ffffff;
+    border-bottom: 1px solid #eae5d8;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.menu {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #6f9275;
+    font-size: 24px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.logo img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    display: block;
+}
+
+.menu .logo span {
+    color: #294936;
+}
+
+.menu ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    align-items: center;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: #4F5A52;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s;
+    white-space: nowrap;
+}
+
+.menu ul li a:hover,
+.menu ul li a.ativo {
+    color: #294936;
+}
+
+.menu-logado {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-shrink: 0;
+}
+
+/* Botão de notificações */
+
+.notificacao-container {
+    position: relative;
+}
+
+button.notificacao {
+    position: relative;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background: #f7f4ec;
+    border: 1px solid #eae5d8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #294936;
+    transition: all 0.3s ease;
+}
+
+button.notificacao:hover {
+    background: #294936;
+    color: #ffffff;
+    border-color: #294936;
+}
+
+.notificacao-ponto {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    background-color: #e74c3c;
+    border-radius: 50%;
+    border: 1px solid #ffffff;
+}
+
+.notificacao-ponto[hidden],
+.notificacao-contador[hidden] {
+    display: none;
+}
+
+.notificacao-contador {
+    position: absolute;
+    top: -5px;
+    right: -6px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #d9534f;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+/* Painel de notificações */
+
+.painel-notificacoes {
+    position: absolute;
+    top: 52px;
+    right: 0;
+    width: 340px;
+    max-width: calc(100vw - 30px);
+    max-height: 420px;
+    overflow-y: auto;
+    background: #ffffff;
+    border: 1px solid #e0e8de;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    z-index: 200;
+}
+
+.painel-notificacoes[hidden] {
+    display: none !important;
+}
+
+.notificacoes-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 16px;
+    border-bottom: 1px solid #e8eee6;
+}
+
+.notificacoes-cabecalho h3 {
+    margin: 0;
+    color: #294936;
+    font-size: 16px;
+}
+
+.notificacoes-cabecalho button {
+    border: none;
+    background: transparent;
+    color: #3d664e;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.notificacoes-cabecalho button:hover {
+    text-decoration: underline;
+}
+
+.notificacao-item {
+    padding: 14px 16px;
+    border-bottom: 1px solid #edf1eb;
+    cursor: pointer;
+}
+
+.notificacao-item:hover,
+.notificacao-item:focus-visible {
+    background: #f6f9f4;
+    outline: none;
+}
+
+.notificacao-item.nao-lida {
+    background: #f0f6ed;
+    border-left: 3px solid #6f8f72;
+}
+
+.notificacao-item h4 {
+    margin: 0 0 5px;
+    color: #294936;
+    font-size: 13px;
+}
+
+.notificacao-item p {
+    margin: 0 0 6px;
+    color: #667267;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.notificacao-item small {
+    color: #849084;
+    font-size: 11px;
+}
+
+.notificacoes-vazio {
+    padding: 18px;
+    color: #667267;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* Avatar do perfil */
+
+.avatar-mini {
+    width: 40px;
+    height: 40px;
+    background-color: #294936;
+    color: #ffffff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(41, 73, 54, 0.2);
+    transition: transform 0.3s ease;
+    border: 2px solid transparent;
+    flex-shrink: 0;
+}
+
+.avatar-mini:hover {
+    background-color: #3d664e;
+    transform: scale(1.05);
+}
+
+.avatar-mini:focus-visible {
+    outline: 3px solid #6f8f72;
+    outline-offset: 3px;
+}
+
+/* Responsividade do painel */
+
+@media (max-width: 600px) {
+    .painel-notificacoes {
+        position: fixed;
+        top: 75px;
+        right: 10px;
+        width: 340px;
+        max-width: calc(100vw - 20px);
+    }
+}
+
+/* Medidas finais efetivas do cabeçalho do Home */
+
+.logo img {
+    width: 40px;
+    height: 40px;
+}
+
+button.notificacao {
+    width: 42px;
+    height: 42px;
+    background: #f0f5ef;
+    border: none;
+}
+
+button.notificacao:hover {
+    background: #e2ecdf;
+    color: #294936;
+    border-color: transparent;
+}
+
+/* AULAS INSCRITAS NA MINHA AGENDA */
+
+.aula-inscrita-agenda {
+    border-left: 4px solid #6f9275;
+}
+
+.aula-inscrita-agenda .tag-status {
+    background: #e5efe1;
+    color: #294936;
+}
+
+.aula-inscrita-agenda .btn-cancelar-agenda {
+    cursor: pointer;
+    border: none;
+    background: #f0f5ef;
+    color: #294936;
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aula-inscrita-agenda .btn-cancelar-agenda:hover {
+    background: #dce8d4;
+}
+
+/* CORREÇÃO DO QUADRADO DE DATA DAS AULAS INSCRITAS */
+/* O seletor corresponde à classe usada nos cartões dinâmicos. */
+
+.cartao-inscricao-aula .data-bloco {
+    width: 72px !important;
+    min-width: 72px !important;
+    height: 72px !important;
+    min-height: 72px !important;
+    padding: 8px 4px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 4px !important;
+    flex-shrink: 0 !important;
+    overflow: hidden !important;
+}
+
+.cartao-inscricao-aula .data-bloco strong {
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+    overflow-wrap: normal !important;
+}
+
+.cartao-inscricao-aula .data-bloco span {
+    font-size: 10px !important;
+    line-height: 1.2 !important;
+}
+
+/* =====================================
+   CABEÇALHO FIXO — JADE SPA
+   ===================================== */
+
+:root {
+    --altura-cabecalho-jade: 75px;
+}
+
+html {
+    scroll-padding-top: calc(var(--altura-cabecalho-jade) + 15px);
+}
+
+body {
+    padding-top: var(--altura-cabecalho-jade) !important;
+}
+
+body > header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: var(--altura-cabecalho-jade);
+    z-index: 9999;
+    background: #ffffff;
+    box-sizing: border-box;
+}
+
+/* Mantém o menu dentro do cabeçalho */
+body > header .menu {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* O bambu fica atrás de todo o conteúdo */
+.bambu-decoracao {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Garante que o conteúdo fique acima do bambu */
+body > main,
+body > .painel-container,
+body > footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+    :root {
+        --altura-cabecalho-jade: 70px;
+    }
+}
+
+
+/* ==========================================
+   CORREÇÃO DEFINITIVA DO CABEÇALHO JADE SPA
+   ========================================== */
+
+:root {
+    --jade-header-height: 80px;
+}
+
+html {
+    scroll-padding-top: calc(var(--jade-header-height) + 16px);
+}
+
+body {
+    padding-top: var(--jade-header-height) !important;
+}
+
+/* Cabeçalho sempre acima do conteúdo */
+body > header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: var(--jade-header-height) !important;
+    z-index: 99999 !important;
+    background: #ffffff !important;
+    isolation: isolate;
+    box-sizing: border-box;
+}
+
+/* Menu ocupa a altura do cabeçalho */
+body > header .menu {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Impede que o bambu cubra o cabeçalho */
+.bambu-decoracao {
+    position: fixed;
+    inset: 0;
+    z-index: 0 !important;
+    pointer-events: none !important;
+}
+
+/* Conteúdo não deve subir por baixo do cabeçalho */
+body > main,
+body > .painel-container {
+    margin-top: 0 !important;
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+    :root {
+        --jade-header-height: 72px;
+    }
+}

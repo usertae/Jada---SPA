@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aulas | Jade Spa</title>
+
+    <link rel="stylesheet" href="css/homestyle.css">
+    <link rel="stylesheet" href="css/grade-aulas.css">
+    <link rel="stylesheet" href="css/bambu.css">
+</head>
+<body>
+
+<!-- CABEÇALHO PADRÃO - IGUAL AO HOME E SERVIÇOS -->
+<header>
+    <nav class="menu">
+
+        <a href="home.html" class="logo">
+            <img src="imagens/logo-jadespa.png" alt="Jade Spa">
+            <span>JADE SPA</span>
+        </a>
+
+        <ul>
+            <li><a href="home.html">Início</a></li>
+            <li><a href="minha-agenda.html">Minha Agenda</a></li>
+            <li><a href="servicos.html">Serviços</a></li>
+            <li><a href="grade-aulas.html" class="ativo">Aulas</a></li>
+        </ul>
+
+        <div class="menu-logado">
+
+            <div class="notificacao-container">
+
+                <button class="notificacao" id="btnNotificacoes"
+                    type="button"
+                    title="Notificações"
+                    aria-label="Abrir notificações"
+                    aria-expanded="false">
+
+                    <svg width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor"
+                        stroke-width="2.2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                    </svg>
+
+                    <span class="notificacao-ponto"
+                        id="notificacaoPonto"></span>
+
+                    <span class="notificacao-contador"
+                            id="notificacaoContador" hidden>0</span>
+
+                </button>
+
+                <div class="painel-notificacoes"
+                    id="painelNotificacoes" hidden>
+
+                    <div class="notificacoes-cabecalho">
+                        <h3>Notificações</h3>
+
+                        <button type="button" id="marcarTodasLidas">
+                            Marcar todas como lidas
+                        </button>
+                    </div>
+
+                    <div id="listaNotificacoes"></div>
+
+                    <p class="notificacoes-vazio"
+                        id="notificacoesVazio" hidden>
+                        Você não tem notificações.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <a href="perfil.html" class="avatar-mini"
+                title="Meu Perfil"
+                aria-label="Acessar meu perfil"></a>
+
+        </div>
+
+    </nav>
+</header>
+
+<main class="aulas-container">
+
+    <!-- BANNER DE AULAS COMPLEMENTARES -->
+    <section class="banner-aulas">
+        <div class="banner-icone" aria-hidden="true">❀</div>
+
+        <div class="banner-texto">
+            <h1>Aulas complementares</h1>
+            <p>
+                Equilibre corpo e mente com atividades que promovem
+                bem-estar, relaxamento e qualidade de vida.
+            </p>
+        </div>
+
+        <div class="banner-mensagem">
+            <p>
+                Movimente-se, respire e descubra uma versão mais leve de você.
+            </p>
+            <span aria-hidden="true">✦</span>
+        </div>
+    </section>
+
+    <section class="aulas-grid">
+
+        <article class="aula-card">
+            <div class="aula-imagem">
+                <img src="imagens/pose4-jadespa.png" alt="Ilustração de Yoga">
+            </div>
+
+            <h2>Yoga</h2>
+
+            <p>
+                Práticas de alongamento, respiração e
+                movimentos para melhorar o equilíbrio
+                e o bem-estar.
+            </p>
+
+            <span class="dias-aula">Segunda e Quarta</span>
+
+            <button class="btn-inscrever"
+                data-aula="Yoga" type="button">
+                Ver horários e inscrever-se
+            </button>
+        </article>
+
+        <article class="aula-card">
+            <div class="aula-imagem">
+                <img src="imagens/pose1-jadespa.png" alt="Ilustração de Pilates">
+            </div>
+
+            <h2>Pilates</h2>
+
+            <p>
+                Exercícios que trabalham força,
+                postura, flexibilidade e consciência
+                corporal.
+            </p>
+
+            <span class="dias-aula">Quarta e Sexta</span>
+
+            <button class="btn-inscrever"
+                data-aula="Pilates" type="button">
+                Ver horários e inscrever-se
+            </button>
+        </article>
+
+        <article class="aula-card">
+            <div class="aula-imagem">
+                <img src="imagens/argila-jadespa.png" alt="Ilustração de Cerâmica Fria">
+            </div>
+
+            <h2>Cerâmica Fria</h2>
+
+            <p>
+                Uma atividade criativa para relaxar e
+                desenvolver novas habilidades, criando
+                copos, peças decorativas e outros
+                objetos feitos à mão.
+            </p>
+
+            <span class="dias-aula">Sexta e Sábado</span>
+
+            <button class="btn-inscrever"
+                data-aula="Cerâmica Fria" type="button">
+                Ver horários e inscrever-se
+            </button>
+        </article>
+
+    </section>
+</main>
+
+<!-- MODAL DE INSCRIÇÃO -->
+
+<div class="modal-overlay" id="modalInscricao" hidden>
+    <section class="modal-aula" role="dialog"
+        aria-modal="true" aria-labelledby="tituloModal">
+
+        <button type="button" class="fechar-modal"
+            id="fecharModal" aria-label="Fechar">×</button>
+
+        <p class="modal-subtitulo">JADE SPA</p>
+        <h2 id="tituloModal">Inscrição na aula</h2>
+        <p class="modal-descricao" id="descricaoModal">
+            Escolha o dia e o horário desejados.
+        </p>
+
+        <div id="horariosDisponiveis"></div>
+
+        <form id="formInscricao">
+            <input type="hidden" id="aulaEscolhida">
+            <input type="hidden" id="diaEscolhido">
+            <input type="hidden" id="horarioEscolhido">
+
+            <div class="campo-inscricao">
+                <label for="nomeAluno">Seu nome completo</label>
+                <input type="text" id="nomeAluno"
+                    placeholder="Digite seu nome" required>
+            </div>
+
+            <div class="campo-inscricao">
+                <label for="emailAluno">Seu e-mail</label>
+                <input type="email" id="emailAluno"
+                    placeholder="Digite seu e-mail" required>
+            </div>
+
+            <p class="mensagem-vagas" id="mensagemVagas" aria-live="polite">
+                Selecione um horário para continuar.
+            </p>
+
+            <button type="submit" class="btn-confirmar"
+                id="btnConfirmar" disabled>
+                Confirmar inscrição
+            </button>
+        </form>
+
+        <div class="minhas-inscricoes">
+            <h3>Minhas inscrições neste navegador</h3>
+            <div id="listaInscricoes"></div>
+        </div>
+    </section>
+</div>
+
+<script src="js/grade-aulas.js"></script>
+
+
+<div class="bambu-decoracao" aria-hidden="true">
+
+    <!-- BAMBU DA ESQUERDA -->
+    <svg class="bambu-lateral bambu-lateral-esquerda"
+         viewBox="0 0 150 900"
+         preserveAspectRatio="xMinYMin slice"
+         xmlns="http://www.w3.org/2000/svg">
+
+        <defs>
+            <linearGradient id="cauleEsquerdo" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#435d3b"/>
+                <stop offset=".45" stop-color="#94a875"/>
+                <stop offset="1" stop-color="#536b43"/>
+            </linearGradient>
+        </defs>
+
+        <g fill="none" stroke="url(#cauleEsquerdo)" stroke-width="9"
+           stroke-linecap="round">
+            <path d="M12 920 Q28 650 15 420 T24 -30"/>
+            <path d="M53 920 Q65 650 50 380 T65 -30"/>
+            <path d="M91 920 Q102 680 88 440 T104 -30"/>
+        </g>
+
+        <g fill="none" stroke="#d1d9b5" stroke-width="2" opacity=".8">
+            <path d="M15 790 Q20 770 19 744"/>
+            <path d="M19 610 Q23 590 22 565"/>
+            <path d="M22 390 Q25 370 24 345"/>
+            <path d="M50 730 Q56 710 55 685"/>
+            <path d="M56 520 Q61 500 59 475"/>
+            <path d="M59 300 Q64 280 62 255"/>
+            <path d="M90 800 Q96 780 94 755"/>
+            <path d="M94 570 Q100 550 98 525"/>
+        </g>
+
+        <g class="bambu-folhas"
+           fill="#71885a" stroke="#506d45" stroke-width="1">
+            <path d="M20 190 Q-20 120 -65 118 Q-30 164 20 190Z"/>
+            <path d="M20 190 Q-5 115 5 65 Q27 122 20 190Z"/>
+            <path d="M20 190 Q52 115 103 105 Q70 153 20 190Z"/>
+            <path d="M17 350 Q-24 305 -60 320 Q-26 347 17 350Z"/>
+            <path d="M17 350 Q-3 275 10 232 Q27 290 17 350Z"/>
+            <path d="M17 350 Q57 277 105 280 Q70 321 17 350Z"/>
+            <path d="M53 505 Q15 454 -25 465 Q7 500 53 505Z"/>
+            <path d="M53 505 Q38 436 53 393 Q66 451 53 505Z"/>
+            <path d="M53 505 Q89 440 135 446 Q101 483 53 505Z"/>
+            <path d="M92 680 Q50 635 10 646 Q43 678 92 680Z"/>
+            <path d="M92 680 Q78 610 92 570 Q106 628 92 680Z"/>
+            <path d="M92 680 Q124 620 168 625 Q137 660 92 680Z"/>
+        </g>
+
+        <g class="bambu-folhas bambu-folhas-atraso"
+           fill="#9aaa7b" stroke="#71885a" stroke-width="1">
+            <path d="M52 115 Q28 60 37 20 Q59 65 52 115Z"/>
+            <path d="M52 115 Q87 55 130 54 Q98 89 52 115Z"/>
+            <path d="M88 430 Q70 375 82 335 Q100 380 88 430Z"/>
+            <path d="M88 430 Q120 375 157 375 Q128 410 88 430Z"/>
+            <path d="M25 820 Q-12 765 -49 776 Q-18 812 25 820Z"/>
+            <path d="M25 820 Q12 755 25 715 Q39 770 25 820Z"/>
+        </g>
+    </svg>
+
+    <!-- BAMBU DA DIREITA -->
+    <svg class="bambu-lateral bambu-lateral-direita"
+         viewBox="0 0 150 900"
+         preserveAspectRatio="xMinYMin slice"
+         xmlns="http://www.w3.org/2000/svg">
+
+        <g fill="none" stroke="#71865b" stroke-width="9"
+           stroke-linecap="round">
+            <path d="M12 920 Q28 650 15 420 T24 -30"/>
+            <path d="M53 920 Q65 650 50 380 T65 -30"/>
+            <path d="M91 920 Q102 680 88 440 T104 -30"/>
+        </g>
+
+        <g fill="none" stroke="#d1d9b5" stroke-width="2" opacity=".8">
+            <path d="M15 790 Q20 770 19 744"/>
+            <path d="M19 610 Q23 590 22 565"/>
+            <path d="M50 730 Q56 710 55 685"/>
+            <path d="M56 520 Q61 500 59 475"/>
+            <path d="M90 800 Q96 780 94 755"/>
+            <path d="M94 570 Q100 550 98 525"/>
+        </g>
+
+        <g class="bambu-folhas"
+           fill="#71885a" stroke="#506d45" stroke-width="1">
+            <path d="M20 190 Q-20 120 -65 118 Q-30 164 20 190Z"/>
+            <path d="M20 190 Q-5 115 5 65 Q27 122 20 190Z"/>
+            <path d="M20 190 Q52 115 103 105 Q70 153 20 190Z"/>
+            <path d="M17 350 Q-24 305 -60 320 Q-26 347 17 350Z"/>
+            <path d="M17 350 Q-3 275 10 232 Q27 290 17 350Z"/>
+            <path d="M17 350 Q57 277 105 280 Q70 321 17 350Z"/>
+            <path d="M53 505 Q15 454 -25 465 Q7 500 53 505Z"/>
+            <path d="M53 505 Q38 436 53 393 Q66 451 53 505Z"/>
+            <path d="M53 505 Q89 440 135 446 Q101 483 53 505Z"/>
+            <path d="M92 680 Q50 635 10 646 Q43 678 92 680Z"/>
+            <path d="M92 680 Q78 610 92 570 Q106 628 92 680Z"/>
+            <path d="M92 680 Q124 620 168 625 Q137 660 92 680Z"/>
+        </g>
+
+        <g class="bambu-folhas bambu-folhas-atraso"
+           fill="#9aaa7b" stroke="#71885a" stroke-width="1">
+            <path d="M52 115 Q28 60 37 20 Q59 65 52 115Z"/>
+            <path d="M52 115 Q87 55 130 54 Q98 89 52 115Z"/>
+            <path d="M88 430 Q70 375 82 335 Q100 380 88 430Z"/>
+            <path d="M88 430 Q120 375 157 375 Q128 410 88 430Z"/>
+            <path d="M25 820 Q-12 765 -49 776 Q-18 812 25 820Z"/>
+            <path d="M25 820 Q12 755 25 715 Q39 770 25 820Z"/>
+        </g>
+    </svg>
+
+</div>
+
+</body>
+</html>
+

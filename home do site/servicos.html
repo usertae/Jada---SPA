@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jade Spa | Serviços</title>
+    <link rel="stylesheet" href="css/servicos.css">
+    <link rel="stylesheet" href="css/bambu.css">
+
+    <style>
+        .selo-cota {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 6px 10px;
+            border-radius: 20px;
+            background: #edf4e8;
+            color: #294936;
+            font-size: 12px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO PADRÃO -->
+    <header>
+        <nav class="menu">
+            <a href="home.html" class="logo">
+                <img src="imagens/logo-jadespa.png" alt="Jade Spa">
+                <span>JADE SPA</span>
+            </a>
+
+            <ul>
+                <li><a href="home.html">Início</a></li>
+                <li><a href="minha-agenda.html">Minha Agenda</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="grade-aulas.html" class="ativo">Aulas</a></li>
+            </ul>
+
+            <div class="menu-logado">
+                <div class="notificacao-container">
+                    <button class="notificacao" id="btnNotificacoes"
+                        type="button" title="Notificações"
+                        aria-label="Abrir notificações" aria-expanded="false">
+
+                        <svg width="20" height="20" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2.2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                        </svg>
+
+                        <span class="notificacao-ponto" id="notificacaoPonto"></span>
+                        <span class="notificacao-contador" id="notificacaoContador" hidden>0</span>
+                    </button>
+
+                    <div class="painel-notificacoes" id="painelNotificacoes" hidden>
+                        <div class="notificacoes-cabecalho">
+                            <h3>Notificações</h3>
+                            <button type="button" id="marcarTodasLidas">
+                                Marcar todas como lidas
+                            </button>
+                        </div>
+
+                        <div id="listaNotificacoes"></div>
+
+                        <p class="notificacoes-vazio" id="notificacoesVazio" hidden>
+                            Você não tem notificações.
+                        </p>
+                    </div>
+                </div>
+
+                <a href="perfil.html" class="avatar-mini"
+                    title="Meu Perfil" aria-label="Acessar meu perfil">MC</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="conteudo">
+
+        <!-- APRESENTAÇÃO -->
+        <section class="banner-servicos">
+            <div class="banner-conteudo">
+                <span class="etiqueta">SEU MOMENTO DE CUIDADO</span>
+                <h1>Encontre seu momento de bem-estar</h1>
+                <p>
+                    Descubra tratamentos pensados para relaxar,
+                    renovar suas energias e cuidar de você.
+                </p>
+                <a href="#catalogo" class="btn-banner">Explorar serviços</a>
+            </div>
+        </section>
+
+        <!-- FILTROS -->
+        <section class="categorias" aria-label="Categorias de serviços">
+            <button class="categoria ativa"
+                data-categoria="todos" aria-pressed="true">Todos</button>
+
+            <button class="categoria"
+                data-categoria="massagem" aria-pressed="false">Massagens</button>
+
+            <button class="categoria"
+                data-categoria="facial" aria-pressed="false">Tratamentos faciais</button>
+
+            <button class="categoria"
+                data-categoria="bem-estar" aria-pressed="false">Bem-estar</button>
+        </section>
+
+        <!-- SERVIÇOS INCLUÍDOS -->
+        <section class="catalogo" id="catalogo">
+            <div class="cabecalho-secao">
+                <div>
+                    <h2>Serviços incluídos no seu plano</h2>
+                    <p>Confira as sessões disponíveis por mês.</p>
+                </div>
+
+                <span id="contador-servicos">3 serviços</span>
+            </div>
+
+            <div class="grade-servicos">
+
+                <!-- MASSAGEM RELAXANTE -->
+                <article class="card-servico" data-categoria="massagem">
+                    <div class="imagem-servico imagem-massagem">
+                            <img src="imagens/Massagem_relaxante.jpg"
+                             alt="Massagem relaxante em ambiente natural">
+
+                              <span class="selo">Relaxamento</span>
+                        </div>                    
+
+                    <div class="info-servico">
+                        <span class="categoria-texto">MASSAGEM</span>
+                        <h3>Massagem Relaxante</h3>                    
+                        
+
+                        <p>
+                            Movimentos suaves para aliviar as tensões
+                            e proporcionar um momento de tranquilidade.
+                        </p>
+
+                        <div class="detalhes-servico">
+                            <span>◷ 60 minutos</span>
+                            
+                        </div>
+
+                        <a href="minha-agenda.html?servico=massagem-relaxante"
+                            class="btn-agendar">Agendar sessão</a>
+                    </div>
+                </article>
+
+                <!-- TRATAMENTO FACIAL -->
+                <article class="card-servico" data-categoria="facial">
+                    <div class="imagem-servico imagem-tratamento">
+                        <img src="imagens/Tratamento_facial.jpg"
+                           alt="Tratamento facial com máscara hidratante">
+
+                              <span class="selo">Renovação</span>
+                    </div>
+
+                    <div class="info-servico">
+                        <span class="categoria-texto">TRATAMENTO FACIAL</span>
+                        <h3>Tratamento Facial</h3>
+
+                        <p>
+                            Uma sessão personalizada para cuidar da pele
+                            de acordo com suas necessidades.
+                        </p>
+
+                        <div class="detalhes-servico">
+                            <span>◷ 60 minutos</span>
+                            
+                        </div>
+
+                        <a href="minha-agenda.html?servico=tratamento-facial"
+                            class="btn-agendar">Agendar sessão</a>
+                    </div>
+                </article>
+
+                <!-- MEDITAÇÃO GUIADA -->
+                <article class="card-servico" data-categoria="bem-estar">
+                    <div class="imagem-servico imagem-meditacao">
+                        <img src="imagens/Meditação_guiada.jpg"
+                            alt="Pessoa praticando meditação em ambiente tranquilo">
+
+                        <span class="selo">Pausa consciente</span>
+                    </div>
+
+                    <div class="info-servico">
+                        <span class="categoria-texto">BEM-ESTAR</span>
+                        <h3>Meditação Guiada</h3>
+
+                        <p>
+                            Um momento de pausa com orientação para
+                            praticar atenção plena e respiração.
+                        </p>
+
+                        <div class="detalhes-servico">
+                            <span>◷ 30 minutos</span>
+                            
+                        </div>
+
+                        <a href="minha-agenda.html?servico=meditacao"
+                            class="btn-agendar">Agendar sessão</a>
+                    </div>
+                </article>
+
+            </div>
+
+            <p id="mensagem-vazia" hidden>
+                Nenhum serviço incluído nesta categoria.
+            </p>
+        </section>
+
+        <!-- CHAMADA FINAL -->
+        <section class="chamada-final">
+            <div>
+                <h2>Seu bem-estar merece esse momento.</h2>
+                <p>Escolha seu tratamento e reserve um tempo para você.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JAVASCRIPT DO CABEÇALHO -->
+    <script src="js/home.js"></script>
+
+    <!-- JAVASCRIPT DA TELA DE SERVIÇOS -->
+    <script src="js/servicos.js"></script>
+
+    <!-- DECORAÇÃO DE BAMBU -->
+    <div class="bambu-decoracao" aria-hidden="true">
+
+        <!-- BAMBU DA ESQUERDA -->
+        <svg class="bambu-lateral bambu-lateral-esquerda"
+            viewBox="0 0 150 900"
+            preserveAspectRatio="xMinYMin slice"
+            xmlns="http://www.w3.org/2000/svg">
+
+            <defs>
+                <linearGradient id="cauleEsquerdo" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stop-color="#435d3b"/>
+                    <stop offset=".45" stop-color="#94a875"/>
+                    <stop offset="1" stop-color="#536b43"/>
+                </linearGradient>
+            </defs>
+
+            <g fill="none" stroke="url(#cauleEsquerdo)"
+                stroke-width="9" stroke-linecap="round">
+                <path d="M12 920 Q28 650 15 420 T24 -30"/>
+                <path d="M53 920 Q65 650 50 380 T65 -30"/>
+                <path d="M91 920 Q102 680 88 440 T104 -30"/>
+            </g>
+
+            <g fill="none" stroke="#d1d9b5" stroke-width="2" opacity=".8">
+                <path d="M15 790 Q20 770 19 744"/>
+                <path d="M19 610 Q23 590 22 565"/>
+                <path d="M22 390 Q25 370 24 345"/>
+                <path d="M50 730 Q56 710 55 685"/>
+                <path d="M56 520 Q61 500 59 475"/>
+                <path d="M59 300 Q64 280 62 255"/>
+                <path d="M90 800 Q96 780 94 755"/>
+                <path d="M94 570 Q100 550 98 525"/>
+            </g>
+
+            <g class="bambu-folhas"
+                fill="#71885a" stroke="#506d45" stroke-width="1">
+                <path d="M20 190 Q-20 120 -65 118 Q-30 164 20 190Z"/>
+                <path d="M20 190 Q-5 115 5 65 Q27 122 20 190Z"/>
+                <path d="M20 190 Q52 115 103 105 Q70 153 20 190Z"/>
+                <path d="M17 350 Q-24 305 -60 320 Q-26 347 17 350Z"/>
+                <path d="M17 350 Q-3 275 10 232 Q27 290 17 350Z"/>
+                <path d="M17 350 Q57 277 105 280 Q70 321 17 350Z"/>
+                <path d="M53 505 Q15 454 -25 465 Q7 500 53 505Z"/>
+                <path d="M53 505 Q38 436 53 393 Q66 451 53 505Z"/>
+                <path d="M53 505 Q89 440 135 446 Q101 483 53 505Z"/>
+                <path d="M92 680 Q50 635 10 646 Q43 678 92 680Z"/>
+                <path d="M92 680 Q78 610 92 570 Q106 628 92 680Z"/>
+                <path d="M92 680 Q124 620 168 625 Q137 660 92 680Z"/>
+            </g>
+
+            <g class="bambu-folhas bambu-folhas-atraso"
+                fill="#9aaa7b" stroke="#71885a" stroke-width="1">
+                <path d="M52 115 Q28 60 37 20 Q59 65 52 115Z"/>
+                <path d="M52 115 Q87 55 130 54 Q98 89 52 115Z"/>
+                <path d="M88 430 Q70 375 82 335 Q100 380 88 430Z"/>
+                <path d="M88 430 Q120 375 157 375 Q128 410 88 430Z"/>
+                <path d="M25 820 Q-12 765 -49 776 Q-18 812 25 820Z"/>
+                <path d="M25 820 Q12 755 25 715 Q39 770 25 820Z"/>
+            </g>
+        </svg>
+
+        <!-- BAMBU DA DIREITA -->
+        <svg class="bambu-lateral bambu-lateral-direita"
+            viewBox="0 0 150 900"
+            preserveAspectRatio="xMinYMin slice"
+            xmlns="http://www.w3.org/2000/svg">
+
+            <g fill="none" stroke="#71865b" stroke-width="9"
+                stroke-linecap="round">
+                <path d="M12 920 Q28 650 15 420 T24 -30"/>
+                <path d="M53 920 Q65 650 50 380 T65 -30"/>
+                <path d="M91 920 Q102 680 88 440 T104 -30"/>
+            </g>
+
+            <g fill="none" stroke="#d1d9b5" stroke-width="2" opacity=".8">
+                <path d="M15 790 Q20 770 19 744"/>
+                <path d="M19 610 Q23 590 22 565"/>
+                <path d="M50 730 Q56 710 55 685"/>
+                <path d="M56 520 Q61 500 59 475"/>
+                <path d="M90 800 Q96 780 94 755"/>
+                <path d="M94 570 Q100 550 98 525"/>
+            </g>
+
+            <g class="bambu-folhas"
+                fill="#71885a" stroke="#506d45" stroke-width="1">
+                <path d="M20 190 Q-20 120 -65 118 Q-30 164 20 190Z"/>
+                <path d="M20 190 Q-5 115 5 65 Q27 122 20 190Z"/>
+                <path d="M20 190 Q52 115 103 105 Q70 153 20 190Z"/>
+                <path d="M17 350 Q-24 305 -60 320 Q-26 347 17 350Z"/>
+                <path d="M17 350 Q-3 275 10 232 Q27 290 17 350Z"/>
+                <path d="M17 350 Q57 277 105 280 Q70 321 17 350Z"/>
+                <path d="M53 505 Q15 454 -25 465 Q7 500 53 505Z"/>
+                <path d="M53 505 Q38 436 53 393 Q66 451 53 505Z"/>
+                <path d="M53 505 Q89 440 135 446 Q101 483 53 505Z"/>
+                <path d="M92 680 Q50 635 10 646 Q43 678 92 680Z"/>
+                <path d="M92 680 Q78 610 92 570 Q106 628 92 680Z"/>
+                <path d="M92 680 Q124 620 168 625 Q137 660 92 680Z"/>
+            </g>
+
+            <g class="bambu-folhas bambu-folhas-atraso"
+                fill="#9aaa7b" stroke="#71885a" stroke-width="1">
+                <path d="M52 115 Q28 60 37 20 Q59 65 52 115Z"/>
+                <path d="M52 115 Q87 55 130 54 Q98 89 52 115Z"/>
+                <path d="M88 430 Q70 375 82 335 Q100 380 88 430Z"/>
+                <path d="M88 430 Q120 375 157 375 Q128 410 88 430Z"/>
+                <path d="M25 820 Q-12 765 -49 776 Q-18 812 25 820Z"/>
+                <path d="M25 820 Q12 755 25 715 Q39 770 25 820Z"/>
+            </g>
+        </svg>
+    </div>
+
+</body>
+</html>

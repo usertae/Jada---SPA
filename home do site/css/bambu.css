@@ -1,0 +1,92 @@
+
+/* =========================================
+   JADE SPA — BAMBU DECORATIVO GLOBAL
+   ========================================= */
+
+:root {
+    --bambu-verde-escuro: #294936;
+    --bambu-verde: #587650;
+    --bambu-verde-claro: #9eae82;
+    --bambu-caule: #71865b;
+}
+
+/* Camada decorativa fixa */
+.bambu-decoracao {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Mantém o conteúdo do site acima da decoração */
+body > header,
+body > main,
+body > footer,
+body > .painel-container,
+body > .container,
+body > section {
+    position: relative;
+    z-index: 1;
+}
+
+/* Laterais do bambu */
+.bambu-lateral {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: clamp(65px, 10vw, 150px);
+    opacity: 0.82;
+}
+
+.bambu-lateral-esquerda {
+    left: 0;
+}
+
+.bambu-lateral-direita {
+    right: 0;
+    transform: scaleX(-1);
+}
+
+/* Movimento sutil das folhas */
+.bambu-folhas {
+    transform-box: fill-box;
+    transform-origin: bottom center;
+    animation: bambu-brisa 5s ease-in-out infinite alternate;
+}
+
+.bambu-folhas-atraso {
+    animation-delay: -2.5s;
+}
+
+@keyframes bambu-brisa {
+    from {
+        transform: rotate(-1.5deg);
+    }
+
+    to {
+        transform: rotate(1.5deg);
+    }
+}
+
+/* Evita que os bambus atrapalhem em telas pequenas */
+@media (max-width: 768px) {
+    .bambu-lateral {
+        width: 48px;
+        opacity: 0.32;
+    }
+}
+
+@media (max-width: 480px) {
+    .bambu-lateral {
+        width: 28px;
+        opacity: 0.18;
+    }
+}
+
+/* Respeita quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+    .bambu-folhas {
+        animation: none;
+    }
+}
