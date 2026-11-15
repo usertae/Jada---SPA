@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administração | Jade Spa</title>
+
+    <link rel="stylesheet" href="css/administracao.css">
+    <link rel="stylesheet" href="css/bambu.css">
+</head>
+
+<body>
+
+    <main class="pagina-admin">
+
+        <!-- CABEÇALHO -->
+        <div class="topo-admin">
+
+            <a class="logo">
+                <img src="imagens/logo-jadespa.png" alt="Jade Spa">
+                <span>JADE SPA</span>
+            </a>
+
+            <span class="identificacao-admin">
+                Painel administrativo
+            </span>
+
+        </div>
+
+        <!-- TÍTULO DO PAINEL -->
+        <section class="cabecalho-admin">
+
+            <div>
+                <p class="sobretitulo">JADE SPA | ADMINISTRAÇÃO</p>
+
+                <h1>Painel administrativo</h1>
+
+                <p class="subtitulo">
+                    Gerencie os cadastros e acompanhe as atividades do spa.
+                </p>
+            </div>
+
+            <button class="botao-principal" id="btnNovoUsuario" type="button">
+                + Novo usuário
+            </button>
+
+        </section>
+
+        <!-- CARTÕES DE RESUMO -->
+        <section class="resumo-admin">
+
+            <article class="card-resumo">
+                <span>Usuários cadastrados</span>
+                <strong id="totalUsuarios">—</strong>
+                <small>Clientes registrados no sistema</small>
+            </article>
+
+            <article class="card-resumo">
+                <span>Tratamentos agendados</span>
+                <strong id="totalTratamentos">—</strong>
+                <small>Agendamentos de tratamentos</small>
+            </article>
+
+            <article class="card-resumo">
+                <span>Aulas agendadas</span>
+                <strong id="totalAgendamentosAulas">—</strong>
+                <small>Inscrições nas aulas</small>
+            </article>
+
+            <article class="card-resumo">
+                <span>Serviços cadastrados</span>
+                <strong id="totalServicos">—</strong>
+                <small>Serviços registrados no sistema</small>
+            </article>
+
+        </section>
+
+        <!-- ÁREA PRINCIPAL -->
+        <section class="layout-admin">
+
+            <!-- MENU LATERAL -->
+            <aside class="menu-admin">
+
+                <p class="menu-admin-titulo">GERENCIAMENTO</p>
+
+                <button
+                    class="item-menu-admin ativo"
+                    data-secao="usuarios"
+                    type="button">
+
+                    <span>Usuários</span>
+                    <span class="menu-seta">›</span>
+
+                </button>
+
+                <button
+                    class="item-menu-admin"
+                    data-secao="agendamentos"
+                    type="button">
+
+                    <span>Agendamentos</span>
+                    <span class="menu-seta">›</span>
+
+                </button>
+
+                <button
+                    class="item-menu-admin"
+                    data-secao="servicos"
+                    type="button">
+
+                    <span>Serviços</span>
+                    <span class="menu-seta">›</span>
+
+                </button>
+
+                <button
+                    class="item-menu-admin"
+                    data-secao="aulas"
+                    type="button">
+
+                    <span>Aulas</span>
+                    <span class="menu-seta">›</span>
+
+                </button>
+
+                <button
+                    class="item-menu-admin"
+                    data-secao="planos"
+                    type="button">
+
+                    <span>Solicitações de planos</span>
+                    <span class="menu-seta">›</span>
+
+                </button>
+
+            </aside>
+
+            <!-- CONTEÚDO DAS SEÇÕES -->
+            <div class="conteudo-admin">
+
+                <!-- =========================
+                     USUÁRIOS
+                ========================== -->
+                <section class="secao-admin ativa" id="secao-usuarios">
+
+                    <div class="secao-admin-cabecalho">
+
+                        <div>
+                            <h2>Usuários cadastrados</h2>
+
+                            <p>
+                                Consulte os cadastros registrados no sistema.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="filtros-admin">
+
+                        <input
+                            type="search"
+                            id="pesquisaUsuario"
+                            placeholder="Pesquisar por nome ou e-mail"
+                            aria-label="Pesquisar usuários">
+
+                        <select
+                            id="filtroStatus"
+                            aria-label="Filtrar por status">
+
+                            <option value="todos">Todos os status</option>
+                            <option value="Ativo">Ativo</option>
+                            <option value="Pendente">Pendente</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="tabela-responsiva">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>E-mail</th>
+                                    <th>Cadastro</th>
+                                    <th>Status</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tabelaUsuarios"></tbody>
+
+                        </table>
+
+                    </div>
+
+                    <p class="mensagem-vazia" id="semUsuarios" hidden>
+                        Nenhum usuário encontrado.
+                    </p>
+
+                </section>
+
+
+                <!-- =========================
+                     AGENDAMENTOS DE TRATAMENTOS
+                ========================== -->
+                <section class="secao-admin" id="secao-agendamentos">
+
+                    <div class="secao-admin-cabecalho">
+
+                        <div>
+                            <h2>Agendamentos</h2>
+
+                            <p>
+                                Consulte e gerencie os tratamentos agendados.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="tabela-responsiva">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>E-mail</th>
+                                    <th>Tratamento</th>
+                                    <th>Data</th>
+                                    <th>Horário</th>
+                                    <th>Profissional</th>
+                                    <th>Status</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tabelaAgendamentos">
+
+                                <tr>
+                                    <td colspan="8">
+                                        Carregando tratamentos...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <p class="mensagem-vazia" id="semAgendamentos" hidden>
+                        Nenhum tratamento agendado.
+                    </p>
+
+                </section>
+
+
+                <!-- =========================
+                     SERVIÇOS
+                ========================== -->
+                <section class="secao-admin" id="secao-servicos">
+
+                    <div class="secao-admin-cabecalho">
+
+                        <div>
+                            <h2>Serviços</h2>
+
+                            <p>
+                                Gerencie os serviços disponíveis no Jade Spa.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="tabela-responsiva">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Serviço</th>
+                                    <th>Categoria</th>
+                                    <th>Duração</th>
+                                    <th>Sessões por mês</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tabelaServicos"></tbody>
+
+                        </table>
+
+                    </div>
+
+                    <p class="mensagem-vazia" id="semServicos" hidden>
+                        Nenhum serviço cadastrado.
+                    </p>
+
+                </section>
+
+
+                <!-- =========================
+                     AULAS AGENDADAS
+                ========================== -->
+                <section class="secao-admin" id="secao-aulas">
+
+                    <div class="secao-admin-cabecalho">
+
+                        <div>
+                            <h2>Aulas agendadas</h2>
+
+                            <p>
+                                Consulte e gerencie as inscrições dos clientes nas aulas.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="tabela-responsiva">
+
+                        <table>
+
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>E-mail</th>
+                                    <th>Aula</th>
+                                    <th>Dia</th>
+                                    <th>Horário</th>
+                                    <th>Status</th>
+                                    <th>Ação</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tabelaAulas">
+
+                                <tr>
+                                    <td colspan="7">
+                                        Carregando aulas agendadas...
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    <p class="mensagem-vazia" id="semAulas" hidden>
+                        Nenhuma aula agendada.
+                    </p>
+
+                </section>
+
+
+                <!-- =========================
+                     SOLICITAÇÕES DE PLANOS
+                ========================== -->
+                <section class="secao-admin" id="secao-planos">
+
+                    <div class="secao-admin-cabecalho">
+                        <div>
+                            <h2>Solicitações de planos</h2>
+                            <p>Analise os pedidos de contratação e alteração de planos dos clientes.</p>
+                        </div>
+                    </div>
+
+                    <div class="tabela-responsiva">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>E-mail</th>
+                                    <th>Plano</th>
+                                    <th>Valor</th>
+                                    <th>Pagamento</th>
+                                    <th>Solicitação</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabelaSolicitacoesPlanos">
+                                <tr>
+                                    <td colspan="7">Carregando solicitações...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p class="mensagem-vazia" id="semSolicitacoesPlanos" hidden>
+                        Nenhuma solicitação aguardando análise.
+                    </p>
+
+                </section>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- MODAL DE USUÁRIO -->
+    <div class="modal-fundo" id="modalUsuario" hidden>
+
+        <section
+            class="modal-admin"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="tituloModal">
+
+            <button
+                class="fechar-modal"
+                id="btnFecharModal"
+                type="button"
+                aria-label="Fechar">
+
+                &times;
+
+            </button>
+
+            <p class="sobretitulo">JADE SPA</p>
+
+            <h2 id="tituloModal">Detalhes do usuário</h2>
+
+            <div id="conteudoModal"></div>
+
+            <div class="modal-acoes">
+
+                <button
+                    class="botao-principal"
+                    id="btnConfirmarModal"
+                    type="button">
+
+                    Fechar
+
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- DECORAÇÃO DE BAMBU -->
+    <div class="bambu-decoracao" aria-hidden="true">
+
+        <svg
+            class="bambu-lateral bambu-lateral-esquerda"
+            viewBox="0 0 150 900"
+            preserveAspectRatio="xMinYMin slice"
+            xmlns="http://www.w3.org/2000/svg">
+
+            <defs>
+                <linearGradient id="cauleEsquerdo" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stop-color="#435d3b"/>
+                    <stop offset=".45" stop-color="#94a875"/>
+                    <stop offset="1" stop-color="#536b43"/>
+                </linearGradient>
+            </defs>
+
+            <g fill="none" stroke="url(#cauleEsquerdo)" stroke-width="9"
+               stroke-linecap="round">
+
+                <path d="M12 920 Q28 650 15 420 T24 -30"/>
+                <path d="M53 920 Q65 650 50 380 T65 -30"/>
+                <path d="M91 920 Q102 680 88 440 T104 -30"/>
+
+            </g>
+
+            <g fill="none" stroke="#d1d9b5" stroke-width="2" opacity=".8">
+
+                <path d="M15 790 Q20 770 19 744"/>
+                <path d="M19 610 Q23 590 22 565"/>
+                <path d="M22 390 Q25 370 24 345"/>
+                <path d="M50 730 Q56 710 55 685"/>
+                <path d="M56 520 Q61 500 59 475"/>
+                <path d="M59 300 Q64 280 62 255"/>
+                <path d="M90 800 Q96 780 94 755"/>
+                <path d="M94 570 Q100 550 98 525"/>
+
+            </g>
+
+            <g class="bambu-folhas"
+               fill="#71885a"
+               stroke="#506d45"
+               stroke-width="1">
+
+                <path d="M20 190 Q-20 120 -65 118 Q-30 164 20 190Z"/>
+                <path d="M20 190 Q-5 115 5 65 Q27 122 20 190Z"/>
+                <path d="M20 190 Q52 115 103 105 Q70 153 20 190Z"/>
+
+                <path d="M17 350 Q-24 305 -60 320 Q-26 347 17 350Z"/>
+                <path d="M17 350 Q-3 275 10 232 Q27 290 17 350Z"/>
+                <path d="M17 350 Q57 277 105 280 Q70 321 17 350Z"/>
+
+                <path d="M53 505 Q15 454 -25 465 Q7 500 53 505Z"/>
+                <path d="M53 505 Q38 436 53 393 Q66 451 53 505Z"/>
+                <path d="M53 505 Q89 440 135 446 Q101 483 53 505Z"/>
+
+                <path d="M92 680 Q50 635 10 646 Q43 678 92 680Z"/>
+                <path d="M92 680 Q78 610 92 570 Q106 628 92 680Z"/>
+                <path d="M92 680 Q124 620 168 625 Q137 660 92 680Z"/>
+
+            </g>
+
+            <g class="bambu-folhas bambu-folhas-atraso"
+               fill="#9aaa7b"
+               stroke="#71885a"
+               stroke-width="1">
+
+                <path d="M52 115 Q28 60 37 20 Q59 65 52 115Z"/>
+                <path d="M52 115 Q87 55 130 54 Q98 89 52 115Z"/>
+
+                <path d="M88 430 Q70 375 82 335 Q100 380 88 430Z"/>
+                <path d="M88 430 Q120 375 157 375 Q128 410 88 430Z"/>
+
+                <path d="M25 820 Q-12 765 -49 776 Q-18 812 25 820Z"/>
+                <path d="M25 820 Q12 755 25 715 Q39 770 25 820Z"/>
+
+            </g>
+
+        </svg>
+
+
+        <svg
+            class="bambu-lateral bambu-lateral-direita"
+            viewBox="0 0 150 900"
+            preserveAspectRatio="xMinYMin slice"
+            xmlns="http://www.w3.org/2000/svg">
+
+            <g fill="none" stroke="#71865b" stroke-width="9"
+               stroke-linecap="round">
+
+                <path d="M12 920 Q28 650 15 420 T24 -30"/>
+                <path d="M53 920 Q65 650 50 380 T65 -30"/>
+                <path d="M91 920 Q102 680 88 440 T104 -30"/>
+
+            </g>
+
+            <g fill="none" stroke="#d1d9b5" stroke-width="2" opacity=".8">
+
+                <path d="M15 790 Q20 770 19 744"/>
+                <path d="M19 610 Q23 590 22 565"/>
+                <path d="M50 730 Q56 710 55 685"/>
+                <path d="M56 520 Q61 500 59 475"/>
+                <path d="M90 800 Q96 780 94 755"/>
+                <path d="M94 570 Q100 550 98 525"/>
+
+            </g>
+
+            <g class="bambu-folhas"
+               fill="#71885a"
+               stroke="#506d45"
+               stroke-width="1">
+
+                <path d="M20 190 Q-20 120 -65 118 Q-30 164 20 190Z"/>
+                <path d="M20 190 Q-5 115 5 65 Q27 122 20 190Z"/>
+                <path d="M20 190 Q52 115 103 105 Q70 153 20 190Z"/>
+
+                <path d="M17 350 Q-24 305 -60 320 Q-26 347 17 350Z"/>
+                <path d="M17 350 Q-3 275 10 232 Q27 290 17 350Z"/>
+                <path d="M17 350 Q57 277 105 280 Q70 321 17 350Z"/>
+
+                <path d="M53 505 Q15 454 -25 465 Q7 500 53 505Z"/>
+                <path d="M53 505 Q38 436 53 393 Q66 451 53 505Z"/>
+                <path d="M53 505 Q89 440 135 446 Q101 483 53 505Z"/>
+
+                <path d="M92 680 Q50 635 10 646 Q43 678 92 680Z"/>
+                <path d="M92 680 Q78 610 92 570 Q106 628 92 680Z"/>
+                <path d="M92 680 Q124 620 168 625 Q137 660 92 680Z"/>
+
+            </g>
+
+            <g class="bambu-folhas bambu-folhas-atraso"
+               fill="#9aaa7b"
+               stroke="#71885a"
+               stroke-width="1">
+
+                <path d="M52 115 Q28 60 37 20 Q59 65 52 115Z"/>
+                <path d="M52 115 Q87 55 130 54 Q98 89 52 115Z"/>
+
+                <path d="M88 430 Q70 375 82 335 Q100 380 88 430Z"/>
+                <path d="M88 430 Q120 375 157 375 Q128 410 88 430Z"/>
+
+                <path d="M25 820 Q-12 765 -49 776 Q-18 812 25 820Z"/>
+                <path d="M25 820 Q12 755 25 715 Q39 770 25 820Z"/>
+
+            </g>
+
+        </svg>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="js/administracao.js"></script>
+
+</body>
+</html>
